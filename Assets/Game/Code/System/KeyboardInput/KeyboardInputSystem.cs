@@ -13,11 +13,7 @@ public class KeyboardInputSystem : MonoBehaviour
         int a = Keyboard.current.aKey.isPressed ? -1 : 0;
         int d = Keyboard.current.dKey.isPressed ? 1 : 0;
 
-        var wasd = new Vector3(a + d, w + s, 0);
-
         foreach (var k in keys)
-        {
-            k.wasd = wasd;
-        }
+            k.wasd = new Vector3(a + d, w + s, 0);
     }
 }

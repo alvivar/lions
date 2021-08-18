@@ -8,8 +8,6 @@ public class WalkerByKeyboardSystem : MonoBehaviour
     void Update()
     {
         foreach (var w in walkers)
-        {
-            w.stats.direction = w.keyboardInput.wasd;
-        }
+            w.stats.direction = w.input.wasd;
     }
 }

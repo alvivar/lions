@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class WalkerByKeyboard : MonoBehaviour
 {
-    public KeyboardInput keyboardInput;
+    public KeyboardInput input;
     public Stats stats;
 
     void Start()
     {
-        keyboardInput = GetComponent<KeyboardInput>();
+        input = GetComponent<KeyboardInput>();
         stats = GetComponent<Stats>();
     }
 
