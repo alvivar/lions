@@ -1,3 +1,4 @@
 # lions
 
-Right now looking for the simplest ECS approach ever by making a simple tanks game a la Battle City.
+A **tank vs tank** game a la Battle City while looking for the simplest approach
+to iterate GameObjects on Systems.
