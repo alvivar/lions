@@ -1,4 +1,5 @@
 # lions
 
-A **tank vs tank** Unity game a la Battle City while looking for the simplest
-approach to iterate lists of GameObjects with functionality.
+A **Tank VS Tank** _Unity_ game a la Battle City while experimenting to achieve
+the simplest, smallest approach to iterate lists of GameObjects with
+functionality.
