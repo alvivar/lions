@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Tank : MonoBehaviour
+public class Entity : MonoBehaviour
 {
     public int id = 0;
 }
