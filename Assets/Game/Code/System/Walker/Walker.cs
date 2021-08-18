@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Walker : MonoBehaviour
 {
+    [Header("By GetComponent")]
     public Stats stats;
 
     private void Start()
