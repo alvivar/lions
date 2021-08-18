@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 134746459387505144}
   - component: {fileID: 7320504120446412636}
   - component: {fileID: 5723705846512355160}
-  - component: {fileID: 7555338154425744220}
+  - component: {fileID: 7098927797471270223}
   - component: {fileID: 5439552022629372134}
+  - component: {fileID: 1780631875967563797}
+  - component: {fileID: 5893770137041217857}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -97,7 +99,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7555338154425744220
+--- !u!114 &7098927797471270223
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,9 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373f5d24ac0dc4b428ccc8b76d32cbe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 4
-  speed: 1
-  dash: 1
+  id: 0
 --- !u!114 &5439552022629372134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,3 +124,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a507efee06324374f98c1cd053526f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 4
+  health: 4
+  currentSpeed: 1
+  speed: 1
+  direction: {x: 0, y: 0, z: 0}
+--- !u!114 &1780631875967563797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641940213008611172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee54f908e4486e24b9c4b728bf5f2031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 0}
+--- !u!114 &5893770137041217857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641940213008611172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a1a9916f3c188449e408f3c857e27f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dPadX: 0
+  dPadY: 0
+  leftStickX: 0
+  leftStickY: 0
+  rightStickX: 0
+  rightStickY: 0
+  leftStickPressed: 0
+  leftStickReleased: 0
+  rightStickPressed: 0
+  rightStickReleased: 0
+  startPressed: 0
+  startReleased: 0
+  selectPressed: 0
+  selectReleased: 0
+  aPressed: 0
+  aReleased: 0
+  xPressed: 0
+  xReleased: 0
+  bPressed: 0
+  bReleased: 0
+  yPressed: 0
+  yReleased: 0
+  leftShoulderPressed: 0
+  leftShoulderReleased: 0
+  rightShoulderPressed: 0
+  rightShoulderReleased: 0
+  leftTriggerPressed: 0
+  leftTriggerReleased: 0
+  rightTriggerPressed: 0
+  rightTriggerReleased: 0
