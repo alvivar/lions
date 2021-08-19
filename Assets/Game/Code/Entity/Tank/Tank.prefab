@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6173803071633979424}
   - component: {fileID: 5439552022629372134}
-  - component: {fileID: 2629363274582743416}
   - component: {fileID: 1780631875967563797}
+  - component: {fileID: 2629363274582743416}
   - component: {fileID: 7473931284246146611}
   - component: {fileID: 2960118143069670985}
+  - component: {fileID: 966874092520535897}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -48,24 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a507efee06324374f98c1cd053526f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 4
-  currentHealth: 4
   speed: 7
-  currentSpeed: 1
   direction: {x: 0, y: 0, z: 0}
---- !u!114 &2629363274582743416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2641940213008611172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f7fe6b49e5dad647885e10198e270b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wasd: {x: 0, y: 0, z: 0}
+  duration: 0
 --- !u!114 &1780631875967563797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,6 +65,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 0}
+--- !u!114 &2629363274582743416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641940213008611172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f7fe6b49e5dad647885e10198e270b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wasd: {x: 0, y: 0, z: 0}
+  lastWasd: {x: 0, y: 0, z: 0}
+  spaceDown: 0
 --- !u!114 &7473931284246146611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,6 +108,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 7788710326497443196}
   input: {fileID: 0}
+--- !u!114 &966874092520535897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641940213008611172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c332b913dc7f24aa3a6976a092520a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spaceDown: 0
+  delay: 0
+  input: {fileID: 0}
+  origin: {fileID: 5240878493624822146}
+--- !u!1 &4303499889592074658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5240878493624822146}
+  m_Layer: 0
+  m_Name: Gun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5240878493624822146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4303499889592074658}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8949855379187357066}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5947631862459669488
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +217,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.7, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.35, z: 0.1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5240878493624822146}
   m_Father: {fileID: 7788710326497443196}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

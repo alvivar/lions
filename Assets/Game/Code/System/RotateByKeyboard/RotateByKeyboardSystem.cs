@@ -9,6 +9,9 @@ public class RotateByKeyboardSystem : MonoBehaviour
     {
         foreach (var r in rotates)
         {
+            if (r.input.wasd != Vector3.zero)
+                r.input.lastWasd = r.input.wasd;
+
             if (r.input.wasd.x == 1)
                 r.target.transform.localEulerAngles = new Vector3(0, 0, 0);
 
