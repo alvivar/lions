@@ -10,16 +10,16 @@ public class PunchOnDamage : MonoBehaviour
     public Punch punch;
     public Damage damage;
 
-    private void OnEnable()
-    {
-        PunchOnDamageSystem.entities.Add(this);
-    }
-
     private void Start()
     {
         punch = GetComponent<Punch>();
         damage = GetComponent<Damage>();
         damage.OnDamage += stats => punches.Add(stats);
+    }
+
+    private void OnEnable()
+    {
+        PunchOnDamageSystem.entities.Add(this);
     }
 
     private void OnDisable()
