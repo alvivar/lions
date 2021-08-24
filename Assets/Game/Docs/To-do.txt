@@ -1,0 +1,10 @@
+
+    ExplodeOutOnDamage
+    Dead and body
+    Dead if out of borders
+    Camera shake
+
+
+    2021.08.24
+    x Started this log
+    x A prototype with the main idea
