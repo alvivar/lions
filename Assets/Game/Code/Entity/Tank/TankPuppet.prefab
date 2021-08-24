@@ -480,6 +480,9 @@ MonoBehaviour:
   dampening: 5
   direction: {x: 0, y: 0, z: 0}
   duration: 0
+  health: 1
+  damage: 0
+  punch: 0.5
 --- !u!114 &7680063007407149129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,6 +510,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 394f682d958114742b0b021d510947fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisions: []
+  stats: {fileID: 0}
 --- !u!114 &1114263840779765772
 MonoBehaviour:
   m_ObjectHideFlags: 0

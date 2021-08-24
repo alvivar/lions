@@ -138,6 +138,8 @@ MonoBehaviour:
   dampening: 0
   direction: {x: 0, y: 0, z: 0}
   duration: 0
+  damage: 1
+  punch: 1
 --- !u!114 &6697861569165963434
 MonoBehaviour:
   m_ObjectHideFlags: 0

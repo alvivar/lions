@@ -13,7 +13,7 @@ public class PunchSystem : MonoBehaviour
             if (e.force.magnitude > 0)
             {
                 e.rbody.velocity += e.force;
-                e.force = Vector2.Lerp(e.force, Vector2.zero, Time.deltaTime * e.damp);
+                e.force = Vector2.Lerp(e.force, Vector2.zero, Time.deltaTime * 12);
             }
         }
     }

@@ -12,13 +12,12 @@ GameObject:
   - component: {fileID: 5559559214735501687}
   - component: {fileID: 5439552022629372134}
   - component: {fileID: 1780631875967563797}
-  - component: {fileID: 9149268362644928442}
   - component: {fileID: 2629363274582743416}
   - component: {fileID: 7473931284246146611}
   - component: {fileID: 2960118143069670985}
   - component: {fileID: 966874092520535897}
   - component: {fileID: 6344935571118380720}
-  - component: {fileID: 155211319774224523}
+  - component: {fileID: 9149268362644928442}
   - component: {fileID: 3621108424402441474}
   m_Layer: 6
   m_Name: Tank
@@ -79,6 +78,9 @@ MonoBehaviour:
   dampening: 5
   direction: {x: 0, y: 0, z: 0}
   duration: 0
+  health: 1
+  damage: 0
+  punch: 0.5
 --- !u!114 &1780631875967563797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,22 +94,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zLayer: 0
-  stats: {fileID: 0}
-  rbody: {fileID: 0}
---- !u!114 &9149268362644928442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2641940213008611172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b91aa6b5f9e2ef4fb3b3819af4089d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: {x: 0, y: 0}
-  damp: 0
   stats: {fileID: 0}
   rbody: {fileID: 0}
 --- !u!114 &2629363274582743416
@@ -181,7 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 394f682d958114742b0b021d510947fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &155211319774224523
+  collisions: []
+  stats: {fileID: 0}
+--- !u!114 &9149268362644928442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,7 +182,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: {x: 0, y: 0}
-  damp: 0
   stats: {fileID: 0}
   rbody: {fileID: 0}
 --- !u!114 &3621108424402441474
@@ -209,6 +196,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640ae6a825cb2ab48b7e86cfb66908af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: []
+  punch: {fileID: 0}
+  damage: {fileID: 0}
 --- !u!1 &4303499889592074658
 GameObject:
   m_ObjectHideFlags: 0

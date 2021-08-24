@@ -4,7 +4,6 @@ using UnityEngine;
 public class Punch : MonoBehaviour
 {
     public Vector2 force;
-    public float damp;
 
     [Header("By GetComponent")]
     public Stats stats;

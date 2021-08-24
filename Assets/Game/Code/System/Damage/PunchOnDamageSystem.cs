@@ -10,7 +10,16 @@ public class PunchOnDamageSystem : MonoBehaviour
     {
         foreach (var e in entities)
         {
+            if (e.punches.Count > 0)
+            {
+                var stats = e.punches[0];
+                e.punches.RemoveAt(0);
 
+                var punch = stats.punch;
+                var dir = (e.transform.position - stats.transform.position).normalized;
+
+                e.punch.force = punch * dir;
+            }
         }
     }
 }
