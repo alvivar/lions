@@ -1,16 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// #jam
 public class WalkerSystem : MonoBehaviour
 {
-    public static List<Walker> walkers = new List<Walker>();
+    public static List<Walker> entities = new List<Walker>();
 
-    private void Update()
+    private void FixedUpdate()
     {
-        foreach (var walker in walkers)
+        foreach (var e in entities)
         {
-            var stats = walker.stats;
-            walker.transform.localPosition += stats.direction * stats.speed * Time.deltaTime;
+            var stats = e.stats;
+
+            var speed = e.stats.speed * e.stats.direction;
+            var damp = e.stats.dampening * Time.deltaTime;
+
+            e.rbody.velocity = Vector3.Lerp(e.rbody.velocity, speed, damp);
+            e.rbody.angularVelocity = 0;
+            e.rbody.transform.localEulerAngles = Vector3.zero;
         }
     }
 }
