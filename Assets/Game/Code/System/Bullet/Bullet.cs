@@ -5,12 +5,12 @@ public class Bullet : MonoBehaviour
 {
     [Header("By GetComponent")]
     public Stats stats;
-    public Rigidbody rbody;
+    public Rigidbody2D rbody;
 
     private void Start()
     {
         stats = GetComponent<Stats>();
-        rbody = GetComponent<Rigidbody>();
+        rbody = GetComponent<Rigidbody2D>();
     }
 
     private void OnEnable()

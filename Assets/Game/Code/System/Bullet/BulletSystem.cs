@@ -7,7 +7,7 @@ public class BulletSystem : MonoBehaviour
     public static List<Bullet> entities = new List<Bullet>();
     public static int bulletIndex = 0;
 
-    private void Update()
+    private void FixedUpdate()
     {
         foreach (var e in entities)
         {
@@ -25,7 +25,7 @@ public class BulletSystem : MonoBehaviour
             else
             {
                 e.rbody.velocity = Vector3.zero;
-                e.rbody.angularVelocity = Vector3.zero;
+                e.rbody.angularVelocity = 0;
             }
         }
     }
