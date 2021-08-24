@@ -18,13 +18,13 @@ public class RotateByKeyboardSystem : MonoBehaviour
                 r.target.transform.localEulerAngles = new Vector3(0, 0, 0);
 
             if (r.input.wasd.x == -1)
-                r.target.transform.localEulerAngles = new Vector3(0, 180, 0);
+                r.target.transform.localEulerAngles = new Vector3(0, 0, 180);
 
             if (r.input.wasd.y == 1)
                 r.target.transform.localEulerAngles = new Vector3(0, 0, 90);
 
             if (r.input.wasd.y == -1)
-                r.target.transform.localEulerAngles = new Vector3(0, 180, 270);
+                r.target.transform.localEulerAngles = new Vector3(0, 0, 270);
 
             // Diagonals
 
