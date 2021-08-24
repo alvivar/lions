@@ -134,12 +134,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a507efee06324374f98c1cd053526f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 34
+  speed: 36
   dampening: 0
   direction: {x: 0, y: 0, z: 0}
   duration: 0
+  health: 0
   damage: 1
-  punch: 1
+  punch: 1.5
 --- !u!114 &6697861569165963434
 MonoBehaviour:
   m_ObjectHideFlags: 0
