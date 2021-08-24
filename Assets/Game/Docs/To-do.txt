@@ -1,4 +1,5 @@
 
+    DashOnShift
     ExplodeOutOnDamage
     Dead and body
     Dead if out of borders
