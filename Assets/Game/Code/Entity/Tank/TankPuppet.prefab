@@ -418,7 +418,9 @@ GameObject:
   - component: {fileID: 5396022053746908389}
   - component: {fileID: 4133785909441296570}
   - component: {fileID: 7680063007407149129}
+  - component: {fileID: 6759801708178463432}
   - component: {fileID: 1114263840779765772}
+  - component: {fileID: 5282816649133072068}
   m_Layer: 7
   m_Name: TankPuppet
   m_TagString: Untagged
@@ -493,6 +495,18 @@ MonoBehaviour:
   zLayer: 0
   stats: {fileID: 0}
   rbody: {fileID: 0}
+--- !u!114 &6759801708178463432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6235529988819722040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 394f682d958114742b0b021d510947fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1114263840779765772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,5 +517,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b91aa6b5f9e2ef4fb3b3819af4089d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: {x: 0, y: 0}
+  damp: 0
+  stats: {fileID: 0}
+  rbody: {fileID: 0}
+--- !u!114 &5282816649133072068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6235529988819722040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640ae6a825cb2ab48b7e86cfb66908af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
