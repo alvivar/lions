@@ -6,14 +6,41 @@ public class PunchSystem : MonoBehaviour
 {
     public static List<Punch> entities = new List<Punch>();
 
-    private void Update()
+    private void FixedUpdate()
     {
         foreach (var e in entities)
         {
             if (e.force.magnitude > 0)
             {
-                e.rbody.velocity += e.force;
-                e.force = Vector2.Lerp(e.force, Vector2.zero, Time.deltaTime * 12);
+                e.tt("Punch")
+                    .Add(() =>
+                    {
+                        if (e.randomDir)
+                            e.stats.direction = (Random.insideUnitCircle * 10).normalized;
+
+                        if (e.bullet)
+                            e.bullet.enabled = false;
+                    })
+                    .Loop(0.1f, t => e.rbody.velocity = Vector2.zero)
+                    .Loop(0.2f, t =>
+                    {
+                        e.rbody.velocity += e.force;
+                        e.force = Vector2.Lerp(e.force, Vector2.zero, Easef.EaseIn(t.t));
+                    })
+                    .Add(t =>
+                    {
+                        if (e.bullet)
+                        {
+                            e.bullet.enabled = true;
+                            e.stats.direction = Vector2.zero;
+                            e.transform.position = Vector2.one * 9999;
+                        }
+
+                        e.force = Vector2.zero;
+
+                        t.self.Reset();
+                    })
+                    .Immutable();
             }
         }
     }

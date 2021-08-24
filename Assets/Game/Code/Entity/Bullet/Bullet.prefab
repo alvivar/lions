@@ -15,7 +15,10 @@ GameObject:
   - component: {fileID: 1340430658200254061}
   - component: {fileID: 3133601338800101010}
   - component: {fileID: 6697861569165963434}
-  m_Layer: 0
+  - component: {fileID: 2896475305743930387}
+  - component: {fileID: 8264963403442252589}
+  - component: {fileID: 2395014093461520307}
+  m_Layer: 8
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +124,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &3133601338800101010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,13 +137,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a507efee06324374f98c1cd053526f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 36
+  speed: 30
   dampening: 0
   direction: {x: 0, y: 0, z: 0}
   duration: 0
   health: 0
   damage: 1
-  punch: 1.5
+  punch: 2
 --- !u!114 &6697861569165963434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,3 +158,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 0}
   rbody: {fileID: 0}
+--- !u!114 &2896475305743930387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382558657867067003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 394f682d958114742b0b021d510947fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisions: []
+  stats: {fileID: 0}
+--- !u!114 &8264963403442252589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382558657867067003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b91aa6b5f9e2ef4fb3b3819af4089d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomDir: 1
+  force: {x: 0, y: 0}
+  stats: {fileID: 0}
+  rbody: {fileID: 0}
+  bullet: {fileID: 0}
+--- !u!114 &2395014093461520307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382558657867067003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640ae6a825cb2ab48b7e86cfb66908af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punches: []
+  punch: {fileID: 0}
+  damage: {fileID: 0}

@@ -80,7 +80,7 @@ MonoBehaviour:
   duration: 0
   health: 1
   damage: 0
-  punch: 0.5
+  punch: 1.5
 --- !u!114 &1780631875967563797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,9 +181,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b91aa6b5f9e2ef4fb3b3819af4089d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomDir: 0
   force: {x: 0, y: 0}
   stats: {fileID: 0}
   rbody: {fileID: 0}
+  bullet: {fileID: 0}
 --- !u!114 &3621108424402441474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640ae6a825cb2ab48b7e86cfb66908af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: []
+  punches: []
   punch: {fileID: 0}
   damage: {fileID: 0}
 --- !u!1 &4303499889592074658

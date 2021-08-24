@@ -7,7 +7,7 @@ public class BulletSystem : MonoBehaviour
     public static List<Bullet> entities = new List<Bullet>();
     public static int bulletIndex = 0;
 
-    private void FixedUpdate()
+    private void Update()
     {
         foreach (var e in entities)
         {
@@ -34,6 +34,8 @@ public class BulletSystem : MonoBehaviour
     {
         var bullet = entities[bulletIndex];
         bulletIndex = ++bulletIndex % entities.Count;
+
+        bullet.enabled = true;
 
         return bullet;
     }
