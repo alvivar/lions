@@ -33,7 +33,7 @@ public class PunchSystem : MonoBehaviour
                         {
                             e.bullet.enabled = true;
                             e.stats.direction = Vector2.zero;
-                            e.transform.position = Vector2.one * 9999;
+                            e.bullet.RandomPosition();
                         }
 
                         e.force = Vector2.zero;
