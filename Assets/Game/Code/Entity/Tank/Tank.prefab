@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 6933391504476720667}
   - component: {fileID: 5892997459514730185}
   - component: {fileID: 3380993177711270833}
-  - component: {fileID: 8198685127870627680}
+  - component: {fileID: 5462549558780257778}
   m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
@@ -552,8 +552,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!61 &8198685127870627680
-BoxCollider2D:
+--- !u!58 &5462549558780257778
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -566,15 +566,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.5
