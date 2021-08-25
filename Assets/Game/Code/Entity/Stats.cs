@@ -4,6 +4,7 @@ public class Stats : MonoBehaviour
 {
     [Header("Movement")]
     public float speed = 10;
+    public float speedOverride = 0;
     public float dampening = 5;
     public Vector3 direction;
 

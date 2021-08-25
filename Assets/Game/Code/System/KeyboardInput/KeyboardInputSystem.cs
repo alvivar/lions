@@ -2,9 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+// #jam
 public class KeyboardInputSystem : MonoBehaviour
 {
-    public static List<KeyboardInput> keys = new List<KeyboardInput>();
+    public static List<KeyboardInput> entities = new List<KeyboardInput>();
 
     void Update()
     {
@@ -13,17 +14,21 @@ public class KeyboardInputSystem : MonoBehaviour
         int a = Keyboard.current.aKey.isPressed ? -1 : 0;
         int d = Keyboard.current.dKey.isPressed ? 1 : 0;
 
+        bool lshift = Keyboard.current.leftShiftKey.wasPressedThisFrame;
         bool space = Keyboard.current.spaceKey.wasPressedThisFrame;
 
-        foreach (var k in keys)
+        foreach (var e in entities)
         {
-            k.wasd = new Vector3(a + d, w + s, 0);
+            e.wasd = new Vector3(a + d, w + s, 0);
 
-            if (k.wasd != Vector3.zero)
-                k.lastWasd = k.wasd;
+            if (e.wasd != Vector3.zero)
+                e.lastWasd = e.wasd;
 
             if (space)
-                k.spaceDown += 1;
+                e.spaceDown += 1;
+
+            if (lshift)
+                e.lshift += 1;
         }
     }
 }
