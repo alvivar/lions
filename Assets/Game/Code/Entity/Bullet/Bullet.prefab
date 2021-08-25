@@ -16,8 +16,9 @@ GameObject:
   - component: {fileID: 3133601338800101010}
   - component: {fileID: 6697861569165963434}
   - component: {fileID: 2896475305743930387}
-  - component: {fileID: 8264963403442252589}
-  - component: {fileID: 2395014093461520307}
+  - component: {fileID: 59901564757008142}
+  - component: {fileID: 854877200299017123}
+  - component: {fileID: 4851979002908763127}
   m_Layer: 8
   m_Name: Bullet
   m_TagString: Untagged
@@ -172,7 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisions: []
   stats: {fileID: 0}
---- !u!114 &8264963403442252589
+--- !u!114 &59901564757008142
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,12 +185,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b91aa6b5f9e2ef4fb3b3819af4089d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomDir: 1
+  randomDir: 0
   force: {x: 0, y: 0}
   stats: {fileID: 0}
   rbody: {fileID: 0}
   bullet: {fileID: 0}
---- !u!114 &2395014093461520307
+--- !u!114 &854877200299017123
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,4 +204,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   punches: []
   punch: {fileID: 0}
+  damage: {fileID: 0}
+--- !u!114 &4851979002908763127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382558657867067003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfbf180187ac0ee4aa550ed97910695b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosions: []
+  render: {fileID: 0}
   damage: {fileID: 0}
