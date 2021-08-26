@@ -12,10 +12,11 @@ public class WalkerSystem : MonoBehaviour
         {
             var stats = e.stats;
 
-            var speed = e.stats.speed * e.stats.direction;
+            var speed = e.stats.speedOverride > e.stats.speed ? e.stats.speedOverride : e.stats.speed;
+            var dir = speed * e.stats.direction;
             var damp = e.stats.dampening * Time.deltaTime;
 
-            e.rbody.velocity = Vector3.Lerp(e.rbody.velocity, speed, damp);
+            e.rbody.velocity = Vector3.Lerp(e.rbody.velocity, dir, damp);
             e.rbody.angularVelocity = 0;
             e.rbody.transform.localEulerAngles = Vector3.zero;
         }
