@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3596182759842284823}
   - component: {fileID: 4124330071930426786}
   - component: {fileID: 3861410923845221705}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c7a7aa61dc587b458efdcdcb192799a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidBody: {fileID: 0}
 --- !u!1 &1580019141298206790
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +158,7 @@ GameObject:
   - component: {fileID: 887660650730967588}
   - component: {fileID: 2982207974024508397}
   - component: {fileID: 4305635441511887771}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: RWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,6 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c7a7aa61dc587b458efdcdcb192799a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidBody: {fileID: 0}
 --- !u!1 &1676961711171638244
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +302,7 @@ GameObject:
   - component: {fileID: 6111319678337127390}
   - component: {fileID: 3155464889051764811}
   - component: {fileID: 4199600750117428147}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: LWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,6 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c7a7aa61dc587b458efdcdcb192799a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidBody: {fileID: 0}
 --- !u!1 &2127340943466942581
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,7 +446,7 @@ GameObject:
   - component: {fileID: 9078187759172022765}
   - component: {fileID: 2380820917376326618}
   - component: {fileID: 6022675735468097738}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Canon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,6 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c7a7aa61dc587b458efdcdcb192799a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidBody: {fileID: 0}
 --- !u!1 &6497086489553426001
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,7 +585,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3111290473383565589}
-  m_Layer: 7
+  - component: {fileID: 4014938922916821602}
+  m_Layer: 10
   m_Name: DeadTank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -606,3 +611,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4014938922916821602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6497086489553426001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda190fdc1f4b544e98006d1cbeb9571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

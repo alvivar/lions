@@ -10,7 +10,15 @@ public class SlowdownSystem : MonoBehaviour
     {
         foreach (var e in entities)
         {
+            e.rigidBody.velocity = Vector2.Lerp(
+                e.rigidBody.velocity,
+                Vector2.zero,
+                Time.deltaTime * 4);
 
+            e.rigidBody.angularVelocity = Mathf.Lerp(
+                e.rigidBody.angularVelocity,
+                0,
+                Time.deltaTime * 4);
         }
     }
 }

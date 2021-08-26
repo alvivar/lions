@@ -4,19 +4,17 @@ using UnityEngine;
 // #jam
 public class Dead : MonoBehaviour
 {
-    public List<bool> deads = new List<bool>();
+    public List<Stats> deads = new List<Stats>();
 
     [Header("By GetComponent")]
+    public Stats stats;
     public Damage damage;
 
     private void Start()
     {
+        stats = GetComponent<Stats>();
         damage = GetComponent<Damage>();
-        damage.OnDamage += stat =>
-        {
-            if (stat.health < 0)
-                deads.Add(true);
-        };
+        damage.OnDamage += stat => deads.Add(stat);
     }
 
     private void OnEnable()

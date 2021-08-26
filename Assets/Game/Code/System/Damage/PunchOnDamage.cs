@@ -14,7 +14,7 @@ public class PunchOnDamage : MonoBehaviour
     {
         punch = GetComponent<Punch>();
         damage = GetComponent<Damage>();
-        damage.OnDamage += stats => punches.Add(stats);
+        damage.OnDamage += stat => punches.Add(stat);
     }
 
     private void OnEnable()

@@ -13,7 +13,7 @@ public class PunchOnDamageSystem : MonoBehaviour
             if (e.punches.Count > 0)
             {
                 var stats = e.punches[0];
-                e.punches.Clear();
+                e.punches.RemoveAt(0);
 
                 var dir = (e.transform.position - stats.transform.position).normalized;
                 e.punch.force = stats.punch * dir;
