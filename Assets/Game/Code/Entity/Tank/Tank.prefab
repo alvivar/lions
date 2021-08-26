@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5559559214735501687}
   - component: {fileID: 5439552022629372134}
   - component: {fileID: 1780631875967563797}
+  - component: {fileID: 4803839963295643094}
   - component: {fileID: 2629363274582743416}
   - component: {fileID: 7473931284246146611}
   - component: {fileID: 2960118143069670985}
@@ -76,6 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  speedOverride: 0
   dampening: 5
   direction: {x: 0, y: 0, z: 0}
   duration: 0
@@ -97,6 +99,18 @@ MonoBehaviour:
   zLayer: 0
   stats: {fileID: 0}
   rbody: {fileID: 0}
+--- !u!114 &4803839963295643094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641940213008611172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd28c2d7736a15e4ea06c4c12c43a51f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2629363274582743416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +126,7 @@ MonoBehaviour:
   wasd: {x: 0, y: 0, z: 0}
   lastWasd: {x: 0, y: 0, z: 0}
   spaceDown: 0
+  lshift: 0
 --- !u!114 &7473931284246146611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +183,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec87372b411b81a44bb5c80ce83e350d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyDown: 0
+  input: {fileID: 0}
+  stats: {fileID: 0}
 --- !u!114 &6344935571118380720
 MonoBehaviour:
   m_ObjectHideFlags: 0

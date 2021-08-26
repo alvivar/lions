@@ -12,7 +12,7 @@ public class Stats : MonoBehaviour
     public float duration = 0;
 
     [Header("Combat")]
-    public int health;
+    public int health = 0;
     public int damage = 0;
     public float punch = 0;
 }
