@@ -1,10 +1,12 @@
 
-    Dead and body
+    Trail
+    Explosion effect
     Dead if out of borders
     Camera shake
 
 
     2021.08.25
+    x Dead and body v1
     x DashOnShift
     x ExplodeOutOnDamage
 
