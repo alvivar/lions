@@ -14,7 +14,7 @@ public class Dead : MonoBehaviour
     {
         stats = GetComponent<Stats>();
         damage = GetComponent<Damage>();
-        damage.OnDamage += stat => deads.Add(stat);
+        damage.OnDamage += stats => deads.Add(stats);
     }
 
     private void OnEnable()

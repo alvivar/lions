@@ -14,7 +14,7 @@ public class ExplosionOnDamage : MonoBehaviour
     {
         render = GetComponent<Renderer>();
         damage = GetComponent<Damage>();
-        damage.OnDamage += stat => explosions.Add(stat);
+        damage.OnDamage += stats => explosions.Add(stats);
     }
 
     private void OnEnable()
