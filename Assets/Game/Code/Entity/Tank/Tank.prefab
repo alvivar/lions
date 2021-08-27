@@ -81,7 +81,7 @@ MonoBehaviour:
   dampening: 5
   direction: {x: 0, y: 0, z: 0}
   duration: 0
-  health: 1
+  health: 2
   damage: 0
   punch: 1.5
 --- !u!114 &1780631875967563797
@@ -111,6 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd28c2d7736a15e4ea06c4c12c43a51f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deads: []
+  stats: {fileID: 0}
+  damage: {fileID: 0}
 --- !u!114 &2629363274582743416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,6 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collisions: []
+  delay: 0
   stats: {fileID: 0}
 --- !u!114 &9149268362644928442
 MonoBehaviour:
