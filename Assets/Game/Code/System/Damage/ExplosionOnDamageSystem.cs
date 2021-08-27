@@ -4,34 +4,34 @@ using UnityEngine;
 // #jam
 public class ExplosionOnDamageSystem : MonoBehaviour
 {
-    public static List<ExplosionOnDamage> entities = new List<ExplosionOnDamage>();
+    public static List<ExplosionOnDamage> components = new List<ExplosionOnDamage>();
 
     private void Update()
     {
-        foreach (var e in entities)
+        foreach (var c in components)
         {
-            if (e.explosions.Count > 0)
+            if (c.explosions.Count > 0)
             {
-                e.explosions.RemoveAt(0);
+                c.explosions.RemoveAt(0);
 
-                e.tt("Explosion")
+                c.tt("Explosion")
                     .Reset()
                     .Loop(0.8f, t =>
                     {
-                        e.render.material.color = Color.Lerp(
-                            e.render.material.color,
+                        c.render.material.color = Color.Lerp(
+                            c.render.material.color,
                             Color.clear,
                             Easef.EaseIn(t.t));
 
-                        e.transform.localScale = Vector3.Lerp(
-                            e.transform.localScale,
-                            Vector3.one * 3,
+                        c.transform.localScale = Vector3.Lerp(
+                            c.transform.localScale,
+                            Vector3.one * 4,
                             Easef.EaseIn(t.t));
                     })
                     .Add(() =>
                     {
-                        e.render.material.color = Color.white;
-                        e.transform.localScale = Vector3.one;
+                        c.render.material.color = Color.white;
+                        c.transform.localScale = Vector3.one;
                     });
             }
         }

@@ -19,11 +19,11 @@ public class ExplosionOnDamage : MonoBehaviour
 
     private void OnEnable()
     {
-        ExplosionOnDamageSystem.entities.Add(this);
+        ExplosionOnDamageSystem.components.Add(this);
     }
 
     private void OnDisable()
     {
-        ExplosionOnDamageSystem.entities.Remove(this);
+        ExplosionOnDamageSystem.components.Remove(this);
     }
 }
