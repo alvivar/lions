@@ -8,7 +8,7 @@ public class Damage : MonoBehaviour
     public Action<Stats> OnDamage;
     public List<Stats> collisions = new List<Stats>();
 
-    public float delay = 0;
+    public float rest = 0;
 
     [Header("By GetComponent")]
     public Stats stats;

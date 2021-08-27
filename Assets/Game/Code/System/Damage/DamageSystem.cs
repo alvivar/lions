@@ -10,17 +10,17 @@ public class DamageSystem : MonoBehaviour
     {
         foreach (var c in components)
         {
-            c.delay -= Time.deltaTime;
+            c.rest -= Time.deltaTime;
 
             if (c.collisions.Count > 0)
             {
                 var stats = c.collisions[0];
                 c.collisions.RemoveAt(0);
 
-                if (c.delay > 0)
+                if (c.rest > 0)
                     continue;
 
-                c.delay = 0.10f;
+                c.rest = 0.10f;
                 c.stats.health -= stats.damage;
 
                 if (c.OnDamage != null)
