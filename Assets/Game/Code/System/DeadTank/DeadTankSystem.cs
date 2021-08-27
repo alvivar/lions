@@ -29,7 +29,7 @@ public class DeadTankSystem : MonoBehaviour
         }
     }
 
-    public static DeadTank GetDeadTank()
+    public static DeadTank Get()
     {
         var deadTank = entities[index];
         index = ++index % entities.Count;

@@ -7,10 +7,12 @@ public class DeadTank : MonoBehaviour
     public List<Vector3> positions = new List<Vector3>();
 
     [Header("By GetComponent")]
+    public Renderer[] renders;
     public Rigidbody2D[] rigidBodies;
 
     private void Start()
     {
+        renders = GetComponentsInChildren<Renderer>();
         rigidBodies = GetComponentsInChildren<Rigidbody2D>();
     }
 
@@ -24,7 +26,7 @@ public class DeadTank : MonoBehaviour
         DeadTankSystem.entities.Remove(this);
     }
 
-    public void SetPosition(Vector3 pos)
+    public void At(Vector3 pos)
     {
         positions.Add(pos);
     }

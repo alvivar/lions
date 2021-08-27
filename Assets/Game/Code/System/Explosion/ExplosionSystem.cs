@@ -46,7 +46,7 @@ public class ExplosionSystem : MonoBehaviour
         }
     }
 
-    public static Explosion GetExplosion()
+    public static Explosion Get()
     {
         var explosion = components[index];
         index = ++index % components.Count;
