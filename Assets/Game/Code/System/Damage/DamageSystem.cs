@@ -4,21 +4,27 @@ using UnityEngine;
 // #jam
 public class DamageSystem : MonoBehaviour
 {
-    public static List<Damage> entities = new List<Damage>();
+    public static List<Damage> components = new List<Damage>();
 
     private void Update()
     {
-        foreach (var e in entities)
+        foreach (var c in components)
         {
-            if (e.collisions.Count > 0)
+            c.delay -= Time.deltaTime;
+
+            if (c.collisions.Count > 0)
             {
-                var stats = e.collisions[0];
-                e.collisions.RemoveAt(0);
+                var stats = c.collisions[0];
+                c.collisions.RemoveAt(0);
 
-                e.stats.health -= stats.damage;
+                if (c.delay > 0)
+                    continue;
 
-                if (e.OnDamage != null)
-                    e.OnDamage(stats);
+                c.delay = 0.10f;
+                c.stats.health -= stats.damage;
+
+                if (c.OnDamage != null)
+                    c.OnDamage(stats);
             }
         }
     }
