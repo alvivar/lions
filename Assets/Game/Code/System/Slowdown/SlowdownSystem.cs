@@ -13,12 +13,12 @@ public class SlowdownSystem : MonoBehaviour
             e.rigidBody.velocity = Vector2.Lerp(
                 e.rigidBody.velocity,
                 Vector2.zero,
-                Time.deltaTime * 4);
+                Easef.EaseOut(Time.deltaTime * 3));
 
             e.rigidBody.angularVelocity = Mathf.Lerp(
                 e.rigidBody.angularVelocity,
                 0,
-                Time.deltaTime * 4);
+                Easef.EaseOut(Time.deltaTime * 3));
         }
     }
 }
