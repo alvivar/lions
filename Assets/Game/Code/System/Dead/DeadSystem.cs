@@ -18,19 +18,22 @@ public class DeadSystem : MonoBehaviour
                 if (e.stats.health > 0)
                     continue;
 
-                e.tt("Dead").Reset()
+                var pos = e.transform.position;
+                e.tt("Dead")
+                    .Reset()
                     .Add(() =>
                     {
-                        ExplosionSystem.Get().At(e.transform.position);
+                        ExplosionSystem.Get().At(pos);
                     })
                     .Add(0.5f, () =>
                     {
-                        var pos = e.transform.position;
-
-                        DeadTankSystem.Get().At(pos);
+                        pos = e.transform.position;
                         ExplosionSystem.Get().At(pos);
-
                         e.transform.position += Vector3.one * 9999;
+                    })
+                    .Add(0.2f, () =>
+                    {
+                        DeadTankSystem.Get().At(pos);
                     });
             }
         }
