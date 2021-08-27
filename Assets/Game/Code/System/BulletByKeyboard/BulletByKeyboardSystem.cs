@@ -23,6 +23,10 @@ public class BulletByKeyboardSystem : MonoBehaviour
 
                     var bullet = BulletSystem.GetBullet();
                     bullet.transform.position = e.origin.transform.position;
+
+                    bullet.trail.Clear();
+                    bullet.trail.enabled = true;
+
                     bullet.stats.direction = e.input.lastWasd;
                     bullet.stats.duration = 0;
                 }

@@ -6,11 +6,13 @@ public class Bullet : MonoBehaviour
     [Header("By GetComponent")]
     public Stats stats;
     public Rigidbody2D rbody;
+    public TrailRenderer trail;
 
     private void Start()
     {
         stats = GetComponent<Stats>();
         rbody = GetComponent<Rigidbody2D>();
+        trail = GetComponent<TrailRenderer>();
     }
 
     private void OnEnable()

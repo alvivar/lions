@@ -16,10 +16,11 @@ public class BulletSystem : MonoBehaviour
                 e.rbody.velocity = e.stats.speed * e.stats.direction;
 
                 e.stats.duration += Time.deltaTime;
-                if (e.stats.duration > 4)
+                if (e.stats.duration > 3)
                 {
                     e.stats.duration = 0;
                     e.stats.direction = Vector3.zero;
+                    e.trail.enabled = false;
                 }
             }
             else
@@ -34,8 +35,6 @@ public class BulletSystem : MonoBehaviour
     {
         var bullet = entities[bulletIndex];
         bulletIndex = ++bulletIndex % entities.Count;
-
-        bullet.enabled = true;
 
         return bullet;
     }
