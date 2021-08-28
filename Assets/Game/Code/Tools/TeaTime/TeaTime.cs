@@ -1,4 +1,4 @@
-// TeaTime v0.8.8 beta
+﻿// TeaTime v0.8.8 beta
 
 // TeaTime is a fast & simple queue for timed callbacks, focused on solving
 // common coroutines patterns in Unity games.
@@ -288,7 +288,6 @@ public class TeaTime
     }
 
     /// Appends a time delay.
-    /// @todo This has a bug with: () => e.stats.speedOverride = e.stats.speed * 2 <- Func instead of a simple callback.
     public TeaTime Add(Func<float> timeByFunc)
     {
         return Add(0, timeByFunc, null, null);
