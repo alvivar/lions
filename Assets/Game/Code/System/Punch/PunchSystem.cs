@@ -17,11 +17,8 @@ public class PunchSystem : MonoBehaviour
                     {
                         if (e.randomDir)
                             e.stats.direction = (Random.insideUnitCircle * 10).normalized;
-
-                        if (e.bullet)
-                            e.bullet.enabled = false;
                     })
-                    .Loop(0.1f, t => e.rbody.velocity = Vector2.zero)
+                    .Loop(0.13f, t => e.rbody.velocity = Vector2.zero)
                     .Loop(0.2f, t =>
                     {
                         e.rbody.velocity += e.force;
@@ -29,15 +26,7 @@ public class PunchSystem : MonoBehaviour
                     })
                     .Add(t =>
                     {
-                        if (e.bullet)
-                        {
-                            e.bullet.enabled = true;
-                            e.stats.direction = Vector2.zero;
-                            e.bullet.RandomPosition();
-                        }
-
                         e.force = Vector2.zero;
-
                         t.self.Reset();
                     })
                     .Immutable();
