@@ -1,10 +1,12 @@
 
     2021.08.27
+    x Better visuals on dead
     x Explosion size
 
-    Better visuals on dead (maybe some pieces connected)
+
     Bullets with a soft auto aim to the closest
     Bullet should freeze a frame on impact
+    Better visuals on dead v2 (maybe some pieces connected)
 
     1 Damage while dashing
     Trail llantitas
