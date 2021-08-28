@@ -15,7 +15,7 @@ public class SpeedByInputSystem : MonoBehaviour
                 e.keyDown += 1;
 
                 e.tt("Dash")
-                    .Add(() => { e.stats.speedOverride = e.stats.speed * 10; })
+                    .Add(() => { e.stats.speedOverride = e.stats.speed * 8; })
                     .Loop(0.8f, t =>
                     {
                         e.stats.speedOverride = Mathf.Lerp(

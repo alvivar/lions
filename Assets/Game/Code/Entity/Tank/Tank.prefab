@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a507efee06324374f98c1cd053526f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 8
   speedOverride: 0
   dampening: 5
   direction: {x: 0, y: 0, z: 0}
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collisions: []
-  delay: 0
+  rest: 0
   stats: {fileID: 0}
 --- !u!114 &9149268362644928442
 MonoBehaviour:
