@@ -7,7 +7,7 @@ public class MultiplayerBullet : MonoBehaviour
 
     private void Start()
     {
-        t = GetComponent<Transform>();
+        t = GetComponentInParent<Transform>();
     }
 
     private void OnEnable()

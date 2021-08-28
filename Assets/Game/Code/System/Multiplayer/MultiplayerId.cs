@@ -3,11 +3,13 @@ using UnityEngine;
 // #jam
 public class MultiplayerId : MonoBehaviour
 {
+    public int id = -1;
+
     public Transform t;
 
     private void Start()
     {
-        t = GetComponent<Transform>();
+        t = GetComponentInParent<Transform>();
     }
 
     private void OnEnable()

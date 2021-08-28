@@ -1,7 +1,7 @@
 using UnityEngine;
 
 // #jam
-public class MultiplayerPos : MonoBehaviour
+public class MultiplayerPuppet : MonoBehaviour
 {
     public Transform t;
 
@@ -12,11 +12,11 @@ public class MultiplayerPos : MonoBehaviour
 
     private void OnEnable()
     {
-        MultiplayerPosSystem.components.Add(this);
+        MultiplayerPuppetSystem.components.Add(this);
     }
 
     private void OnDisable()
     {
-        MultiplayerPosSystem.components.Remove(this);
+        MultiplayerPuppetSystem.components.Remove(this);
     }
 }
