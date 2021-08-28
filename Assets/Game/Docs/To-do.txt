@@ -1,10 +1,10 @@
 
-    2021.08.27
-    . Bullet should freeze a frame on impact
-    x Bullets with a soft auto aim to the closest
-    x Better visuals on dead
-    x Explosion size
+    Multiplayer puppet
+    Multiplayer walls
+    Multiplayer queue
 
+    Destructible walls
+    Water
 
     1 Damage while dashing
     Trail llantitas
@@ -14,6 +14,12 @@
     Dead if out of borders
     Better visuals on dead v2 (maybe some pieces connected)
 
+
+    2021.08.27
+    . Bullet should freeze a frame on impact
+    x Bullets with a soft auto aim to the closest
+    x Better visuals on dead
+    x Explosion size
 
     2021.08.27
     x Explosion on damage should use the explosion system instead of deforming the bullet
