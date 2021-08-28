@@ -23,12 +23,12 @@ public class DeadSystem : MonoBehaviour
                     .Reset()
                     .Add(() =>
                     {
-                        ExplosionSystem.Get().At(pos);
+                        ExplosionSystem.Get().At(pos, 8);
                     })
                     .Add(0.5f, () =>
                     {
                         pos = e.transform.position;
-                        ExplosionSystem.Get().At(pos);
+                        ExplosionSystem.Get().At(pos, 8);
                         e.transform.position += Vector3.one * 9999;
                     })
                     .Add(0.2f, () =>

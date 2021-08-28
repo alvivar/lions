@@ -14,7 +14,7 @@ public class ExplosionOnDamageSystem : MonoBehaviour
             {
                 c.explosions.RemoveAt(0);
 
-                ExplosionSystem.Get().At(c.transform.position);
+                ExplosionSystem.Get().At(c.transform.position, scale : 6);
             }
         }
     }

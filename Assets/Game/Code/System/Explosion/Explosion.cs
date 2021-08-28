@@ -4,7 +4,8 @@ using UnityEngine;
 // #jam
 public class Explosion : MonoBehaviour
 {
-    public List<Vector3> explodeAt = new List<Vector3>();
+    public struct Cmd { public Vector3 position; public float scale; }
+    public List<Cmd> explodeAt = new List<Cmd>();
 
     public Renderer render;
 
@@ -23,8 +24,8 @@ public class Explosion : MonoBehaviour
         ExplosionSystem.components.Remove(this);
     }
 
-    public void At(Vector3 position)
+    public void At(Vector3 position, float scale)
     {
-        explodeAt.Add(position);
+        explodeAt.Add(new Cmd { position = position, scale = scale });
     }
 }

@@ -13,14 +13,14 @@ public class ExplosionSystem : MonoBehaviour
         {
             if (c.explodeAt.Count > 0)
             {
-                var pos = c.explodeAt[0];
+                var cmd = c.explodeAt[0];
                 c.explodeAt.RemoveAt(0);
 
                 c.tt("Explosion")
                     .Reset()
                     .Add(() =>
                     {
-                        c.transform.position = pos + new Vector3(0, 0, 1);
+                        c.transform.position = cmd.position + new Vector3(0, 0, 1);
                         c.transform.localScale = new Vector3(1, 1, 0.1f);
                         c.render.material.color = Color.white;
                     })
@@ -34,7 +34,7 @@ public class ExplosionSystem : MonoBehaviour
 
                         c.transform.localScale = Vector3.Lerp(
                             c.transform.localScale,
-                            new Vector3(8, 8, 0.1f),
+                            new Vector3(cmd.scale, cmd.scale, 0.1f),
                             Easef.EaseIn(t.t)
                         );
                     })
