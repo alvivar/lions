@@ -25,6 +25,21 @@ public class DeadTankSystem : MonoBehaviour
                     r.AddForceAtPosition(dir * 4, pos, ForceMode2D.Impulse);
                     r.angularVelocity = 0;
                 }
+
+                foreach (var r in e.renders)
+                {
+                    e.tt($"Fade.{r.transform.name}")
+                        .Reset()
+                        .Add(() => { r.material.color = Color.white; })
+                        .Loop(8f, t =>
+                        {
+                            r.material.color = Color.Lerp(
+                                r.material.color,
+                                Color.clear,
+                                t.deltaTime);
+                        })
+                        .Add(() => r.transform.position += Vector3.one * 9999);
+                }
             }
         }
     }
