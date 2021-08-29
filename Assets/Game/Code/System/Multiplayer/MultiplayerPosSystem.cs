@@ -25,7 +25,7 @@ public class MultiplayerPosSystem : MonoBehaviour
                 var py = Util.Flat(pos.y);
 
                 c.delay = 0.3f;
-                c.server.queries.Add($"s p.{id} p.{px},{py}");
+                c.server.queries.Add($"! p.{id} p.{px},{py}");
             }
         }
     }
