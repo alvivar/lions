@@ -3,11 +3,15 @@ using UnityEngine;
 // #jam
 public class MultiplayerPos : MonoBehaviour
 {
-    public Transform t;
+    public Vector3 pos;
+    public float delay;
+
+    [Header("By GetComponent")]
+    public MultiplayerServer server;
 
     private void Start()
     {
-        t = GetComponentInParent<Transform>();
+        server = GetComponentInParent<MultiplayerServer>();
     }
 
     private void OnEnable()
