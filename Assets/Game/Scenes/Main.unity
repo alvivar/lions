@@ -4554,6 +4554,7 @@ GameObject:
   - component: {fileID: 1858173256}
   - component: {fileID: 1858173255}
   - component: {fileID: 1858173259}
+  - component: {fileID: 1858173260}
   m_Layer: 0
   m_Name: MultiplayerSystems
   m_TagString: Untagged
@@ -4621,6 +4622,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ae69e967208c914bb92257a490c5316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1858173260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858173254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 679ec5bfd97941140b900451395aa503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1864811542 stripped

@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f58a4b34a3edf4793ceea8e19f3af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  queries: []
   id: -1
-  t: {fileID: 0}
+  connected: 0
 --- !u!114 &7447710826863737780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,7 +60,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766f57cb06abebe41ba09b1111f32e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  t: {fileID: 0}
+  pos: {x: 0, y: 0, z: 0}
+  delay: 0
+  server: {fileID: 0}
 --- !u!114 &8582730001462674425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,7 +75,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae05e867aafce2478fe39f7f98ee9d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  t: {fileID: 0}
+  server: {fileID: 0}
+  bulletByKeyboard: {fileID: 0}
 --- !u!1 &2641940213008611172
 GameObject:
   m_ObjectHideFlags: 0
