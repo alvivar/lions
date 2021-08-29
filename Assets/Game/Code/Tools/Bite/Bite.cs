@@ -32,7 +32,7 @@ public class Bite
         StartConnectionThread();
     }
 
-    public void Stop()
+    public void Close()
     {
         allowThread = false;
         stream.Close();
@@ -124,7 +124,7 @@ public class Bite
         }
         catch (Exception e)
         {
-            Stop();
+            Close();
 
             if (OnError != null)
                 OnError($"{e}");
