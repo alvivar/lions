@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 // #jam
 public class MultiplayerServer : MonoBehaviour
 {
+    public Action<string> OnResponse;
     public List<string> queries = new List<string>();
 
     [Header("Network")]
@@ -17,8 +19,27 @@ public class MultiplayerServer : MonoBehaviour
             .Add(() =>
             {
                 bite = new Bite("142.93.180.20", 1986);
-                bite.OnConnected += OnConnected;
-                bite.OnError += OnError;
+
+                bite.OnConnected += () =>
+                {
+                    connected = true;
+                    Debug.Log("MultiplayerServer connected");
+                };
+
+                bite.OnError += msg =>
+                {
+                    connected = false;
+                    Debug.Log($"MultiplayerServer disconnected: {msg}");
+                };
+
+                bite.OnResponse += msg =>
+                {
+                    if (msg.Length < 6)
+                        return;
+
+                    if (OnResponse != null)
+                        OnResponse(msg);
+                };
             })
             .Add(3).Loop(t =>
             {
@@ -33,20 +54,6 @@ public class MultiplayerServer : MonoBehaviour
             .Wait(() => connected)
             .If(() => id < 0)
             .Add(t => bite.Send($"+1 app.connections.id", x => id = Bite.Long(x, 0)));
-    }
-
-    private void OnConnected()
-    {
-        connected = true;
-
-        Debug.Log("MultiplayerId connected!");
-    }
-
-    private void OnError(string message)
-    {
-        connected = false;
-
-        Debug.Log($"MultiplayerId disconnected: {message}");
     }
 
     private void OnEnable()

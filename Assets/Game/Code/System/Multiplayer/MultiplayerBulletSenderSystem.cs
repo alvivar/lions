@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // #jam
-public class MultiplayerBulletOnInputSystem : MonoBehaviour
+public class MultiplayerBulletSenderSystem : MonoBehaviour
 {
-    public static List<MultiplayerBulletOnInput> components = new List<MultiplayerBulletOnInput>();
+    public static List<MultiplayerBulletSender> components = new List<MultiplayerBulletSender>();
 
     private void Update()
     {

@@ -13,7 +13,7 @@ public class MultiplayerServerSystem : MonoBehaviour
             if (!c.connected)
                 continue;
 
-            if (c.queries.Count > 0)
+            while (c.queries.Count > 0)
             {
                 var query = c.queries[0];
                 c.queries.RemoveAt(0);

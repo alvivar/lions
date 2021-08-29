@@ -102,24 +102,18 @@ public class Bite
                 writer.WriteLine(some.message);
                 writer.Flush();
 
-                // Receive or subscription?
-                var sub = some.message.Trim().ToLower().StartsWith("#");
+                // Receive
                 var reader = new StreamReader(stream);
+                var response = reader.ReadLine();
 
-                do
-                {
-                    var response = reader.ReadLine();
+                if (response.Contains(HEARTBEAT))
+                    response = response.Replace(HEARTBEAT, "");
 
-                    if (response.Contains(HEARTBEAT))
-                        response = response.Replace(HEARTBEAT, "");
+                if (some.callback != null)
+                    some.callback(response);
 
-                    if (some.callback != null)
-                        some.callback(response);
-
-                    if (OnResponse != null)
-                        OnResponse(response);
-                }
-                while (sub && allowThread);
+                if (OnResponse != null)
+                    OnResponse(response);
             }
         }
         catch (Exception e)

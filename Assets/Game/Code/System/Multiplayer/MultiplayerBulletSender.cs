@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // #jam
-public class MultiplayerBulletOnInput : MonoBehaviour
+public class MultiplayerBulletSender : MonoBehaviour
 {
     public struct msg { public Vector3 pos; public Vector3 dir; }
     public List<msg> bullets = new List<msg>();
@@ -19,11 +19,11 @@ public class MultiplayerBulletOnInput : MonoBehaviour
 
     private void OnEnable()
     {
-        MultiplayerBulletOnInputSystem.components.Add(this);
+        MultiplayerBulletSenderSystem.components.Add(this);
     }
 
     private void OnDisable()
     {
-        MultiplayerBulletOnInputSystem.components.Remove(this);
+        MultiplayerBulletSenderSystem.components.Remove(this);
     }
 }
