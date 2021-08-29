@@ -29,14 +29,12 @@ public class ExplosionSystem : MonoBehaviour
                         c.render.material.color = Color.Lerp(
                             c.render.material.color,
                             Color.clear,
-                            Easef.EaseIn(t.t)
-                        );
+                            Easef.EaseIn(t.t));
 
                         c.transform.localScale = Vector3.Lerp(
                             c.transform.localScale,
                             new Vector3(cmd.scale, cmd.scale, 0.1f),
-                            Easef.EaseIn(t.t)
-                        );
+                            Easef.EaseIn(t.t));
                     })
                     .Add(() =>
                     {
