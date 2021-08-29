@@ -29,6 +29,9 @@ public class BulletByKeyboardSystem : MonoBehaviour
 
                     bullet.stats.direction = e.input.lastWasd;
                     bullet.stats.duration = 0;
+
+                    if (e.OnBullet != null)
+                        e.OnBullet(bullet.transform.position, bullet.stats.direction);
                 }
             }
         }

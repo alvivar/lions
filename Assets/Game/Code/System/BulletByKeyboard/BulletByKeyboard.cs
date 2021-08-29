@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 
 // #jam
 public class BulletByKeyboard : MonoBehaviour
 {
+    public Action<Vector3, Vector3> OnBullet;
+
     public int spaceDown = 0;
     public float delay = 0;
 
