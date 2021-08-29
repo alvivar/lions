@@ -1,4 +1,11 @@
 
+    2021.08.28
+    x Bite can handle multiple subscriptions
+    x Multiplayer bullets
+
+
+    A thread to read, and a thread to write
+
     Multiplayer puppet
     Multiplayer walls
     Multiplayer queue
