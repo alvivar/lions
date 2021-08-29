@@ -19,16 +19,14 @@ public class MultiplayerBulletOnInputSystem : MonoBehaviour
                 var pos = bullet.pos;
                 var dir = bullet.dir;
 
-                c.server.queries.Add($"s b.{id} {Flat(pos.x)},{Flat(pos.y)};{Mathf.Round(dir.x)},{Mathf.Round(dir.y)}");
+                var px = Util.Flat(pos.x);
+                var py = Util.Flat(pos.y);
+
+                var dx = Util.Flat(dir.x);
+                var dy = Util.Flat(dir.y);
+
+                c.server.queries.Add($"s b.{id} {px},{py};{dx},{dy}");
             }
         }
-    }
-
-    public static string Flat(float f)
-    {
-        var nf = (int) f;
-        var df = (int) Mathf.Abs((f - nf) * 1000);
-
-        return $"{nf}.{df}";
     }
 }

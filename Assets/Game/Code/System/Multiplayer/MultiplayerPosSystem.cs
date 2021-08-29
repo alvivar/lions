@@ -21,13 +21,11 @@ public class MultiplayerPosSystem : MonoBehaviour
             {
                 c.pos = pos;
 
-                var nx = (int) pos.x;
-                var ny = (int) pos.y;
-                var dx = (int) Mathf.Abs((pos.x - nx) * 1000);
-                var dy = (int) Mathf.Abs((pos.y - ny) * 1000);
+                var px = Util.Flat(pos.x);
+                var py = Util.Flat(pos.y);
 
                 c.delay = 0.3f;
-                c.server.queries.Add($"s p.{id} {nx}.{dx},{ny}.{dy}");
+                c.server.queries.Add($"s p.{id} {px},{py}");
             }
         }
     }
