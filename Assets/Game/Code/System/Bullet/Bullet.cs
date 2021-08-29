@@ -25,6 +25,17 @@ public class Bullet : MonoBehaviour
         BulletSystem.entities.Remove(this);
     }
 
+    public void Fire(Vector3 pos, Vector3 dir)
+    {
+        trail.Clear();
+        trail.enabled = true;
+
+        transform.position = pos;
+
+        stats.direction = dir;
+        stats.duration = 0;
+    }
+
     [ContextMenu("RandomPosition")]
     public void RandomPosition()
     {

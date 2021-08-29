@@ -21,17 +21,15 @@ public class BulletByKeyboardSystem : MonoBehaviour
                 {
                     e.delay = 0.8f;
 
-                    var bullet = BulletSystem.GetBullet();
-                    bullet.transform.position = e.origin.transform.position;
+                    var pos = e.origin.transform.position;
+                    var dir = e.input.lastWasd;
 
-                    bullet.trail.Clear();
-                    bullet.trail.enabled = true;
-
-                    bullet.stats.direction = e.input.lastWasd;
-                    bullet.stats.duration = 0;
+                    BulletSystem
+                        .GetBullet()
+                        .Fire(pos, dir);
 
                     if (e.OnBullet != null)
-                        e.OnBullet(bullet.transform.position, bullet.stats.direction);
+                        e.OnBullet(pos, dir);
                 }
             }
         }
