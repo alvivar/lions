@@ -16,6 +16,7 @@ public class MultiplayerPosSystem : MonoBehaviour
 
             var id = c.server.id;
             var pos = c.transform.position;
+
             if (c.pos != pos)
             {
                 c.pos = pos;
