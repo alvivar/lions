@@ -25,7 +25,7 @@ public class MultiplayerBulletOnInputSystem : MonoBehaviour
                 var dx = Util.Flat(dir.x);
                 var dy = Util.Flat(dir.y);
 
-                c.server.queries.Add($"s b.{id} {px},{py};{dx},{dy}");
+                c.server.queries.Add($"s b.{id} b.{px},{py};{dx},{dy}");
             }
         }
     }
