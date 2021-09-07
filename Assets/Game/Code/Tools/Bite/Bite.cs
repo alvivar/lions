@@ -7,25 +7,28 @@ namespace BiteServer
     {
         private TcpClient client;
         private NetworkStream stream;
-        private Receiver receiver;
         private Sender sender;
+        private Receiver receiver;
 
         public event Action<string> DataReceived;
 
-        public Bite()
+        public Bite(string host, int port)
         {
-            client = new TcpClient("142.93.180.20", 1986);
+            client = new TcpClient(host, port);
             stream = client.GetStream();
 
-            receiver = new Receiver(stream);
             sender = new Sender(stream);
 
+            receiver = new Receiver(stream);
             receiver.DataReceived += OnDataReceived;
         }
 
-        public void Send(string data)
+        public void Send(string data, Action<string> action = null)
         {
             sender.Send(data);
+
+            if (action != null)
+                receiver.React(action);
         }
 
         private void OnDataReceived(string data)

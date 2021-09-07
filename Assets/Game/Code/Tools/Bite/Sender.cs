@@ -11,7 +11,7 @@ namespace BiteServer
         private StreamWriter writer;
         private Thread thread;
 
-        private Queue<string> queue = new Queue<string>();
+        private Queue<string> messages = new Queue<string>();
 
         public Sender(NetworkStream stream)
         {
@@ -23,9 +23,9 @@ namespace BiteServer
 
         public void Send(string data)
         {
-            lock(queue)
+            lock(messages)
             {
-                queue.Enqueue(data);
+                messages.Enqueue(data);
             }
         }
 
@@ -33,12 +33,12 @@ namespace BiteServer
         {
             while (true)
             {
-                if (queue.Count < 1)
+                if (messages.Count < 1)
                     continue;
 
-                lock(queue)
+                lock(messages)
                 {
-                    writer.WriteLine(queue.Dequeue());
+                    writer.WriteLine(messages.Dequeue());
                     writer.Flush();
                 }
             }
