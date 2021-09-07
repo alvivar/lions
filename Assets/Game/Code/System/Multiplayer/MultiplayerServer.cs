@@ -18,11 +18,15 @@ public class MultiplayerServer : MonoBehaviour
     private void Start()
     {
         var bite2 = new Bite2.Bite2();
-        this.tt().Add(1, () =>
-        {
-            var text = Encoding.ASCII.GetBytes("Something");
-            bite2.SendData(text);
-        });
+        this.tt()
+            .Add(1, () =>
+            {
+                bite2.SendData(Encoding.ASCII.GetBytes("This"));
+            })
+            .Add(1, () =>
+            {
+                bite2.SendData(Encoding.ASCII.GetBytes("That"));
+            });
 
         // this.tt("RetryConnection")
         //     .Add(() =>

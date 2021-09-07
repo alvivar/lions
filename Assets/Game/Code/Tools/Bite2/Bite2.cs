@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using System.Net.Sockets;
 
 namespace Bite2
@@ -11,8 +10,7 @@ namespace Bite2
         private Receiver _receiver;
         private Sender _sender;
 
-        // Consumers register to receive data.
-        public event EventHandler<DataReceivedEventArgs> DataReceived;
+        public event Action<string> DataReceived;
 
         public Bite2()
         {
@@ -25,16 +23,15 @@ namespace Bite2
             _receiver.DataReceived += OnDataReceived;
         }
 
-        // Called by producers to send data over the socket.
         public void SendData(byte[] data)
         {
             _sender.SendData(data);
         }
 
-        private void OnDataReceived(object sender, DataReceivedEventArgs e)
+        private void OnDataReceived(string data)
         {
-            var handler = DataReceived;
-            if (handler != null) DataReceived(this, e); // re-raise event
+            if (DataReceived != null)
+                DataReceived(data); // re-raise event
         }
     }
 }
