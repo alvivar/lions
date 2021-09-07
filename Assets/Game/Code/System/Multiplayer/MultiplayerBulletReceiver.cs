@@ -12,9 +12,9 @@ public class MultiplayerBulletReceiver : MonoBehaviour
     private void Start()
     {
         server = GetComponent<MultiplayerServer>();
-        server.OnResponse += msg =>
+        server.OnResponse += data =>
         {
-            var parts = msg.Split(' ');
+            var parts = data.Split(' ');
 
             if (parts.Length < 2)
                 return;
@@ -22,7 +22,7 @@ public class MultiplayerBulletReceiver : MonoBehaviour
             if (parts[1].Substring(0, 1) != "b")
                 return;
 
-            bullets.Add(msg);
+            bullets.Add(data);
         };
 
         this.tt("Wait/Subscribe")
