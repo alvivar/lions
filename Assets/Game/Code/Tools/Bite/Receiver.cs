@@ -3,29 +3,29 @@ using System.IO;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace Bite2
+namespace BiteServer
 {
     public sealed class Receiver
     {
         public event Action<string> DataReceived;
 
-        private NetworkStream _stream;
-        private StreamReader _reader;
-        private Thread _thread;
+        private NetworkStream stream;
+        private StreamReader reader;
+        private Thread thread;
 
         public Receiver(NetworkStream stream)
         {
-            _stream = stream;
-            _reader = new StreamReader(_stream);
-            _thread = new Thread(Run);
-            _thread.Start();
+            this.stream = stream;
+            reader = new StreamReader(this.stream);
+            thread = new Thread(Run);
+            thread.Start();
         }
 
         private void Run()
         {
             while (true)
             {
-                var response = _reader.ReadLine();
+                var response = reader.ReadLine();
 
                 if (DataReceived != null)
                     DataReceived(response);

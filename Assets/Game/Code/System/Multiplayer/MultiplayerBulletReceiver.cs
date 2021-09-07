@@ -27,7 +27,7 @@ public class MultiplayerBulletReceiver : MonoBehaviour
 
         this.tt("WaitToSubscribe")
             .Wait(() => server.connected)
-            .Add(() => server.bite.Send("#b b", msg => Debug.Log($"Subscribed to bullets")));
+            .Add(() => server.bite.Send("#b b"));
     }
 
     private void OnEnable()

@@ -33,8 +33,8 @@ public class MultiplayerBulletReceiverSystem : MonoBehaviour
                 BulletSystem
                     .GetBullet()
                     .Fire(
-                        new Vector3(Bite.Float(posx, 0), Bite.Float(posy, 0), 0),
-                        new Vector3(Bite.Float(dirx, 0), Bite.Float(diry, 0), 0));
+                        new Vector3(Bitf.Float(posx, 0), Bitf.Float(posy, 0), 0),
+                        new Vector3(Bitf.Float(dirx, 0), Bitf.Float(diry, 0), 0));
             }
         }
     }

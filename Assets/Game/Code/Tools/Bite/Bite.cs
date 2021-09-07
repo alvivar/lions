@@ -1,157 +1,37 @@
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
 using System.Net.Sockets;
-using System.Threading;
 
-public class Bite
+namespace BiteServer
 {
-    public Action OnConnected;
-    public Action<string> OnResponse;
-    public Action<string> OnError;
-
-    private Queue<BiteMsg> queue = new Queue<BiteMsg>();
-
-    private TcpClient tcpClient;
-    private Thread thread;
-    private NetworkStream stream;
-
-    private bool allowThread = false;
-
-    private string host;
-    private int port;
-
-    const string HEARTBEAT = "\x7\x5\x6\x4"; // Bell, Enquiry, Acknowledge, End of Transmission.
-
-    public Bite(string host, int port)
+    public sealed class Bite
     {
-        this.host = host;
-        this.port = port;
+        private TcpClient client;
+        private NetworkStream stream;
+        private Receiver receiver;
+        private Sender sender;
 
-        StartConnectionThread();
-    }
+        public event Action<string> DataReceived;
 
-    public void Close()
-    {
-        allowThread = false;
-        stream.Close();
-        tcpClient.Close();
-    }
-
-    public void Send(string message, Action<string> callback = null)
-    {
-        if (tcpClient == null || !tcpClient.Connected)
+        public Bite()
         {
-            if (OnError != null)
-                OnError($"Disconnected trying {message}");
+            client = new TcpClient("142.93.180.20", 1986);
+            stream = client.GetStream();
 
-            return;
+            receiver = new Receiver(stream);
+            sender = new Sender(stream);
+
+            receiver.DataReceived += OnDataReceived;
         }
 
-        lock(queue)
+        public void Send(string data)
         {
-            queue.Enqueue(new BiteMsg(message, callback));
+            sender.Send(data);
         }
-    }
 
-    private void StartConnectionThread()
-    {
-        try
+        private void OnDataReceived(string data)
         {
-            allowThread = true;
-
-            thread = new Thread(new ThreadStart(HandleConnection));
-            thread.IsBackground = true;
-            thread.Start();
+            if (DataReceived != null)
+                DataReceived(data); // re-raise event
         }
-        catch (Exception e)
-        {
-            if (OnError != null)
-                OnError($"{e}");
-        }
-    }
-
-    private void HandleConnection()
-    {
-        try
-        {
-            tcpClient = new TcpClient(host, port);
-            stream = tcpClient.GetStream();
-
-            if (OnConnected != null)
-                OnConnected();
-
-            while (allowThread)
-            {
-                BiteMsg some;
-
-                lock(queue)
-                {
-                    if (queue.Count < 1)
-                        continue;
-
-                    some = queue.Dequeue();
-                }
-
-                if (some == null)
-                    continue;
-
-                // Send
-                var writer = new StreamWriter(stream);
-                writer.WriteLine(some.message);
-                writer.Flush();
-
-                // Receive
-                var reader = new StreamReader(stream);
-                var response = reader.ReadLine();
-
-                if (response.Contains(HEARTBEAT))
-                    response = response.Replace(HEARTBEAT, "");
-
-                if (some.callback != null)
-                    some.callback(response);
-
-                if (OnResponse != null)
-                    OnResponse(response);
-            }
-        }
-        catch (Exception e)
-        {
-            Close();
-
-            if (OnError != null)
-                OnError($"{e}");
-        }
-    }
-
-    public static int Int(string str, int or)
-    {
-        int n;
-        return int.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out n) ? n : or;
-    }
-
-    public static float Float(string str, float or)
-    {
-        float n;
-        return float.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out n) ? n : or;
-    }
-
-    public static long Long(string str, long or)
-    {
-        long n;
-        return long.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out n) ? n : or;
-    }
-}
-
-public class BiteMsg
-{
-    public string message;
-    public Action<string> callback;
-
-    public BiteMsg(string message, Action<string> callback)
-    {
-        this.message = message;
-        this.callback = callback;
     }
 }

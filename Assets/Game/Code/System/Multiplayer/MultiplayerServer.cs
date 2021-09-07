@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Bite2;
+using BiteServer;
 using UnityEngine;
 
 // #jam
@@ -17,15 +17,13 @@ public class MultiplayerServer : MonoBehaviour
 
     private void Start()
     {
-        var bite2 = new Bite2.Bite2();
+        var bite2 = new Bite();
         this.tt()
             .Add(1, () =>
             {
-                bite2.SendData(Encoding.ASCII.GetBytes("This"));
-            })
-            .Add(1, () =>
-            {
-                bite2.SendData(Encoding.ASCII.GetBytes("That"));
+                bite2.Send("This");
+                bite2.Send("That");
+                bite2.Send("Wat?");
             });
 
         // this.tt("RetryConnection")
@@ -77,8 +75,5 @@ public class MultiplayerServer : MonoBehaviour
     private void OnDisable()
     {
         MultiplayerServerSystem.components.Remove(this);
-
-        if (bite != null && connected)
-            bite.Close();
     }
 }
