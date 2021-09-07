@@ -5,12 +5,12 @@ namespace BiteServer
 {
     public sealed class Bite
     {
+        public event Action<string> DataReceived;
+
         private TcpClient client;
         private NetworkStream stream;
         private Sender sender;
         private Receiver receiver;
-
-        public event Action<string> DataReceived;
 
         public Bite(string host, int port)
         {
@@ -18,7 +18,6 @@ namespace BiteServer
             stream = client.GetStream();
 
             sender = new Sender(stream);
-
             receiver = new Receiver(stream);
             receiver.DataReceived += OnDataReceived;
         }

@@ -10,7 +10,6 @@ namespace BiteServer
         private NetworkStream stream;
         private StreamWriter writer;
         private Thread thread;
-
         private Queue<string> messages = new Queue<string>();
 
         public Sender(NetworkStream stream)
@@ -21,11 +20,11 @@ namespace BiteServer
             thread.Start();
         }
 
-        public void Send(string data)
+        public void Send(string message)
         {
             lock(messages)
             {
-                messages.Enqueue(data);
+                messages.Enqueue(message);
             }
         }
 
