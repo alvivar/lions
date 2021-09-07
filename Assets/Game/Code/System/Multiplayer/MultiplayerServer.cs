@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
+using Bite2;
 using UnityEngine;
 
 // #jam
@@ -15,45 +17,52 @@ public class MultiplayerServer : MonoBehaviour
 
     private void Start()
     {
-        this.tt("RetryConnection")
-            .Add(() =>
-            {
-                bite = new Bite("142.93.180.20", 1986);
+        var bite2 = new Bite2.Bite2();
+        this.tt().Add(1, () =>
+        {
+            var text = Encoding.ASCII.GetBytes("Something");
+            bite2.SendData(text);
+        });
 
-                bite.OnConnected += () =>
-                {
-                    connected = true;
-                    Debug.Log("MultiplayerServer connected");
-                };
+        // this.tt("RetryConnection")
+        //     .Add(() =>
+        //     {
+        //         bite = new Bite("142.93.180.20", 1986);
 
-                bite.OnError += msg =>
-                {
-                    connected = false;
-                    Debug.Log($"MultiplayerServer disconnected: {msg}");
-                };
+        //         bite.OnConnected += () =>
+        //         {
+        //             connected = true;
+        //             Debug.Log("MultiplayerServer connected");
+        //         };
 
-                bite.OnResponse += msg =>
-                {
-                    if (msg.Length < 6)
-                        return;
+        //         bite.OnError += msg =>
+        //         {
+        //             connected = false;
+        //             Debug.Log($"MultiplayerServer disconnected: {msg}");
+        //         };
 
-                    if (OnResponse != null)
-                        OnResponse(msg);
-                };
-            })
-            .Add(3).Loop(t =>
-            {
-                if (!connected)
-                    t.Break();
+        //         bite.OnResponse += msg =>
+        //         {
+        //             if (msg.Length < 6)
+        //                 return;
 
-                t.Wait(1);
-            })
-            .Repeat();
+        //             if (OnResponse != null)
+        //                 OnResponse(msg);
+        //         };
+        //     })
+        //     .Add(3).Loop(t =>
+        //     {
+        //         if (!connected)
+        //             t.Break();
 
-        this.tt("WaitForId")
-            .Wait(() => connected)
-            .If(() => id < 0)
-            .Add(t => bite.Send($"+1 app.connections.id", x => id = Bite.Long(x, 0)));
+        //         t.Wait(1);
+        //     })
+        //     .Repeat();
+
+        // this.tt("WaitForId")
+        //     .Wait(() => connected)
+        //     .If(() => id < 0)
+        //     .Add(t => bite.Send($"+1 app.connections.id", x => id = Bite.Long(x, 0)));
     }
 
     private void OnEnable()
