@@ -13,33 +13,33 @@ public class RotateByStatsDirSystem : MonoBehaviour
             if (c.stats.direction != Vector3.zero)
                 c.lastDir = c.stats.direction;
 
-            // Rects
-
-            if (c.lastDir.x == 1)
-                c.target.transform.localEulerAngles = new Vector3(0, 0, 0);
-
-            if (c.lastDir.x == -1)
-                c.target.transform.localEulerAngles = new Vector3(0, 0, 180);
-
-            if (c.lastDir.y == 1)
-                c.target.transform.localEulerAngles = new Vector3(0, 0, 90);
-
-            if (c.lastDir.y == -1)
-                c.target.transform.localEulerAngles = new Vector3(0, 0, 270);
-
             // Diagonals
 
-            if (c.lastDir.x == 1 && c.lastDir.y == 1)
+            if (c.lastDir.x > 0.5f && c.lastDir.y > 0.5f)
                 c.target.transform.localEulerAngles = new Vector3(0, 0, 45);
 
-            if (c.lastDir.x == -1 && c.lastDir.y == 1)
+            else if (c.lastDir.x < -0.5f && c.lastDir.y > 0.5f)
                 c.target.transform.localEulerAngles = new Vector3(0, 0, 135);
 
-            if (c.lastDir.x == 1 && c.lastDir.y == -1)
+            else if (c.lastDir.x > 0.5f && c.lastDir.y < -0.5f)
                 c.target.transform.localEulerAngles = new Vector3(0, 0, 315);
 
-            if (c.lastDir.x == -1 && c.lastDir.y == -1)
+            else if (c.lastDir.x < -0.5f && c.lastDir.y < -0.5f)
                 c.target.transform.localEulerAngles = new Vector3(0, 0, 225);
+
+            // Rects
+
+            else if (c.lastDir.x > 0.5f)
+                c.target.transform.localEulerAngles = new Vector3(0, 0, 0);
+
+            else if (c.lastDir.x < -0.5f)
+                c.target.transform.localEulerAngles = new Vector3(0, 0, 180);
+
+            else if (c.lastDir.y > 0.5f)
+                c.target.transform.localEulerAngles = new Vector3(0, 0, 90);
+
+            else if (c.lastDir.y < -0.5f)
+                c.target.transform.localEulerAngles = new Vector3(0, 0, 270);
         }
     }
 }

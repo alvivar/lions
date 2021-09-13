@@ -15,7 +15,6 @@ public class MultiplayerPosSenderSystem : MonoBehaviour
                 continue;
 
             var id = c.server.id;
-
             var pos = c.transform.position;
             pos.x = Util.Round(pos.x, 3);
             pos.y = Util.Round(pos.y, 3);
