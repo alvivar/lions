@@ -8,10 +8,12 @@ public static class Util
         return Mathf.Round(f * precision) / precision;
     }
 
-    public static string Flat(float f)
+    public static string Flat(float f, int precision)
     {
+        precision *= 10;
+
         var nf = (int) f;
-        var df = (int) Mathf.Abs((f - nf) * 1000);
+        var df = (int) Mathf.Abs((f - nf) * precision);
 
         return $"{nf}.{df}";
     }

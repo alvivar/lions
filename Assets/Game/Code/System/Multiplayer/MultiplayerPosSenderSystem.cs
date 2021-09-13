@@ -16,17 +16,17 @@ public class MultiplayerPosSenderSystem : MonoBehaviour
 
             var id = c.server.id;
             var pos = c.transform.position;
-            pos.x = Util.Round(pos.x, 3);
-            pos.y = Util.Round(pos.y, 3);
+            pos.x = Util.Round(pos.x, 4);
+            pos.y = Util.Round(pos.y, 4);
 
             if (c.pos != pos)
             {
                 c.pos = pos;
 
-                var px = Util.Flat(pos.x);
-                var py = Util.Flat(pos.y);
+                var px = Util.Flat(pos.x, 4);
+                var py = Util.Flat(pos.y, 4);
 
-                c.delay = 0.3f;
+                c.delay = 0.01f;
                 c.server.queries.Add($"! p.{id} p.{px},{py}");
             }
         }
