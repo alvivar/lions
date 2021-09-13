@@ -4551,10 +4551,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1858173258}
   - component: {fileID: 1858173257}
-  - component: {fileID: 1858173256}
   - component: {fileID: 1858173255}
-  - component: {fileID: 1858173259}
   - component: {fileID: 1858173260}
+  - component: {fileID: 1858173256}
+  - component: {fileID: 1858173259}
   m_Layer: 0
   m_Name: MultiplayerSystems
   m_TagString: Untagged

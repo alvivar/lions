@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // #jam
-public class MultiplayerPosSystem : MonoBehaviour
+public class MultiplayerPosSenderSystem : MonoBehaviour
 {
-    public static List<MultiplayerPos> components = new List<MultiplayerPos>();
+    public static List<MultiplayerPosSender> components = new List<MultiplayerPosSender>();
 
     private void Update()
     {
@@ -15,7 +15,10 @@ public class MultiplayerPosSystem : MonoBehaviour
                 continue;
 
             var id = c.server.id;
+
             var pos = c.transform.position;
+            pos.x = Util.Round(pos.x, 3);
+            pos.y = Util.Round(pos.y, 3);
 
             if (c.pos != pos)
             {

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 // #jam
-public class MultiplayerPos : MonoBehaviour
+public class MultiplayerPosSender : MonoBehaviour
 {
     public Vector3 pos;
     public float delay;
@@ -16,11 +16,11 @@ public class MultiplayerPos : MonoBehaviour
 
     private void OnEnable()
     {
-        MultiplayerPosSystem.components.Add(this);
+        MultiplayerPosSenderSystem.components.Add(this);
     }
 
     private void OnDisable()
     {
-        MultiplayerPosSystem.components.Remove(this);
+        MultiplayerPosSenderSystem.components.Remove(this);
     }
 }
