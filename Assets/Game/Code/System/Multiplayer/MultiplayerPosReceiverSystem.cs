@@ -12,10 +12,12 @@ public class MultiplayerPosReceiverSystem : MonoBehaviour
         {
             if (c.positions.Count > 0)
             {
-                var msg = c.positions[0];
-                c.positions.RemoveAt(0);
+                var msg = c.positions.Dequeue();
 
                 var id = Bitf.Int(msg.id, -1);
+
+                if (id == c.server.id)
+                    continue;
 
                 var parts = msg.position.Replace("p.", "").Split(',');
                 var x = Bitf.Float(parts[0], -1);
