@@ -6,17 +6,16 @@ using System.Threading;
 
 namespace BiteServer
 {
-    public sealed class Receiver
+    internal sealed class Receiver
     {
-        public event Action<string> DataReceived;
+        internal event Action<string> DataReceived;
+        internal Queue<Action<string>> actions = new Queue<Action<string>>();
 
-        private NetworkStream stream;
-        private StreamReader reader;
-        private Thread thread;
+        internal NetworkStream stream;
+        internal StreamReader reader;
+        internal Thread thread;
 
-        private Queue<Action<string>> actions = new Queue<Action<string>>();
-
-        public Receiver(NetworkStream stream)
+        internal Receiver(NetworkStream stream)
         {
             this.stream = stream;
             reader = new StreamReader(this.stream);
@@ -24,7 +23,7 @@ namespace BiteServer
             thread.Start();
         }
 
-        public void React(Action<string> callback)
+        internal void React(Action<string> callback)
         {
             lock(actions)
             {
@@ -32,7 +31,7 @@ namespace BiteServer
             }
         }
 
-        private void Run()
+        internal void Run()
         {
             while (true)
             {
@@ -51,6 +50,15 @@ namespace BiteServer
                         action(response);
                 }
             }
+        }
+
+        internal void Stop()
+        {
+            if (reader != null)
+                reader.Close();
+
+            if (thread != null)
+                thread.Abort();
         }
     }
 }

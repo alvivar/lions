@@ -5,14 +5,15 @@ using System.Threading;
 
 namespace BiteServer
 {
-    public sealed class Sender
+    internal sealed class Sender
     {
-        private NetworkStream stream;
-        private StreamWriter writer;
-        private Thread thread;
-        private Queue<string> messages = new Queue<string>();
+        internal Queue<string> messages = new Queue<string>();
 
-        public Sender(NetworkStream stream)
+        internal NetworkStream stream;
+        internal StreamWriter writer;
+        internal Thread thread;
+
+        internal Sender(NetworkStream stream)
         {
             this.stream = stream;
             writer = new StreamWriter(this.stream);
@@ -20,7 +21,7 @@ namespace BiteServer
             thread.Start();
         }
 
-        public void Send(string message)
+        internal void Send(string message)
         {
             lock(messages)
             {
@@ -28,7 +29,7 @@ namespace BiteServer
             }
         }
 
-        private void Run()
+        internal void Run()
         {
             while (true)
             {
@@ -41,6 +42,15 @@ namespace BiteServer
                     writer.Flush();
                 }
             }
+        }
+
+        internal void Stop()
+        {
+            if (writer != null)
+                writer.Close();
+
+            if (thread != null)
+                thread.Abort();
         }
     }
 }

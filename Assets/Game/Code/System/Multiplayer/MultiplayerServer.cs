@@ -56,6 +56,12 @@ public class MultiplayerServer : MonoBehaviour
             }));
     }
 
+    private void OnDestroy()
+    {
+        if (bite != null)
+            bite.Stop();
+    }
+
     private void OnEnable()
     {
         MultiplayerServerSystem.components.Add(this);
