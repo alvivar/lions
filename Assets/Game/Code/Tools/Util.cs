@@ -2,6 +2,12 @@ using UnityEngine;
 
 public static class Util
 {
+    public static float Round(float f, int precision)
+    {
+        precision *= 10;
+        return Mathf.Round(f * precision) / precision;
+    }
+
     public static string Flat(float f)
     {
         var nf = (int) f;
