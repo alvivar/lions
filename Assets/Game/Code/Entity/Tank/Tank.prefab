@@ -91,7 +91,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0, z: 0}
+  rot: 0
   delay: 0
+  target: {fileID: 7788710326497443196}
   server: {fileID: 0}
 --- !u!114 &9033406880562259818
 MonoBehaviour:
@@ -105,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e155bf6503e18c2439188c4288aa61cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  t: {fileID: 0}
+  server: {fileID: 0}
 --- !u!1 &2641940213008611172
 GameObject:
   m_ObjectHideFlags: 0

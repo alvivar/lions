@@ -15,19 +15,18 @@ public class MultiplayerPosSenderSystem : MonoBehaviour
                 continue;
 
             var id = c.server.id;
-            var pos = c.transform.position;
-            pos.x = Util.Round(pos.x, 3);
-            pos.y = Util.Round(pos.y, 3);
+            var pos = c.target.transform.position;
+            var eaz = c.target.eulerAngles.z;
 
             if (c.pos != pos)
             {
                 c.pos = pos;
 
-                var px = Util.Flat(pos.x, 3);
-                var py = Util.Flat(pos.y, 3);
+                var px = Util.Flat(pos.x, 4);
+                var py = Util.Flat(pos.y, 4);
 
                 c.delay = 0.1f;
-                c.server.queries.Add($"! p.{id} p.{px},{py}");
+                c.server.queries.Add($"! p.{id} p.{px},{py},{eaz}");
             }
         }
     }

@@ -418,7 +418,6 @@ GameObject:
   - component: {fileID: 5396022053746908389}
   - component: {fileID: 4133785909441296570}
   - component: {fileID: 5565480972452123791}
-  - component: {fileID: 4833424450975431869}
   m_Layer: 7
   m_Name: TankPuppet
   m_TagString: Untagged
@@ -497,19 +496,7 @@ MonoBehaviour:
   id: -1
   lastPosition: {x: -9999, y: -9999, z: -9999}
   serverPosition: {x: -9999, y: -9999, z: -9999}
-  lastDirection: {x: -9999, y: -9999, z: -9999}
+  rotationZ: -9999
   t: 0
+  rotationTarget: {fileID: 2176378925626447136}
   stats: {fileID: 0}
---- !u!114 &4833424450975431869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6235529988819722040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a34529ad1ca5c304e95c1d57af1b7a3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  t: {fileID: 0}

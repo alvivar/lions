@@ -14,29 +14,31 @@ public class PuppetPosSystem : MonoBehaviour
             if (c.id < 0)
                 continue;
 
-            c.t += Time.deltaTime * 4.8f;
+            c.t += Time.deltaTime * 4.4f;
             c.transform.position = Vector3.Lerp(
                 c.lastPosition,
                 c.serverPosition,
                 c.t);
+
+            c.rotationTarget.transform.localEulerAngles = new Vector3(0, 0, c.rotationZ);
         }
     }
 
-    public static void SetPos(int id, Vector3 position)
+    public static void SetPos(int id, Vector3 position, float rotationZ)
     {
-        PuppetPos puppet = null;
-        puppets.TryGetValue(id, out puppet);
+        PuppetPos p = null;
+        puppets.TryGetValue(id, out p);
 
-        if (!puppet)
+        if (!p)
         {
-            puppet = components.Find(i => i.id < 0);
-            puppet.id = id;
-            puppets[id] = puppet;
+            p = components.Find(i => i.id < 0);
+            p.id = id;
+            puppets[id] = p;
         }
 
-        puppet.lastPosition = puppet.transform.position;
-        puppet.serverPosition = position;
-        puppet.lastDirection = (puppet.serverPosition - puppet.lastDirection).normalized;
-        puppet.t = 0;
+        p.lastPosition = p.transform.position;
+        p.serverPosition = position;
+        p.rotationZ = rotationZ;
+        p.t = 0;
     }
 }

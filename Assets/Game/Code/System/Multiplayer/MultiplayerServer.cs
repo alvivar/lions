@@ -22,7 +22,7 @@ public class MultiplayerServer : MonoBehaviour
             {
                 bite = new Bite("142.93.180.20", 1986);
 
-                bite.Send($"Ping: {this.GetInstanceID()}", r =>
+                bite.Send($"Ping from {this.GetInstanceID()}", r =>
                 {
                     connected = true;
                     Debug.Log("MultiplayerServer connected");
