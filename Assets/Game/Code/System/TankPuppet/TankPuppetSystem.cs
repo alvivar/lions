@@ -14,20 +14,11 @@ public class TankPuppetSystem : MonoBehaviour
             if (c.id < 0)
                 continue;
 
-            var distance = Vector3.Distance(c.transform.position, c.serverPosition);
-            if (distance < 0.2f)
-            {
-                c.stats.direction = Vector3.zero;
-                continue;
-            }
-
-            var dir = (c.serverPosition - c.transform.position).normalized;
-            c.stats.direction = dir;
-
-            // c.transform.position = Vector3.Lerp(
-            //     c.transform.position,
-            //     c.serverPosition,
-            //     Time.deltaTime * 8);
+            c.t += Time.deltaTime * 4.8f;
+            c.transform.position = Vector3.Lerp(
+                c.lastPosition,
+                c.serverPosition,
+                c.t);
         }
     }
 
@@ -43,6 +34,9 @@ public class TankPuppetSystem : MonoBehaviour
             puppets[id] = puppet;
         }
 
+        // @todo Probably a list would be better.
+        puppet.lastPosition = puppet.transform.position;
         puppet.serverPosition = position;
+        puppet.t = 0;
     }
 }
