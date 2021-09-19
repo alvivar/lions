@@ -3,8 +3,8 @@ using UnityEngine;
 // #jam
 public class MultiplayerPosSender : MonoBehaviour
 {
-    public Vector3 pos;
-    public float rot;
+    public Vector3 position;
+    public float rotationZ;
     public float delay;
 
     [Header("Required")]

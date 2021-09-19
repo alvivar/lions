@@ -4,17 +4,18 @@ public static class Util
 {
     public static float Round(float f, int precision)
     {
-        precision *= 10;
+        precision = (int) Mathf.Pow(10, precision);
+
         return Mathf.Round(f * precision) / precision;
     }
 
     public static string Flat(float f, int precision)
     {
-        precision *= 10;
+        precision = (int) Mathf.Pow(10, precision);
 
-        var nf = (int) f;
-        var df = (int) Mathf.Abs((f - nf) * precision);
+        var intF = (int) f;
+        var decF = (int) Mathf.Abs((f - intF) * precision);
 
-        return $"{nf}.{df}";
+        return $"{intF}.{decF}";
     }
 }
