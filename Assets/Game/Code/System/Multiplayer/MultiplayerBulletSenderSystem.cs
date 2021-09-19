@@ -25,7 +25,7 @@ public class MultiplayerBulletSenderSystem : MonoBehaviour
                 var dx = Util.Flat(dir.x, 4);
                 var dy = Util.Flat(dir.y, 4);
 
-                c.server.queries.Add($"! b.{id} b.{px},{py};{dx},{dy}");
+                c.server.queries.Enqueue($"! b.{id} b:{px},{py};{dx},{dy}");
             }
         }
     }

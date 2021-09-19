@@ -15,9 +15,7 @@ public class MultiplayerServerSystem : MonoBehaviour
 
             while (c.queries.Count > 0)
             {
-                var query = c.queries[0];
-                c.queries.RemoveAt(0);
-
+                var query = c.queries.Dequeue();
                 c.bite.Send(query);
             }
         }

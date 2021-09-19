@@ -29,7 +29,7 @@ public class MultiplayerPosSenderSystem : MonoBehaviour
                 var rz = (int) c.rotationZ;
 
                 c.delay = 0.1f;
-                c.server.queries.Add($"! p.{id} p:{px},{py},{rz}");
+                c.server.queries.Enqueue($"! p.{id} p:{px},{py},{rz}");
             }
         }
     }

@@ -8,7 +8,7 @@ using UnityEngine;
 public class MultiplayerServer : MonoBehaviour
 {
     public Action<string> OnResponse;
-    public List<string> queries = new List<string>();
+    public Queue<string> queries = new Queue<string>();
 
     [Header("Network")]
     public long id = -1;
