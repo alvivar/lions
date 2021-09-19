@@ -36,12 +36,12 @@ namespace BiteServer
                 DataReceived(data);
         }
 
-        internal void Stop()
+        internal void Close()
         {
             client.Close();
             stream.Close();
-            sender.Stop();
-            receiver.Stop();
+            sender.Close();
+            receiver.Close();
         }
     }
 }

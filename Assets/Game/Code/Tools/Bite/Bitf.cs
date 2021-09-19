@@ -1,4 +1,5 @@
 using System.Globalization;
+using UnityEngine;
 
 public static class Bitf
 {
@@ -18,5 +19,22 @@ public static class Bitf
     {
         long n;
         return long.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out n) ? n : or;
+    }
+
+    public static string Str(float f, int precision)
+    {
+        precision = (int) Mathf.Pow(10, precision);
+
+        var intF = (int) f;
+        var decimalF = (int) Mathf.Abs((f - intF) * precision);
+
+        return $"{intF}.{decimalF}";
+    }
+
+    public static float Round(float f, int precision)
+    {
+        precision = (int) Mathf.Pow(10, precision);
+
+        return Mathf.Round(f * precision) / precision;
     }
 }

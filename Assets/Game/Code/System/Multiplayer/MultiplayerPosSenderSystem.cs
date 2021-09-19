@@ -16,20 +16,20 @@ public class MultiplayerPosSenderSystem : MonoBehaviour
 
             var id = c.server.id;
             var pos = c.target.transform.position;
-            pos.x = Util.Round(pos.x, 4);
-            pos.y = Util.Round(pos.y, 4);
+            pos.x = Bitf.Round(pos.x, 4);
+            pos.y = Bitf.Round(pos.y, 4);
 
             if (c.position != pos)
             {
                 c.position = pos;
                 c.rotationZ = c.target.eulerAngles.z;
 
-                var px = Util.Flat(pos.x, 4);
-                var py = Util.Flat(pos.y, 4);
+                var px = Bitf.Str(pos.x, 4);
+                var py = Bitf.Str(pos.y, 4);
                 var rz = (int) c.rotationZ;
 
                 c.delay = 0.1f;
-                c.server.queries.Enqueue($"! p.{id} p:{px},{py},{rz}");
+                c.server.queries.Enqueue($"! p.{id} p{px},{py},{rz}");
             }
         }
     }

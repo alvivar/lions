@@ -19,13 +19,13 @@ public class MultiplayerBulletSenderSystem : MonoBehaviour
                 var pos = bullet.pos;
                 var dir = bullet.dir;
 
-                var px = Util.Flat(pos.x, 4);
-                var py = Util.Flat(pos.y, 4);
+                var px = Bitf.Str(pos.x, 4);
+                var py = Bitf.Str(pos.y, 4);
 
-                var dx = Util.Flat(dir.x, 4);
-                var dy = Util.Flat(dir.y, 4);
+                var dx = Bitf.Str(dir.x, 4);
+                var dy = Bitf.Str(dir.y, 4);
 
-                c.server.queries.Enqueue($"! b.{id} b:{px},{py};{dx},{dy}");
+                c.server.queries.Enqueue($"! b.{id} b{px},{py};{dx},{dy}");
             }
         }
     }

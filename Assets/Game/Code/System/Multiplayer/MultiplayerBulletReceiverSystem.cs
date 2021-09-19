@@ -18,7 +18,7 @@ public class MultiplayerBulletReceiverSystem : MonoBehaviour
                 var parts = bullet.Split(' ');
                 var id = parts[0];
 
-                var posDir = parts[1].Replace("b:", "").Split(';');
+                var posDir = parts[1].Replace("b", "").Split(';');
                 var pos = posDir[0];
                 var dir = posDir[1];
 

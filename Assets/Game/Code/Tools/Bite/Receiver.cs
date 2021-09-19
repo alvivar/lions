@@ -52,7 +52,7 @@ namespace BiteServer
             }
         }
 
-        internal void Stop()
+        internal void Close()
         {
             if (reader != null)
                 reader.Close();

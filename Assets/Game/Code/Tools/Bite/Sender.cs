@@ -44,7 +44,7 @@ namespace BiteServer
             }
         }
 
-        internal void Stop()
+        internal void Close()
         {
             if (writer != null)
                 writer.Close();

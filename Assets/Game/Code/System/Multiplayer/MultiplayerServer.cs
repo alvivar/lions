@@ -58,7 +58,7 @@ public class MultiplayerServer : MonoBehaviour
     private void OnDestroy()
     {
         if (bite != null)
-            bite.Stop();
+            bite.Close();
     }
 
     private void OnEnable()

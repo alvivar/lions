@@ -14,7 +14,7 @@ public class PuppetPosSystem : MonoBehaviour
             if (c.id < 0)
                 continue;
 
-            c.t += Time.deltaTime * 4.4f;
+            c.t += Time.deltaTime * 4.8f; // !
             c.transform.position = Vector3.Lerp(
                 c.lastPosition,
                 c.serverPosition,
