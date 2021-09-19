@@ -4,7 +4,7 @@
 
     Bullet from a player should ignore the player that fires
     Bullet from multiplayer should hit the player
-    Multiplayer death by bullet
+    Multiplayer hp/death by bullet
 
     Multiplayer walls
     Multiplayer queue
