@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+// #jam
 public class GamepadInputSystem : MonoBehaviour
 {
     public static List<GamepadInput> inputs = new List<GamepadInput>();

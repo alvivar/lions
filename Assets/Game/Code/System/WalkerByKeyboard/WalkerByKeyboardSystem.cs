@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// #jam
 public class WalkerByKeyboardSystem : MonoBehaviour
 {
     public static List<WalkerByKeyboard> walkers = new List<WalkerByKeyboard>();

@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// #jam
 public class RotateByStatsDir : MonoBehaviour
 {
     public Vector3 lastDir;

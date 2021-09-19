@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// #jam
 public class WalkerByKeyboard : MonoBehaviour
 {
     [Header("By GetComponent")]
