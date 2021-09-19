@@ -1,8 +1,10 @@
 
+    2021.09.18
+    x Multiplayer rotation calculation
+
     Bullet from a player should ignore the player that fires
     Bullet from multiplayer should hit the player
     Multiplayer death by bullet
-    Multiplayer rotation calculation
 
     Multiplayer walls
     Multiplayer queue
