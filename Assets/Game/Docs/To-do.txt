@@ -1,12 +1,9 @@
 
-    2021.08.28
-    x Bite can handle multiple subscriptions
-    x Multiplayer bullets
+    Bullet from a player should ignore the player that fires
+    Bullet from multiplayer should hit the player
+    Multiplayer death by bullet
+    Multiplayer rotation calculation
 
-
-    A thread to read, and a thread to write
-
-    Multiplayer puppet
     Multiplayer walls
     Multiplayer queue
 
@@ -21,6 +18,12 @@
     Dead if out of borders
     Better visuals on dead v2 (maybe some pieces connected)
 
+
+    2021.08.28
+    x A thread to read, and a thread to write
+    x Multiplayer puppet
+    x Bite can handle multiple subscriptions
+    x Multiplayer bullets
 
     2021.08.27
     . Bullet should freeze a frame on impact
