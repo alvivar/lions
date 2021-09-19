@@ -1,7 +1,4 @@
 
-    2021.09.18
-    x Multiplayer rotation calculation
-
     Bullet from a player should ignore the player that fires
     Bullet from multiplayer should hit the player
     Multiplayer hp/death by bullet
@@ -20,6 +17,11 @@
     Dead if out of borders
     Better visuals on dead v2 (maybe some pieces connected)
 
+
+    2021.09.18
+    x Decent multiplayer lerp
+    x Polish + refactors
+    x Multiplayer rotation calculation
 
     2021.08.28
     x A thread to read, and a thread to write
