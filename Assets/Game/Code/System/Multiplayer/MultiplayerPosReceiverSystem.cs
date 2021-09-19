@@ -23,7 +23,7 @@ public class MultiplayerPosReceiverSystem : MonoBehaviour
                 var x = Bitf.Float(parts[0], -1);
                 var y = Bitf.Float(parts[1], -1);
 
-                TankPuppetSystem.SetPos(id, new Vector3(x, y, 0));
+                PuppetPosSystem.SetPos(id, new Vector3(x, y, 0));
             }
         }
     }

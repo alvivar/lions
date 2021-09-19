@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // #jam
-public class TankPuppetSystem : MonoBehaviour
+public class PuppetPosSystem : MonoBehaviour
 {
-    public static Dictionary<int, TankPuppet> puppets = new Dictionary<int, TankPuppet>();
-    public static List<TankPuppet> components = new List<TankPuppet>();
+    public static Dictionary<int, PuppetPos> puppets = new Dictionary<int, PuppetPos>();
+    public static List<PuppetPos> components = new List<PuppetPos>();
 
     private void Update()
     {
@@ -24,7 +24,7 @@ public class TankPuppetSystem : MonoBehaviour
 
     public static void SetPos(int id, Vector3 position)
     {
-        TankPuppet puppet = null;
+        PuppetPos puppet = null;
         puppets.TryGetValue(id, out puppet);
 
         if (!puppet)
@@ -34,9 +34,9 @@ public class TankPuppetSystem : MonoBehaviour
             puppets[id] = puppet;
         }
 
-        // @todo Probably a list would be better.
         puppet.lastPosition = puppet.transform.position;
         puppet.serverPosition = position;
+        puppet.lastDirection = (puppet.serverPosition - puppet.lastDirection).normalized;
         puppet.t = 0;
     }
 }
