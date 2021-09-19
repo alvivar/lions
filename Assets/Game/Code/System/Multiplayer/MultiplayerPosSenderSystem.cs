@@ -24,8 +24,8 @@ public class MultiplayerPosSenderSystem : MonoBehaviour
                 c.position = pos;
                 c.rotationZ = c.target.eulerAngles.z;
 
-                var px = Bitf.Str(pos.x, 4);
-                var py = Bitf.Str(pos.y, 4);
+                var px = Bitf.Str(c.position.x, 4);
+                var py = Bitf.Str(c.position.y, 4);
                 var rz = (int) c.rotationZ;
 
                 c.delay = 0.1f;

@@ -22,10 +22,10 @@ public class MultiplayerBulletSenderSystem : MonoBehaviour
                 var px = Bitf.Str(pos.x, 4);
                 var py = Bitf.Str(pos.y, 4);
 
-                var dx = Bitf.Str(dir.x, 4);
-                var dy = Bitf.Str(dir.y, 4);
+                var dx = Bitf.Str(dir.x, 0);
+                var dy = Bitf.Str(dir.y, 0);
 
-                c.server.queries.Enqueue($"! b.{id} b{px},{py};{dx},{dy}");
+                c.server.queries.Enqueue($"! b.{id} b{px},{py},{dx},{dy}");
             }
         }
     }

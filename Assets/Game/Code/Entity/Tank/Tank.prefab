@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f58a4b34a3edf4793ceea8e19f3af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  queries: []
   id: -1
   connected: 0
 --- !u!114 &8582730001462674425
@@ -90,8 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766f57cb06abebe41ba09b1111f32e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pos: {x: 0, y: 0, z: 0}
-  rot: 0
+  position: {x: 0, y: 0, z: 0}
+  rotationZ: 0
   delay: 0
   target: {fileID: 7788710326497443196}
   server: {fileID: 0}
@@ -750,4 +749,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.6

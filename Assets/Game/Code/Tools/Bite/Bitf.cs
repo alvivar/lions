@@ -28,6 +28,9 @@ public static class Bitf
         var intF = (int) f;
         var decimalF = (int) Mathf.Abs((f - intF) * precision);
 
+        if (decimalF == 0)
+            return $"{intF}";
+
         return $"{intF}.{decimalF}";
     }
 

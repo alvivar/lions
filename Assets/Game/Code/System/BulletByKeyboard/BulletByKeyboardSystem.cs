@@ -24,10 +24,6 @@ public class BulletByKeyboardSystem : MonoBehaviour
                     var pos = e.origin.transform.position;
                     var dir = e.input.lastWasd;
 
-                    // BulletSystem
-                    //     .GetBullet()
-                    //     .Fire(pos, dir);
-
                     if (e.OnBullet != null)
                         e.OnBullet(pos, dir);
                 }
