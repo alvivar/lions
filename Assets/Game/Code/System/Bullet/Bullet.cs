@@ -39,9 +39,9 @@ public class Bullet : MonoBehaviour
     [ContextMenu("RandomPosition")]
     public void RandomPosition()
     {
-        var x = Random.Range(1000, 9999);
-        var y = Random.Range(1000, 9999);
-        var z = Random.Range(1000, 9999);
+        var x = Random.Range(-9999, 9999);
+        var y = Random.Range(-9999, 9999);
+        var z = Random.Range(-9999, 9999);
         transform.position = new Vector3(x, y, z);
     }
 }

@@ -31,10 +31,12 @@ public class BulletSystem : MonoBehaviour
         }
     }
 
-    public static Bullet GetBullet()
+    public static Bullet GetBullet(string layer)
     {
         var bullet = entities[bulletIndex];
         bulletIndex = ++bulletIndex % entities.Count;
+
+        bullet.gameObject.layer = 1 << LayerMask.NameToLayer(layer);
 
         return bullet;
     }

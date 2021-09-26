@@ -75,6 +75,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04b030ff31a8ee46aa0d5648f506959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerLayer: PlayerBullet
+  enemyLayer: PuppetBullet
   bullets: []
   server: {fileID: 0}
 --- !u!114 &7447710826863737780

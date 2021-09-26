@@ -4,6 +4,10 @@ using UnityEngine;
 // #jam
 public class MultiplayerBulletReceiver : MonoBehaviour
 {
+    public string playerLayer;
+    public string enemyLayer;
+
+    [Header("Queue")]
     public List<string> bullets = new List<string>();
 
     [Header("By GetComponent")]

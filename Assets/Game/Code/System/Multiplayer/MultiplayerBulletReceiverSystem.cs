@@ -16,7 +16,7 @@ public class MultiplayerBulletReceiverSystem : MonoBehaviour
                 c.bullets.RemoveAt(0);
 
                 var parts = bullet.Split(' ');
-                var id = parts[0];
+                var id = Bitf.Float(parts[0], -1);
 
                 var posDir = parts[1].Replace("b", "").Split(',');
                 var posx = posDir[0];
@@ -24,8 +24,10 @@ public class MultiplayerBulletReceiverSystem : MonoBehaviour
                 var dirx = posDir[2];
                 var diry = posDir[3];
 
+                var layer = id == c.server.id ? c.playerLayer : c.enemyLayer;
+
                 BulletSystem
-                    .GetBullet()
+                    .GetBullet(layer)
                     .Fire(
                         new Vector3(Bitf.Float(posx, 0), Bitf.Float(posy, 0)),
                         new Vector3(Bitf.Float(dirx, 0), Bitf.Float(diry, 0)));

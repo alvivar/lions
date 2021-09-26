@@ -4,8 +4,8 @@ using UnityEngine;
 // #jam
 public class MultiplayerPosReceiver : MonoBehaviour
 {
-    public struct Pos { public string id; public string position; }
-    public Queue<Pos> positions = new Queue<Pos>();
+    public struct Data { public string id; public string position; }
+    public Queue<Data> positions = new Queue<Data>();
 
     [Header("By GetComponent")]
     public MultiplayerServer server;
@@ -23,7 +23,7 @@ public class MultiplayerPosReceiver : MonoBehaviour
             if (parts[1].Substring(0, 1) != "p")
                 return;
 
-            positions.Enqueue(new Pos { id = parts[0], position = parts[1] });
+            positions.Enqueue(new Data { id = parts[0], position = parts[1] });
         };
 
         this.tt("Wait/Subscribe")
