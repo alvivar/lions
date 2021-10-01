@@ -31,7 +31,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// Timed Task node.
-public class ttTask
+public class TeaTask
 {
     public bool isLoop = false;
 
@@ -39,13 +39,13 @@ public class ttTask
     public Func<float> timeByFunc = null;
 
     public Action callback = null;
-    public Action<ttHandler> callbackWithHandler = null;
+    public Action<TeaHandler> callbackWithHandler = null;
 
-    public ttHandler handler = null;
+    public TeaHandler handler = null;
 }
 
 /// TeaTime handler for callbacks.
-public class ttHandler
+public class TeaHandler
 {
     /// Current TeaTime queue.
     public TeaTime self;
@@ -79,11 +79,11 @@ public class ttHandler
         if (time <= 0)
             return;
 
-        Wait(ttYield.WaitForSeconds(time));
+        Wait(TeaYield.WaitForSeconds(time));
     }
 
-    /// Appends a TeaTime to wait after the current callback execution that
-    /// is also affected by the queue .Stop() and .Reset().
+    /// Appends a TeaTime to wait after the current callback execution that is
+    /// also affected by the queue .Stop() and .Reset().
     public void Wait(TeaTime tt)
     {
         // A reference to the waiting list
@@ -106,7 +106,7 @@ public class ttHandler
 /// TeaTime core extensions (static magic).
 public static class TeaTimeExtensions
 {
-    private static Dictionary<MonoBehaviour, Dictionary<string, TeaTime>> ttRegister; // Queues bounded by 'tt(string)'
+    private static Dictionary<MonoBehaviour, Dictionary<string, TeaTime>> register; // Queues bounded by 'tt(string)'
 
     /// Returns a new TeaTime queue ready to be used. This is basically a
     /// shorcut to 'new TeaTime(this);' in MonoBehaviours.
@@ -115,31 +115,31 @@ public static class TeaTimeExtensions
         return new TeaTime(instance);
     }
 
-    /// Returns a TeaTime queue bounded to his name, unique per
-    /// MonoBehaviour instance, new on the first call. This allows you to
-    /// access queues without a formal definition.
+    /// Returns a TeaTime queue bounded to his name, unique per MonoBehaviour
+    /// instance, new on the first call. This allows you to access queues
+    /// without a formal definition.
     public static TeaTime tt(this MonoBehaviour instance, string queueName)
     {
-        // @todo ttRegister will (probably) need an auto clean up from
-        // time to time if this technique is used in volatile GameObjects.
+        // @todo 'register' will (probably) need an auto clean up from time to
+        // time if this technique is used in volatile GameObjects.
 
         // First time
-        if (ttRegister == null)
-            ttRegister = new Dictionary<MonoBehaviour, Dictionary<string, TeaTime>>();
+        if (register == null)
+            register = new Dictionary<MonoBehaviour, Dictionary<string, TeaTime>>();
 
-        if (!ttRegister.ContainsKey(instance))
-            ttRegister[instance] = new Dictionary<string, TeaTime>();
+        if (!register.ContainsKey(instance))
+            register[instance] = new Dictionary<string, TeaTime>();
 
-        if (!ttRegister[instance].ContainsKey(queueName))
-            ttRegister[instance][queueName] = new TeaTime(instance);
+        if (!register[instance].ContainsKey(queueName))
+            register[instance][queueName] = new TeaTime(instance);
 
-        return ttRegister[instance][queueName];
+        return register[instance][queueName];
     }
 }
 
-/// YieldInstruction static cache!
-/// Found here http://forum.unity3d.com/threads/c-coroutine-waitforseconds-garbage-collection-tip.224878/
-public static class ttYield
+/// YieldInstruction static cache! Found here:
+/// http://forum.unity3d.com/threads/c-coroutine-waitforseconds-garbage-collection-tip.224878/
+public static class TeaYield
 {
     private class FloatComparer : IEqualityComparer<float>
     {
@@ -171,7 +171,7 @@ public static class ttYield
 public class TeaTime
 {
     // Queue
-    private List<ttTask> tasks = new List<ttTask>(); // Tasks list used as a queue
+    private List<TeaTask> tasks = new List<TeaTask>(); // Tasks list used as a queue
     public List<TeaTime> waiting = new List<TeaTime>(); // TeaTimes to wait via ttHandler.Wait(
     private int taskIndex = 0; // Current task mark (to be executed)
     private int executedCount = 0; // Executed task count
@@ -229,13 +229,13 @@ public class TeaTime
 
     // ADD
 
-    /// Appends a new ttTask.
-    private TeaTime Add(float timeDelay, Func<float> timeDelayByFunc, Action callback, Action<ttHandler> callbackWithHandler)
+    /// Appends a new TeaTask.
+    private TeaTime Add(float timeDelay, Func<float> timeDelayByFunc, Action callback, Action<TeaHandler> callbackWithHandler)
     {
         // Ignores appends on Immutable mode
         if (!isImmutable)
         {
-            ttTask newTask = new ttTask();
+            TeaTask newTask = new TeaTask();
             newTask.time = timeDelay;
             newTask.timeByFunc = timeDelayByFunc;
             newTask.callback = callback;
@@ -261,13 +261,13 @@ public class TeaTime
     }
 
     /// Appends a timed callback.
-    public TeaTime Add(float timeDelay, Action<ttHandler> callback)
+    public TeaTime Add(float timeDelay, Action<TeaHandler> callback)
     {
         return Add(timeDelay, null, null, callback);
     }
 
     /// Appends a timed callback.
-    public TeaTime Add(Func<float> timeByFunc, Action<ttHandler> callback)
+    public TeaTime Add(Func<float> timeByFunc, Action<TeaHandler> callback)
     {
         return Add(0, timeByFunc, null, callback);
     }
@@ -291,7 +291,7 @@ public class TeaTime
     }
 
     /// Appends a callback.
-    public TeaTime Add(Action<ttHandler> callback)
+    public TeaTime Add(Action<TeaHandler> callback)
     {
         return Add(0, null, null, callback);
     }
@@ -299,19 +299,19 @@ public class TeaTime
     /// Appends a TeaTime.
     public TeaTime Add(TeaTime tt)
     {
-        return Add((ttHandler t) => t.Wait(tt));
+        return Add((TeaHandler t) => t.Wait(tt));
     }
 
     // LOOP
 
     /// Appends a callback loop (if duration is less than 0, the loop runs
     /// infinitely).
-    private TeaTime Loop(float duration, Func<float> durationByFunc, Action<ttHandler> callback)
+    private TeaTime Loop(float duration, Func<float> durationByFunc, Action<TeaHandler> callback)
     {
         // Ignores appends on Immutable mode
         if (!isImmutable)
         {
-            ttTask newTask = new ttTask();
+            TeaTask newTask = new TeaTask();
             newTask.isLoop = true;
             newTask.time = duration;
             newTask.timeByFunc = durationByFunc;
@@ -324,30 +324,30 @@ public class TeaTime
         return isPaused || isPlaying ? this : Play();
     }
 
-    /// Appends a callback loop (if duration is less than 0,
-    /// the loop runs infinitely).
-    public TeaTime Loop(float duration, Action<ttHandler> callback)
+    /// Appends a callback loop (if duration is less than 0, the loop runs
+    /// infinitely).
+    public TeaTime Loop(float duration, Action<TeaHandler> callback)
     {
         return Loop(duration, null, callback);
     }
 
-    /// Appends a callback loop (if duration is less than 0,
-    /// the loop runs infinitely).
-    public TeaTime Loop(Func<float> durationByFunc, Action<ttHandler> callback)
+    /// Appends a callback loop (if duration is less than 0, the loop runs
+    /// infinitely).
+    public TeaTime Loop(Func<float> durationByFunc, Action<TeaHandler> callback)
     {
         return Loop(0, durationByFunc, callback);
     }
 
     /// Appends an infinite callback loop.
-    public TeaTime Loop(Action<ttHandler> callback)
+    public TeaTime Loop(Action<TeaHandler> callback)
     {
         return Loop(-1, null, callback);
     }
 
     // QUEUE MODES
 
-    /// Enables Immutable mode, the queue will ignore new appends (.Add
-    /// .Loop .If)
+    /// Enables Immutable mode, the queue will ignore new appends (.Add .Loop
+    /// .If)
     public TeaTime Immutable()
     {
         isImmutable = true;
@@ -355,8 +355,7 @@ public class TeaTime
         return this;
     }
 
-    /// Enables Repeat mode, the queue will always be restarted on
-    /// completion.
+    /// Enables Repeat mode, the queue will always be restarted on completion.
     public TeaTime Repeat()
     {
         isRepeating = true;
@@ -373,26 +372,28 @@ public class TeaTime
         return this;
     }
 
-    /// Reverses the callback execution order (From .Forward() to
-    /// .Backward() mode and viceversa).
+    /// Reverses the callback execution order (From .Forward() to .Backward()
+    /// mode and viceversa).
     public TeaTime Reverse()
     {
         isReversed = !isReversed;
 
-        // 1] I don't remember why IsPlaying is needed to allow reversing the
-        // index, probably en edge case?
+        // 1 I don't remember why IsPlaying is needed to allow reversing the
+        // index, probably en edge case? @todo Or maybe I need to remove it and
+        // test everything again.
 
-        // 2] ...But taskIndex != 0 is important when Reverse() is called before
-        // executing the first task, to make sure everything is reversed from
+        // 2 ...But taskIndex != 0 is important when Reverse() is called before
+        // executing the first task, to make sure everything runs reversed from
         // the beginning.
 
-        if (IsPlaying && taskIndex != 0) taskIndex = tasks.Count - taskIndex;
+        if (IsPlaying && taskIndex != 0)
+            taskIndex = tasks.Count - taskIndex;
 
         return this;
     }
 
-    /// Enables Backward mode, executing callbacks on reverse order
-    /// (including Loops).
+    /// Enables Backward mode, executing callbacks on reverse order (including
+    /// Loops).
     public TeaTime Backward()
     {
         if (!isReversed)
@@ -420,8 +421,8 @@ public class TeaTime
         return this;
     }
 
-    /// Disables all modes (Immutable, Repeat, Consume, Backward, Yoyo).
-    /// Just like new.
+    /// Disables all modes (Immutable, Repeat, Consume, Backward, Yoyo). Just
+    /// like new.
     public TeaTime Release()
     {
         isImmutable = isRepeating = isConsuming = isYoyo = false;
@@ -489,8 +490,8 @@ public class TeaTime
 
     // DESTRUCTION
 
-    /// Stops and cleans the queue, turning off all modes (Immutable,
-    /// Repeat, Consume, Backward, Yoyo). Just like new.
+    /// Stops and cleans the queue, turning off all modes (Immutable, Repeat,
+    /// Consume, Backward, Yoyo). Just like new.
     public TeaTime Reset()
     {
         // Reset current
@@ -557,7 +558,7 @@ public class TeaTime
     /// every tick.
     public TeaTime Wait(Func<bool> until, float tick = 0)
     {
-        return Loop((ttHandler t) =>
+        return Loop((TeaHandler t) =>
         {
             if (until())
                 t.Break();
@@ -607,13 +608,13 @@ public class TeaTime
             if (isReversed)
                 taskId = tasks.Count - 1 - taskIndex;
 
-            ttTask task = tasks[taskId];
+            TeaTask task = tasks[taskId];
 
             // Next task (or previous if the queue is backward)
             taskIndex++;
 
-            // Avoid executing a task twice when reversed and the queue
-            // hasn't reached the end
+            // Avoid executing a task twice when reversed and the queue hasn't
+            // reached the end
             if (taskId == reverseLastTask)
                 continue;
 
@@ -639,7 +640,7 @@ public class TeaTime
                 // Loops always need a handler
                 if (task.handler == null)
                 {
-                    task.handler = new ttHandler();
+                    task.handler = new TeaHandler();
                     task.handler.self = this;
                 }
 
@@ -679,8 +680,8 @@ public class TeaTime
                     if (!isInfinite)
                         task.handler.t += tRate * unityDeltaTime;
 
-                    // On finite loops this .deltaTime is sincronized with
-                    // the exact loop duration
+                    // On finite loops this .deltaTime is sincronized with the
+                    // exact loop duration
                     task.handler.deltaTime =
                         isInfinite ?
                         unityDeltaTime :
@@ -728,7 +729,7 @@ public class TeaTime
 
                 // Time delay
                 if (delayDuration > 0)
-                    yield return ttYield.WaitForSeconds(delayDuration);
+                    yield return TeaYield.WaitForSeconds(delayDuration);
 
                 // Is this more precise that the previous code?
                 // float time = 0;
@@ -751,7 +752,7 @@ public class TeaTime
                 {
                     if (task.handler == null)
                     {
-                        task.handler = new ttHandler();
+                        task.handler = new TeaHandler();
                         task.handler.self = this;
                     }
 
