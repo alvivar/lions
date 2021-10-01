@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletSystem : MonoBehaviour
 {
     public static List<Bullet> entities = new List<Bullet>();
-    public static int bulletIndex = 0;
+    public static int index = 0;
 
     private void Update()
     {
@@ -31,12 +31,10 @@ public class BulletSystem : MonoBehaviour
         }
     }
 
-    public static Bullet GetBullet(string layer)
+    public static Bullet GetBullet()
     {
-        var bullet = entities[bulletIndex];
-        bulletIndex = ++bulletIndex % entities.Count;
-
-        bullet.gameObject.layer = 1 << LayerMask.NameToLayer(layer);
+        var bullet = entities[index];
+        index = ++index % entities.Count;
 
         return bullet;
     }

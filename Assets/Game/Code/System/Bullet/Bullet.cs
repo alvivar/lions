@@ -36,6 +36,13 @@ public class Bullet : MonoBehaviour
         stats.duration = 0;
     }
 
+    public Bullet ToLayer(string layer)
+    {
+        gameObject.layer = LayerMask.NameToLayer(layer);
+
+        return this;
+    }
+
     [ContextMenu("RandomPosition")]
     public void RandomPosition()
     {

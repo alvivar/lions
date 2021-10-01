@@ -4,8 +4,8 @@ using UnityEngine;
 // #jam
 public class MultiplayerBulletReceiver : MonoBehaviour
 {
-    public string playerLayer;
-    public string enemyLayer;
+    public string playerLayer = "player";
+    public string enemyLayer = "enemy";
 
     [Header("Queue")]
     public List<string> bullets = new List<string>();
@@ -31,7 +31,9 @@ public class MultiplayerBulletReceiver : MonoBehaviour
 
         this.tt("Wait/Subscribe")
             .Wait(() => server.connected)
-            .Add(() => server.bite.Send("#b b", r => Debug.Log($"Bullets subscription")));
+            .Add(() => server.bite.Send("#b b", r => Debug.Log($"Bullets subscription")))
+            .Wait(() => !server.connected, 1)
+            .Repeat();
     }
 
     private void OnEnable()

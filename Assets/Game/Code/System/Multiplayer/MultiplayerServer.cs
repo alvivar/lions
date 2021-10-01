@@ -36,13 +36,7 @@ public class MultiplayerServer : MonoBehaviour
                         OnResponse(data);
                 };
             })
-            .Add(3).Loop(t =>
-            {
-                if (!connected)
-                    t.Break();
-
-                t.Wait(1);
-            })
+            .Wait(() => !connected, 1)
             .Repeat();
 
         this.tt("WaitForId")

@@ -12,9 +12,9 @@ TagManager:
   - Water
   - UI
   - Player
-  - PuppetPlayer
+  - EnemyPuppet
   - PlayerBullet
-  - PuppetBullet
+  - EnemyBullet
   - DeadTank
   - 
   - 

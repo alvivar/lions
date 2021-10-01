@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLayer: PlayerBullet
-  enemyLayer: PuppetBullet
+  enemyLayer: EnemyBullet
   bullets: []
   server: {fileID: 0}
 --- !u!114 &7447710826863737780
