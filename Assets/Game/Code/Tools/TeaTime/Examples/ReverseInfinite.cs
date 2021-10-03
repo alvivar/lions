@@ -4,7 +4,7 @@ public class ReverseInfinite : MonoBehaviour
 {
     void Start()
     {
-        this.tt("ReverseTest")
+        this.tt("ReverseInfinite")
             .Add(1, () => { Debug.Log($"0 at {Time.time}"); })
             .Add(1, () => { Debug.Log($"1 at {Time.time}"); })
             .Add(1, () => { Debug.Log($"2 at {Time.time}"); })
@@ -17,9 +17,9 @@ public class ReverseInfinite : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            this.tt("ReverseTest").Play();
+            this.tt("ReverseTest").Restart();
         }
     }
 }
