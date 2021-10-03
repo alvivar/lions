@@ -8,27 +8,28 @@ public class ImmutableUpdate : MonoBehaviour
         // called multiple times (like inside Update).
 
         // One second time lock.
-        var timeLock1 = this.tt("TimeLock1").Add(() =>
+        var timeLock1 = this.tt("timeLock1").Add(() =>
             {
-                Debug.Log($"TimeLock #1 Call first, then wait {Time.time}");
+                Debug.Log($"timeLock #1 Call first, then wait {Time.time}");
             })
             .Add(1, t => t.self.Reset())
             .Immutable();
 
         // Wait one second.
-        var timeLock2 = this.tt("TimeLock2")
-            .Add(() => Debug.Log($"TimeLock #2 A: Call {Time.time}"))
-            .Add(() => Debug.Log($"TimeLock #2 B: Call {Time.time}"))
-            .Add(() => Debug.Log($"TimeLock #2 C: Call {Time.time}"))
+        var timeLock2 = this.tt("timeLock2")
+            .Add(() => Debug.Log($"timeLock #2 A: Call {Time.time}"))
+            .Add(() => Debug.Log($"timeLock #2 B: Call {Time.time}"))
+            .Add(() => Debug.Log($"timeLock #2 C: Call {Time.time}"))
             .Add(1, t =>
             {
-                Debug.Log($"TimeLock #2 D: Waited {Time.time}");
+                Debug.Log($"timeLock #2 D: Waited {Time.time}");
                 t.self.Reset();
             })
             .Immutable();
 
-        // Immutable makes sure they don't change. Reset cleans the TeaTime, so
-        // it can be rebuilt and played again when their execution is completed.
+        // Immutable makes sure they don't change. Reset could clean the TeaTime
+        // if needed, so it can be rebuilt and played again when their execution
+        // is completed.
     }
 }
 
