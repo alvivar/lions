@@ -27,6 +27,10 @@
 .vs/
 .vscode/
 
+# Free File Sync
+sync.ffs_db
+sync.ffs_db.meta
+
 # Gradle cache directory
 .gradle/
 
