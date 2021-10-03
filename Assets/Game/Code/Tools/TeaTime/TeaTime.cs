@@ -172,7 +172,7 @@ public class TeaTime
 {
     // Queue
     private List<TeaTask> tasks = new List<TeaTask>(); // Tasks list used as a queue
-    public List<TeaTime> waiting = new List<TeaTime>(); // TeaTimes to wait via ttHandler.Wait(
+    public List<TeaTime> waiting = new List<TeaTime>(); // TeaTimes to wait via TeaHandler.Wait(
     private int taskIndex = 0; // Current task mark (to be executed)
     private int executedCount = 0; // Executed task count
     private int lastPlayExecutedCount = 0; // Executed task count during the last play
@@ -594,8 +594,7 @@ public class TeaTime
 
         lastPlayExecutedCount = 0;
 
-        // :D!
-        // Let's wait
+        // Let's wait a frame
         // 1 For secuencial Adds or Loops before their first execution
         // 2 Maybe a callback is trying to modify his own queue
         yield return null;
@@ -619,9 +618,6 @@ public class TeaTime
                 continue;
 
             reverseLastTask = taskId;
-
-            // I forgot why I used to have this line here, long ago... (?)
-            // yield return ttYield.EndOfFrame;
 
             // It's a loop
             if (task.isLoop)
