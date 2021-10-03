@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TeaTest : MonoBehaviour
+public class ReverseInfinite : MonoBehaviour
 {
     void Start()
     {
@@ -11,7 +11,8 @@ public class TeaTest : MonoBehaviour
             .Add(1, t => t.self.Reverse())
             .Add(1, () => { Debug.Log($"3 at {Time.time}"); })
             .Add(1, () => { Debug.Log($"4 at {Time.time}"); })
-            .Reverse();
+            .Reverse()
+            .Repeat();
     }
 
     void Update()
@@ -22,3 +23,5 @@ public class TeaTest : MonoBehaviour
         }
     }
 }
+
+// 2021/10/03 02:04 am
