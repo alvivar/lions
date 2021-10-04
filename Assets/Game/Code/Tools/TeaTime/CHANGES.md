@@ -2,8 +2,8 @@
 
 ## v0.9 2021/10/03
 
-- **REVISION**: Bug hunt, code clean up, aesthetic and better examples, . It's
-  no longer **beta**.
+- **REVISION**: Bug hunt, code clean up, aesthetic and better examples. It's no
+  longer **beta**.
 
 - **CHANGE**: **.Add(** can wait other TeaTimes, instead of **TeaHandler.Wait(**
   that no longer waits TeaTimes.
