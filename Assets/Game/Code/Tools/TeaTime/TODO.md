@@ -7,9 +7,6 @@
 - Pool cache support
 - Improve time precision
 - Use arrays instead of generic lists
-
-# Bugs
-
 - A TeaTime waiting another TeaTime requires more testing
 - Wait doesn't work after a add(1) when it's waiting a tt("something") teatime with reset?
 
