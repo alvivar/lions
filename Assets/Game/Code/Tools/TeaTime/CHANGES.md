@@ -1,11 +1,15 @@
 # Change Log
 
-## v0.8.9 2021/10/03
+## v0.9 2021/10/03
 
-- **REVISION**: Clean up & aesthetic. It's no longer **beta**.
+- **REVISION**: Bug hunt, code clean up, aesthetic and better examples, . It's
+  no longer **beta**.
 
 - **CHANGE**: **.Add(** can wait other TeaTimes, instead of **TeaHandler.Wait(**
   that no longer waits TeaTimes.
+
+- **BUG FIX**: **.Reverse()** works correctly when a TeaTime starts reversed
+  from the beginning.
 
 ## v0.8.8 beta 2021/02/17
 

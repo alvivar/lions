@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-public class ReverseLerp : MonoBehaviour
+public class ReverseYoyo : MonoBehaviour
 {
     public Renderer renderr;
 

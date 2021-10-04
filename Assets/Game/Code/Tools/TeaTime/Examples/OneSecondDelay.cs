@@ -1,11 +1,11 @@
 // If every Debug.Log follows in order one after the other, with 1 second
-// between them, then everything is fine! It's different on reverse tho.
+// between them, then everything is fine!
 
-// 2015/09/15 12:47:29 PM
+// It's a different test on reverse.
 
 using UnityEngine;
 
-public class TestingWaiting : MonoBehaviour
+public class OneSecondDelay : MonoBehaviour
 {
     TeaTime queue;
 
@@ -119,3 +119,5 @@ public class TestingWaiting : MonoBehaviour
         }
     }
 }
+
+// 2015/09/15 12:47:29 PM

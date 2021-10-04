@@ -24,9 +24,6 @@
 - Play()
 - Restart()
 - Release()
-
-## Destruction
-
 - Reset()
 
 ## Custom Yields

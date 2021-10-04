@@ -1,9 +1,4 @@
-﻿// Some day this will be a good stress test for TeaTime.
-
-// Just add the script into a new scene, hit play, watch the profiler and make a
-// guess!
-
-// 2016/04/26 04:37 PM
+﻿// Check the profiler!
 
 using UnityEngine;
 
@@ -37,3 +32,5 @@ public class StressTest : MonoBehaviour
             .Repeat();
     }
 }
+
+// 2016/04/26 04:37 PM

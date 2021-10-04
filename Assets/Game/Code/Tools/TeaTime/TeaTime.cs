@@ -1,4 +1,4 @@
-﻿// TeaTime v0.8.9
+﻿// TeaTime v0.9
 
 // TeaTime is a fast & simple queue for timed callbacks, focused on solving
 // common coroutines patterns in Unity games.
@@ -220,8 +220,7 @@ public class TeaTime
         get { return executedCount; }
     }
 
-    /// A TeaTime queue requires a MonoBehaviour instance to access his
-    /// coroutine fuctions.
+    /// A TeaTime queue requires a MonoBehaviour instance to access his coroutine fuctions.
     public TeaTime(MonoBehaviour instance)
     {
         monoBehaviour = instance;
@@ -304,8 +303,7 @@ public class TeaTime
 
     // LOOP
 
-    /// Appends a callback loop (if duration is less than 0, the loop runs
-    /// infinitely).
+    /// Appends a callback loop (if duration is less than 0, the loop runs infinitely).
     private TeaTime Loop(float duration, Func<float> durationByFunc, Action<TeaHandler> callback)
     {
         // Ignores appends on Immutable mode
