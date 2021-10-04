@@ -2,12 +2,11 @@
 
 - this.tt() should be cacheable when ends
 - this.tt() should be collected so it can be handled by the manager
-
 - A decent stress test
 - A TeaTime manager that runs everything?
-- Pool cache support ^
-- Improve time precision ^
-- Use arrays instead of generic lists ^
+- Pool cache support
+- Improve time precision
+- Use arrays instead of generic lists
 
 # Bugs
 
