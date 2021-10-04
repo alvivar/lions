@@ -12,8 +12,7 @@ public class MultiplayerBulletReceiverSystem : MonoBehaviour
         {
             while (c.bullets.Count > 0)
             {
-                var bullet = c.bullets[0];
-                c.bullets.RemoveAt(0);
+                var bullet = c.bullets.Dequeue();
 
                 var parts = bullet.Split(' ');
                 var id = Bitf.Float(parts[0], -1);

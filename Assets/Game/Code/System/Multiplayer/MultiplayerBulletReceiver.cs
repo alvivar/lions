@@ -8,7 +8,7 @@ public class MultiplayerBulletReceiver : MonoBehaviour
     public string enemyLayer = "enemy";
 
     [Header("Queue")]
-    public List<string> bullets = new List<string>();
+    public Queue<string> bullets = new Queue<string>();
 
     [Header("By GetComponent")]
     public MultiplayerServer server;
@@ -26,7 +26,7 @@ public class MultiplayerBulletReceiver : MonoBehaviour
             if (parts[1].Substring(0, 1) != "b")
                 return;
 
-            bullets.Add(data);
+            bullets.Enqueue(data);
         };
 
         this.tt("Wait/Subscribe")
