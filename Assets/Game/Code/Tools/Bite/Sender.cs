@@ -9,9 +9,9 @@ namespace BiteServer
     {
         internal Queue<string> messages = new Queue<string>();
 
-        internal NetworkStream stream;
-        internal StreamWriter writer;
-        internal Thread thread;
+        private NetworkStream stream;
+        private StreamWriter writer;
+        private Thread thread;
 
         internal Sender(NetworkStream stream)
         {
@@ -29,7 +29,7 @@ namespace BiteServer
             }
         }
 
-        internal void Run()
+        private void Run()
         {
             while (true)
             {

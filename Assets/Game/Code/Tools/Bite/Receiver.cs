@@ -9,11 +9,11 @@ namespace BiteServer
     internal sealed class Receiver
     {
         internal event Action<string> DataReceived;
-        internal Queue<Action<string>> actions = new Queue<Action<string>>();
 
-        internal NetworkStream stream;
-        internal StreamReader reader;
-        internal Thread thread;
+        private Queue<Action<string>> actions = new Queue<Action<string>>();
+        private NetworkStream stream;
+        private StreamReader reader;
+        private Thread thread;
 
         internal Receiver(NetworkStream stream)
         {
@@ -31,7 +31,7 @@ namespace BiteServer
             }
         }
 
-        internal void Run()
+        private void Run()
         {
             while (true)
             {
