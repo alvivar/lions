@@ -18,10 +18,10 @@ public class MultiplayerBulletReceiverSystem : MonoBehaviour
                 var id = Bitf.Float(parts[0], -1);
 
                 var posDir = parts[1].Replace("b", "").Split(',');
-                var posx = Bitf.Float(posDir[0], 0);
-                var posy = Bitf.Float(posDir[1], 0);
-                var dirx = Bitf.Float(posDir[2], 0);
-                var diry = Bitf.Float(posDir[3], 0);
+                var posx = Bitf.Float(posDir[0], 0); // pos.x
+                var posy = Bitf.Float(posDir[1], 0); // pos.y
+                var dirx = Bitf.Float(posDir[2], 0); // dir.x
+                var diry = Bitf.Float(posDir[3], 0); // dir.y
 
                 var layer = id == c.server.id ? c.playerLayer : c.enemyLayer;
 
