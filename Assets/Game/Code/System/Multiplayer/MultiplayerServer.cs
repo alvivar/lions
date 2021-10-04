@@ -16,7 +16,7 @@ public class MultiplayerServer : MonoBehaviour
 
     private void Start()
     {
-        this.tt("RetryConnection")
+        this.tt("TryConnection")
             .Add(() =>
             {
                 bite = new Bite("142.93.180.20", 1986);
