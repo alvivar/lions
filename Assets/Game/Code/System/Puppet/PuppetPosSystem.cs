@@ -14,11 +14,16 @@ public class PuppetPosSystem : MonoBehaviour
             if (c.id < 0)
                 continue;
 
-            c.t += Time.deltaTime * 4.24f;
-            c.transform.position = Vector3.Lerp(
-                c.lastPosition,
+            c.t += Time.deltaTime * 4;
+            c.currentPos = Vector3.Lerp(
+                c.currentPos,
                 c.serverPosition,
                 c.t);
+
+            c.transform.position = Vector3.Lerp(
+                c.transform.position,
+                c.currentPos,
+                Time.deltaTime * 4);
 
             c.rotationTarget.localEulerAngles = new Vector3(0, 0, c.rotationZ);
         }
