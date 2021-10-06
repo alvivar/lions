@@ -77,7 +77,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerLayer: PlayerBullet
   enemyLayer: EnemyBullet
-  bullets: []
   server: {fileID: 0}
 --- !u!114 &7447710826863737780
 MonoBehaviour:
@@ -120,6 +119,7 @@ GameObject:
   - component: {fileID: 6173803071633979424}
   - component: {fileID: 5559559214735501687}
   - component: {fileID: 5439552022629372134}
+  - component: {fileID: 2487276163022772973}
   - component: {fileID: 1780631875967563797}
   - component: {fileID: 2629363274582743416}
   - component: {fileID: 7473931284246146611}
@@ -194,6 +194,18 @@ MonoBehaviour:
   health: 2
   damage: 0
   punch: 1.5
+--- !u!114 &2487276163022772973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641940213008611172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c14513b86e927d4e8ac6ec1c6fe11e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1780631875967563797
 MonoBehaviour:
   m_ObjectHideFlags: 0
