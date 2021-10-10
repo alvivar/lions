@@ -19,7 +19,7 @@ public class MultiplayerPosSenderSystem : MonoBehaviour
             pos.x = Bitf.Round(pos.x, 4);
             pos.y = Bitf.Round(pos.y, 4);
 
-            if (c.position != pos)
+            if (Vector3.Distance(c.position, pos) > 0.0001f)
             {
                 c.position = pos;
                 c.rotationZ = c.target.eulerAngles.z;

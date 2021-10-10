@@ -46,7 +46,7 @@ public class MultiplayerServer : MonoBehaviour
             .If(() => id < 0)
             .Add(t => bite.Send($"+1 app.connections.id", r =>
             {
-                id = Bitf.Long(r, 0);
+                id = Bitf.Long(r, -1);
                 Debug.Log($"ID received");
             }));
     }
