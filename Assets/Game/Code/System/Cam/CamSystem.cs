@@ -23,7 +23,7 @@ public class CamSystem : MonoBehaviour
             c.transform.position = Vector3.Lerp(
                 c.transform.position,
                 median,
-                Time.deltaTime * 0.9f);
+                Time.deltaTime * 0.8f);
         }
     }
 }

@@ -15,4 +15,16 @@ public class Cam : MonoBehaviour
     {
         CamSystem.cams.Remove(this);
     }
+
+    [ContextMenu("Set Limits")]
+    public void SetLimits()
+    {
+        var x = transform.position.x;
+        xLimit.x = -1 * Mathf.Abs(transform.position.x);
+        xLimit.y = Mathf.Abs(transform.position.x);
+
+        var y = transform.position.y;
+        yLimit.x = -1 * Mathf.Abs(transform.position.y);
+        yLimit.y = Mathf.Abs(transform.position.y);
+    }
 }
