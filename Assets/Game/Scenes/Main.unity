@@ -1010,7 +1010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xLimit: {x: -6.32, y: 6.32}
-  yLimit: {x: -3.5, y: 10}
+  yLimit: {x: -3.5, y: 7}
 --- !u!1001 &330328370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2337,12 +2337,12 @@ MonoBehaviour:
   parallaxStep:
   - 25
   - 15
-  - 5
-  - 2.5
+  - 4
+  - 3
   - 0
   - -1
-  - -2.5
-  - -5
+  - -3
+  - -4
   sprites:
   - {fileID: 1365420945}
   - {fileID: 1365420946}
