@@ -11,7 +11,7 @@ ScriptedImporter:
   textureImporterSettings:
     alphaSource: 1
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     fadeOut: 0
     borderMipMap: 0
     mipMapsPreserveCoverage: 0
@@ -46,7 +46,7 @@ ScriptedImporter:
     flipbookRows: 0
     flipbookColumns: 0
     ignorePngGamma: 0
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 0
@@ -98,11 +98,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 7454
-      y: 1433
+      x: 7920
+      y: 8400
       width: 0
       height: 0
-    spriteID: 984588224e8cf114e850275398de420a
+    spriteID: 021102b1534cec14aafe3b159b0ad7d6
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -112,7 +112,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 4254, y: -367}
+    uvTransform: {x: 1520, y: 4800}
   - name: Posterize
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -120,11 +120,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 7462
-      y: 1433
+      x: 7920
+      y: 8408
       width: 0
       height: 0
-    spriteID: a681046ebdb46564287308e25e0632ff
+    spriteID: 3385020fd8c4e184583e56f4ebc4425d
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -134,19 +134,19 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 4262, y: -367}
-  - name: Shadow
+    uvTransform: {x: 1520, y: 4808}
+  - name: OrangeLeavesFg
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 3212
-      y: 4656
-      width: 847
-      height: 651
-    spriteID: 4eaef55c8182cb94ba78b6a4eb54b9fa
+      x: 6412
+      y: 4
+      width: 1097
+      height: 867
+    spriteID: deb011c5b9fc5c948bbfe8551bb05fe0
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -156,19 +156,19 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 861, y: 4642}
-  - name: Leaves
+    uvTransform: {x: 2504, y: -837}
+  - name: PurpleLeavesFg
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4067
-      y: 4656
-      width: 846
-      height: 650
-    spriteID: d6943c7115689734188e356f26e2d2ae
+      x: 6807
+      y: 8400
+      width: 1105
+      height: 483
+    spriteID: 13178392b4fdedc45a0a8d62ed8773e1
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -178,73 +178,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 1713, y: 4656}
-  - name: Shadow_1
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 6420
-      y: 1433
-      width: 1026
-      height: 366
-    spriteID: 19e61cd36ee52284d9e64b6f3134601a
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 4780, y: 1430}
-  - name: Leaves_1
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4921
-      y: 4656
-      width: 1026
-      height: 366
-    spriteID: 5eceb05520a6ffb4a852a6d2f5b52434
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 3301, y: 4656}
-  - name: Shadow_2
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 3209
-      y: 3346
-      width: 3199
-      height: 1255
-    spriteID: 2407a3defc074804a92d608fa1a4ea77
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 3208, y: 3346}
+    uvTransform: {x: 3666, y: 7568}
   - name: Soil
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -252,11 +186,99 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
+      x: 4812
+      y: 9157
+      width: 3200
+      height: 1301
+    spriteID: ae3b93c811ebcf14786f8a5f5e4b4d40
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 3212, y: 8257}
+  - name: SoilShadow
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3599
+      y: 7328
+      width: 3200
+      height: 1301
+    spriteID: 274ce281c1c467b488e92a6bf0a8102f
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1993, y: 6420}
+  - name: OrangeLeavesBg
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 5156
+      y: 3612
+      width: 1997
+      height: 1541
+    spriteID: 90609c7a38018a048aedeebaaa96f2a2
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1553, y: 2556}
+  - name: PurpleLeavesBg
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3599
+      y: 5999
+      width: 3570
+      height: 1321
+    spriteID: 895837255db640743963377d94ae4c41
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 3154, y: 5091}
+  - name: MountainsGlow
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
       x: 4
-      y: 4656
-      width: 3200
-      height: 1248
-    spriteID: 3d89018a155a84f4a82094593d497ebe
+      y: 3612
+      width: 5144
+      height: 2379
+    spriteID: 66729a2de3d7cc64f9af1a743d0f95de
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -266,117 +288,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 4, y: 4656}
-  - name: Shadow_3
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 6420
-      y: 1812
-      width: 953
-      height: 1439
-    spriteID: c68a81ff3fb480a40b9f3cfe20fad30b
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 4173, y: 1812}
-  - name: Leaves_2
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 6420
-      y: 4
-      width: 935
-      height: 1421
-    spriteID: 316b25bd2442844438253df4d7b41d0b
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 4155, y: 4}
-  - name: Shadow_4
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 3212
-      y: 1812
-      width: 3200
-      height: 1323
-    spriteID: eb34628281f67234e8d446da2cbb79e2
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 3212, y: 1803}
-  - name: Leaves_3
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 3346
-      width: 3197
-      height: 1302
-    spriteID: 3f1fefe1f547dc84f9aead9cc8dd7db0
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 4, y: 3331}
-  - name: Glow
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 3212
-      y: 4
-      width: 3200
-      height: 1607
-    spriteID: d4d41896cc2cd684a9637a48f6137385
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 3212, y: 4}
+    uvTransform: {x: -624, y: 3274}
   - name: Mountains
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -385,9 +297,9 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 1812
-      width: 3200
-      height: 1526
+      y: 9157
+      width: 4800
+      height: 2059
     spriteID: 3697766e94a43684b847029e7b8b6ae9
     internalID: 0
     spriteBone: []
@@ -398,8 +310,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 4, y: 1812}
-  - name: Aura
+    uvTransform: {x: -796, y: 8647}
+  - name: SkyAura
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -407,10 +319,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 5912
-      width: 1845
-      height: 1597
-    spriteID: 869de831e6fcba543862df80f33c28c3
+      y: 5999
+      width: 3587
+      height: 3150
+    spriteID: d938efc1a385ab24bbeb8718002553ee
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -420,7 +332,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -1351, y: 5709}
+    uvTransform: {x: -2218, y: 5549}
   - name: Sun
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -428,11 +340,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 6416
-      y: 3346
+      x: 6807
+      y: 7328
       width: 1063
       height: 1064
-    spriteID: f8ac2b1f1d58b054dadddb608f4f7981
+    spriteID: 4dfd31a40e0dfba45b01f253e7c24b8f
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -442,7 +354,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 4630, y: 2713}
+    uvTransform: {x: 3323, y: 5616}
   - name: Time
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -452,9 +364,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 3200
-      height: 1800
-    spriteID: 0f6c128041d9f9344a4ce7164f99c14c
+      width: 6400
+      height: 3600
+    spriteID: 3275b323410af374cae22769af0177e5
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -468,10 +380,10 @@ ScriptedImporter:
   platformSettings:
   - name: DefaultTexturePlatform
     overridden: 0
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     forceMaximumCompressionQuality_BC6H_BC7: 0
     crunchedCompression: 0
@@ -479,10 +391,10 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   - name: Standalone
     overridden: 0
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     forceMaximumCompressionQuality_BC6H_BC7: 0
     crunchedCompression: 0
@@ -490,10 +402,10 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   - name: WebGL
     overridden: 0
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     forceMaximumCompressionQuality_BC6H_BC7: 0
     crunchedCompression: 0
@@ -501,10 +413,10 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   - name: Android
     overridden: 0
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     forceMaximumCompressionQuality_BC6H_BC7: 0
     crunchedCompression: 0
@@ -515,16 +427,16 @@ ScriptedImporter:
   documentAlignment: 0
   importHiddenLayers: 0
   importedTextureWidth: 2048
-  importedTextureHeight: 2048
-  documentSize: {x: 3200, y: 1800}
+  importedTextureHeight: 4096
+  documentSize: {x: 6400, y: 3600}
   paperDollMode: 0
   keepDupilcateSpriteName: 0
   spriteCategoryList:
     categories: []
   textureActualWidth: 8192
-  textureActualHeight: 8192
+  textureActualHeight: 16384
   spritePackingTag: 
-  resliceFromLayer: 0
+  resliceFromLayer: 1
   characterMode: 1
   mosaicPSDLayers: []
   rigPSDLayers:
@@ -539,58 +451,37 @@ ScriptedImporter:
     spriteName: Brightness/Contrast
     isGroup: 0
     parentIndex: 0
-    spriteID: 984588224e8cf114e850275398de420a
+    spriteID: 021102b1534cec14aafe3b159b0ad7d6
     layerID: 49
-    mosaicPosition: {x: 7454, y: 1433}
+    mosaicPosition: {x: 7920, y: 8400}
   - name: Posterize
     spriteName: Posterize
     isGroup: 0
     parentIndex: 0
-    spriteID: a681046ebdb46564287308e25e0632ff
+    spriteID: 3385020fd8c4e184583e56f4ebc4425d
     layerID: 50
-    mosaicPosition: {x: 7462, y: 1433}
+    mosaicPosition: {x: 7920, y: 8408}
+  - name: LeavesFg
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 00000000000000000000000000000000
+    layerID: 118
+    mosaicPosition: {x: 0, y: 0}
   - name: OrangeLeavesFg
-    spriteName: 
-    isGroup: 1
-    parentIndex: -1
-    spriteID: 
-    layerID: 114
-    mosaicPosition: {x: 0, y: 0}
-  - name: Shadow
-    spriteName: Shadow
+    spriteName: OrangeLeavesFg
     isGroup: 0
     parentIndex: 3
-    spriteID: 4eaef55c8182cb94ba78b6a4eb54b9fa
-    layerID: 74
-    mosaicPosition: {x: 3212, y: 4656}
-  - name: Leaves
-    spriteName: Leaves
-    isGroup: 0
-    parentIndex: 3
-    spriteID: d6943c7115689734188e356f26e2d2ae
+    spriteID: deb011c5b9fc5c948bbfe8551bb05fe0
     layerID: 71
-    mosaicPosition: {x: 4067, y: 4656}
+    mosaicPosition: {x: 6412, y: 4}
   - name: PurpleLeavesFg
-    spriteName: 
-    isGroup: 1
-    parentIndex: -1
-    spriteID: 
-    layerID: 112
-    mosaicPosition: {x: 0, y: 0}
-  - name: Shadow
-    spriteName: Shadow_1
+    spriteName: PurpleLeavesFg
     isGroup: 0
-    parentIndex: 6
-    spriteID: 19e61cd36ee52284d9e64b6f3134601a
-    layerID: 73
-    mosaicPosition: {x: 6420, y: 1433}
-  - name: Leaves
-    spriteName: Leaves_1
-    isGroup: 0
-    parentIndex: 6
-    spriteID: 5eceb05520a6ffb4a852a6d2f5b52434
+    parentIndex: 3
+    spriteID: 13178392b4fdedc45a0a8d62ed8773e1
     layerID: 72
-    mosaicPosition: {x: 4921, y: 4656}
+    mosaicPosition: {x: 6807, y: 8400}
   - name: Ground
     spriteName: 
     isGroup: 1
@@ -598,62 +489,41 @@ ScriptedImporter:
     spriteID: 00000000000000000000000000000000
     layerID: 110
     mosaicPosition: {x: 0, y: 0}
-  - name: Shadow
-    spriteName: Shadow_2
-    isGroup: 0
-    parentIndex: 9
-    spriteID: 2407a3defc074804a92d608fa1a4ea77
-    layerID: 83
-    mosaicPosition: {x: 3209, y: 3346}
   - name: Soil
     spriteName: Soil
     isGroup: 0
-    parentIndex: 9
-    spriteID: 3d89018a155a84f4a82094593d497ebe
+    parentIndex: 6
+    spriteID: ae3b93c811ebcf14786f8a5f5e4b4d40
     layerID: 75
-    mosaicPosition: {x: 4, y: 4656}
+    mosaicPosition: {x: 4812, y: 9157}
+  - name: SoilShadow
+    spriteName: SoilShadow
+    isGroup: 0
+    parentIndex: 6
+    spriteID: 274ce281c1c467b488e92a6bf0a8102f
+    layerID: 137
+    mosaicPosition: {x: 3599, y: 7328}
+  - name: LeavesBg
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 00000000000000000000000000000000
+    layerID: 116
+    mosaicPosition: {x: 0, y: 0}
   - name: OrangeLeavesBg
-    spriteName: 
-    isGroup: 1
-    parentIndex: -1
-    spriteID: 00000000000000000000000000000000
-    layerID: 106
-    mosaicPosition: {x: 0, y: 0}
-  - name: Shadow
-    spriteName: Shadow_3
+    spriteName: OrangeLeavesBg
     isGroup: 0
-    parentIndex: 12
-    spriteID: c68a81ff3fb480a40b9f3cfe20fad30b
-    layerID: 90
-    mosaicPosition: {x: 6420, y: 1812}
-  - name: Leaves
-    spriteName: Leaves_2
-    isGroup: 0
-    parentIndex: 12
-    spriteID: 316b25bd2442844438253df4d7b41d0b
+    parentIndex: 9
+    spriteID: 90609c7a38018a048aedeebaaa96f2a2
     layerID: 89
-    mosaicPosition: {x: 6420, y: 4}
+    mosaicPosition: {x: 5156, y: 3612}
   - name: PurpleLeavesBg
-    spriteName: 
-    isGroup: 1
-    parentIndex: -1
-    spriteID: 00000000000000000000000000000000
-    layerID: 104
-    mosaicPosition: {x: 0, y: 0}
-  - name: Shadow
-    spriteName: Shadow_4
+    spriteName: PurpleLeavesBg
     isGroup: 0
-    parentIndex: 15
-    spriteID: eb34628281f67234e8d446da2cbb79e2
-    layerID: 82
-    mosaicPosition: {x: 3212, y: 1812}
-  - name: Leaves
-    spriteName: Leaves_3
-    isGroup: 0
-    parentIndex: 15
-    spriteID: 3f1fefe1f547dc84f9aead9cc8dd7db0
+    parentIndex: 9
+    spriteID: 895837255db640743963377d94ae4c41
     layerID: 80
-    mosaicPosition: {x: 4, y: 3346}
+    mosaicPosition: {x: 3599, y: 5999}
   - name: Background
     spriteName: 
     isGroup: 1
@@ -661,20 +531,20 @@ ScriptedImporter:
     spriteID: 00000000000000000000000000000000
     layerID: 102
     mosaicPosition: {x: 0, y: 0}
-  - name: Glow
-    spriteName: Glow
+  - name: MountainsGlow
+    spriteName: MountainsGlow
     isGroup: 0
-    parentIndex: 18
-    spriteID: d4d41896cc2cd684a9637a48f6137385
-    layerID: 91
-    mosaicPosition: {x: 3212, y: 4}
+    parentIndex: 12
+    spriteID: 66729a2de3d7cc64f9af1a743d0f95de
+    layerID: 138
+    mosaicPosition: {x: 4, y: 3612}
   - name: Mountains
     spriteName: Mountains
     isGroup: 0
-    parentIndex: 18
+    parentIndex: 12
     spriteID: 3697766e94a43684b847029e7b8b6ae9
     layerID: 77
-    mosaicPosition: {x: 4, y: 1812}
+    mosaicPosition: {x: 4, y: 9157}
   - name: Sky
     spriteName: 
     isGroup: 1
@@ -682,26 +552,26 @@ ScriptedImporter:
     spriteID: 00000000000000000000000000000000
     layerID: 100
     mosaicPosition: {x: 0, y: 0}
-  - name: Aura
-    spriteName: Aura
+  - name: SkyAura
+    spriteName: SkyAura
     isGroup: 0
-    parentIndex: 21
-    spriteID: 869de831e6fcba543862df80f33c28c3
-    layerID: 92
-    mosaicPosition: {x: 4, y: 5912}
+    parentIndex: 15
+    spriteID: d938efc1a385ab24bbeb8718002553ee
+    layerID: 132
+    mosaicPosition: {x: 4, y: 5999}
   - name: Sun
     spriteName: Sun
     isGroup: 0
-    parentIndex: 21
-    spriteID: f8ac2b1f1d58b054dadddb608f4f7981
+    parentIndex: 15
+    spriteID: 4dfd31a40e0dfba45b01f253e7c24b8f
     layerID: 84
-    mosaicPosition: {x: 6416, y: 3346}
+    mosaicPosition: {x: 6807, y: 7328}
   - name: Time
     spriteName: Time
     isGroup: 0
-    parentIndex: 21
-    spriteID: 0f6c128041d9f9344a4ce7164f99c14c
-    layerID: 26
+    parentIndex: 15
+    spriteID: 3275b323410af374cae22769af0177e5
+    layerID: 131
     mosaicPosition: {x: 4, y: 4}
   characterData:
     bones: []
