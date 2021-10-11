@@ -22,6 +22,9 @@ public class ParallaxPositioner : MonoBehaviour
     [ContextMenu("Adjust Parallax Depth")]
     void FixParallaxDepth()
     {
+        while (parallaxStep.Count < parallax.Count)
+            parallaxStep.Add(0);
+
         int index = 0;
         foreach (var p in parallax)
         {
