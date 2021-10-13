@@ -8,8 +8,16 @@ public class ParallaxPositioner : MonoBehaviour
     public List<float> parallaxStep;
     public List<SpriteRenderer> sprites;
 
-    [ContextMenu("Update Sprites")]
-    void UpdateSprites()
+    [ContextMenu("Fix All")]
+    void FixAll()
+    {
+        RefreshSprites();
+        FixParallaxDepth();
+        FixSpritesSortingOrder();
+    }
+
+    [ContextMenu("Refresh Sprites")]
+    void RefreshSprites()
     {
         sprites = sprites.Where(x => x).ToList();
         foreach (var sprite in FindObjectsOfType<SpriteRenderer>())
@@ -36,7 +44,7 @@ public class ParallaxPositioner : MonoBehaviour
     }
 
     [ContextMenu("Fix Sprites Sorting Order")]
-    void FixSprites()
+    void FixSpritesSortingOrder()
     {
         int index = 0;
         foreach (var sprite in sprites)
