@@ -4,44 +4,67 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
-// #jam
 public class Snapshot : MonoBehaviour
 {
-    public Transform root;
+    public string id;
+    public Transform source;
     public int index = 0;
-    public Snapframe first = null;
 
     private List<Dictionary<Transform, Snapframe>> frames = new List<Dictionary<Transform, Snapframe>>();
 
-    [ContextMenu("Take snapshot")]
-    public void TakeSnapshot()
+    public void NewSnapshot()
     {
         var dict = new Dictionary<Transform, Snapframe>();
 
-        for (int i = 0; i < root.childCount; i++)
+        for (int i = 0; i < source.childCount; i++)
         {
-            var t = root.GetChild(i);
+            var t = source.GetChild(i);
             var snap = new Snapframe(t);
-
-            if (first == null)
-                first = snap;
 
             dict[t] = snap;
         }
 
         frames.Add(dict);
+        index = frames.Count - 1;
 
         Save();
     }
 
-    [ContextMenu("Next")]
-    public void Next()
+    public void UpdateSnapshot()
+    {
+        var frame = new Dictionary<Transform, Snapframe>();
+
+        for (int i = 0; i < source.childCount; i++)
+        {
+            var t = source.GetChild(i);
+            var snap = new Snapframe(t);
+
+            frame[t] = snap;
+        }
+
+        frames[index] = frame;
+
+        Save();
+    }
+
+    public void DeleteSnapshot()
     {
         if (frames.Count < 0)
             return;
 
-        if (index >= frames.Count)
-            index = 0;
+        frames.RemoveAt(index);
+        Show(-1);
+        Save();
+    }
+
+    public void Show(int idx)
+    {
+        if (frames.Count < 0)
+            return;
+
+        index = (index + idx) % frames.Count;
+        index = index >= frames.Count ? 0 : index;
+        index = index < 0 ? frames.Count - 1 : index;
 
         var snap = frames[index];
         foreach (var kv in snap)
@@ -50,14 +73,6 @@ public class Snapshot : MonoBehaviour
             kv.Key.localRotation = kv.Value.rotation;
             kv.Key.localScale = kv.Value.scale;
         }
-
-        index = ++index % frames.Count;
-    }
-
-    [ContextMenu("Reset")]
-    public void Reset()
-    {
-        frames.Clear();
     }
 
     public string ToJson()
@@ -93,13 +108,13 @@ public class Snapshot : MonoBehaviour
                 ";
             }
 
-            json += $"[{trans.Trim().TrimEnd(',')}],";
+            var clean = string.Join(" ", trans.Split(null).Where(x => x.Trim().Length > 0));
+            json += $"[{clean.Trim().TrimEnd(',')}],";
         }
 
-        return $@"[{json.Trim().TrimEnd(',')}]";
+        return $"[{json.Trim().TrimEnd(',')}]";
     }
 
-    [ContextMenu("Save")]
     public void Save()
     {
         File.WriteAllText("Snapshot.json", ToJson());
