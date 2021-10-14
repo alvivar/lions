@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using UnityEngine;
 
 public class Snapshot : MonoBehaviour
@@ -10,27 +9,9 @@ public class Snapshot : MonoBehaviour
     public Transform source;
     public int index = 0;
 
-    private List<Dictionary<Transform, Snapframe>> frames = new List<Dictionary<Transform, Snapframe>>();
+    public List<Dictionary<Transform, Snapframe>> frames = new List<Dictionary<Transform, Snapframe>>();
 
     public void NewSnapshot()
-    {
-        var dict = new Dictionary<Transform, Snapframe>();
-
-        for (int i = 0; i < source.childCount; i++)
-        {
-            var t = source.GetChild(i);
-            var snap = new Snapframe(t);
-
-            dict[t] = snap;
-        }
-
-        frames.Add(dict);
-        index = frames.Count - 1;
-
-        Save();
-    }
-
-    public void UpdateSnapshot()
     {
         var frame = new Dictionary<Transform, Snapframe>();
 
@@ -42,27 +23,46 @@ public class Snapshot : MonoBehaviour
             frame[t] = snap;
         }
 
-        frames[index] = frame;
+        frames.Add(frame);
+        index = frames.Count - 1;
+    }
 
-        Save();
+    public void UpdateSnapshot()
+    {
+        if (frames.Count < 1)
+        {
+            NewSnapshot();
+            return;
+        }
+
+        var frame = new Dictionary<Transform, Snapframe>();
+
+        for (int i = 0; i < source.childCount; i++)
+        {
+            var t = source.GetChild(i);
+            var snap = new Snapframe(t);
+
+            frame[t] = snap;
+        }
+
+        frames[index] = frame;
     }
 
     public void DeleteSnapshot()
     {
-        if (frames.Count < 0)
+        if (frames.Count < 1)
             return;
 
         frames.RemoveAt(index);
         Show(-1);
-        Save();
     }
 
-    public void Show(int idx)
+    public void Show(int ahead)
     {
-        if (frames.Count < 0)
+        if (frames.Count < 1)
             return;
 
-        index = (index + idx) % frames.Count;
+        index = (index + ahead) % frames.Count;
         index = index >= frames.Count ? 0 : index;
         index = index < 0 ? frames.Count - 1 : index;
 
@@ -100,24 +100,56 @@ public class Snapshot : MonoBehaviour
                 var scale = $"{x}, {y}, {z}";
 
                 trans += $@"
-                    {{""{kv.Key.name}"" : {{
-                        ""position"" : ""{position}"",
-                        ""rotation"" : ""{rotation}"",
-                        ""scale"" : ""{scale}""
-                    }}}},
-                ";
+{kv.Key.name}
+    position  {position}
+    rotation  {rotation}
+    scale     {scale} >";
             }
 
-            var clean = string.Join(" ", trans.Split(null).Where(x => x.Trim().Length > 0));
-            json += $"[{clean.Trim().TrimEnd(',')}],";
+            json += $"{trans}]\n\n";
         }
 
-        return $"[{json.Trim().TrimEnd(',')}]";
+        return $"{json.Trim()}";
     }
 
     public void Save()
     {
-        File.WriteAllText("Snapshot.json", ToJson());
+        File.WriteAllText("Snapshot.txt", ToJson());
+    }
+
+    public void Load()
+    {
+        var text = File.ReadAllText("Snapshot.txt");
+
+        frames.Clear();
+        foreach (var frame in text.Trim().Split(']'))
+        {
+            var dict = new Dictionary<Transform, Snapframe>();
+
+            foreach (var element in frame.Trim().Split('>'))
+            {
+                if (element.Trim().Length < 1)
+                    continue;
+
+                var parts = element.Trim().Split('\n');
+
+                var name = parts[0].Trim();
+                var pos = Bitf.Floats(parts[1]);
+                var rot = Bitf.Floats(parts[2]);
+                var sca = Bitf.Floats(parts[3]);
+
+                var snap = new Snapframe(
+                    new Vector3(pos[0], pos[1], pos[2]),
+                    new Quaternion(rot[0], rot[1], rot[2], rot[3]),
+                    new Vector3(sca[0], sca[1], sca[2]));
+
+                var t = source.Find(name);
+                dict[t] = snap;
+            }
+
+            if (dict.Count > 0)
+                frames.Add(dict);
+        }
     }
 }
 
@@ -133,5 +165,12 @@ public class Snapframe
         position = target.transform.localPosition;
         rotation = target.transform.localRotation;
         scale = target.transform.localScale;
+    }
+
+    public Snapframe(Vector3 position, Quaternion rotation, Vector3 scale)
+    {
+        this.position = position;
+        this.rotation = rotation;
+        this.scale = scale;
     }
 }

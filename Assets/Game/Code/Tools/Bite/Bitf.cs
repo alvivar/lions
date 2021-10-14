@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 
@@ -25,13 +26,13 @@ public static class Bitf
     {
         precision = (int) Mathf.Pow(10, precision);
 
-        var intF = (int) f;
-        var decimalF = (int) Mathf.Abs((f - intF) * precision);
+        var intf = (int) f;
+        var decf = (int) Mathf.Abs((f - intf) * precision);
 
-        if (decimalF == 0)
-            return $"{intF}";
+        if (decf == 0)
+            return $"{intf}";
 
-        return $"{intF}.{decimalF}";
+        return $"{intf}.{decf}";
     }
 
     public static float Round(float f, int precision)
@@ -39,5 +40,19 @@ public static class Bitf
         precision = (int) Mathf.Pow(10, precision);
 
         return Mathf.Round(f * precision) / precision;
+    }
+
+    public static float[] Floats(string str)
+    {
+        var numbers = new List<float>();
+
+        foreach (var s in str.Split(' ', ','))
+        {
+            float n;
+            if (float.TryParse(s, NumberStyles.Any, CultureInfo.InvariantCulture, out n))
+                numbers.Add(n);
+        }
+
+        return numbers.ToArray();
     }
 }
