@@ -7,22 +7,20 @@ using UnityEngine;
 // #jam
 public class Snapshot : MonoBehaviour
 {
-    public Transform[] targets;
+    public Transform root;
     public int index = 0;
     public Snapframe first = null;
 
     private List<Dictionary<Transform, Snapframe>> frames = new List<Dictionary<Transform, Snapframe>>();
-
-    private void OnEnable() { SnapshotSystem.components.Add(this); }
-    private void OnDisable() { SnapshotSystem.components.Remove(this); }
 
     [ContextMenu("Take snapshot")]
     public void TakeSnapshot()
     {
         var dict = new Dictionary<Transform, Snapframe>();
 
-        foreach (var t in targets)
+        for (int i = 0; i < root.childCount; i++)
         {
+            var t = root.GetChild(i);
             var snap = new Snapframe(t);
 
             if (first == null)
@@ -32,6 +30,8 @@ public class Snapshot : MonoBehaviour
         }
 
         frames.Add(dict);
+
+        Save();
     }
 
     [ContextMenu("Next")]
