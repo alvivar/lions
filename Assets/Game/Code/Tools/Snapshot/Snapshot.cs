@@ -75,9 +75,9 @@ public class Snapshot : MonoBehaviour
         }
     }
 
-    public string ToJson()
+    public string ToTxt()
     {
-        string json = "";
+        string txt = "";
         foreach (var frame in frames)
         {
             string trans = "";
@@ -106,15 +106,15 @@ public class Snapshot : MonoBehaviour
     scale     {scale} >";
             }
 
-            json += $"{trans}]\n\n";
+            txt += $"{trans}]\n\n";
         }
 
-        return $"{json.Trim()}";
+        return $"{txt.Trim()}";
     }
 
     public void Save()
     {
-        File.WriteAllText("Snapshot.txt", ToJson());
+        File.WriteAllText("Snapshot.txt", ToTxt());
     }
 
     public void Load()

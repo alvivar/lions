@@ -11,6 +11,17 @@ public class SnapshotEditor : Editor
         snap.id = EditorGUILayout.TextField("Name", snap.id);
         snap.source = EditorGUILayout.ObjectField("Source", snap.source, typeof(Transform), true) as Transform;
 
+        if (snap.id.Length < 1)
+        {
+            Transform some = snap.transform;
+            while (some != null)
+            {
+                snap.id = $"{some.transform.name}{snap.id}";
+                Debug.Log($"some.transform.name {some.transform.name}");
+                some = some.parent;
+            }
+        }
+
         GUILayout.Label("");
 
         GUILayout.BeginHorizontal();
