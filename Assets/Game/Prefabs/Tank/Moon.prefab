@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbbd9318b3d674f4c83ee3a3070b75fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: Moon.Body.
+  id: MoonBody
   source: {fileID: 7979219701499886489}
   index: 0
 --- !u!1 &7135270041189953856
@@ -539,6 +539,10 @@ PrefabInstance:
       value: 1.628
       objectReference: {fileID: 0}
     - target: {fileID: 516674120343262243, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 516674120343262243, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -549,6 +553,18 @@ PrefabInstance:
     - target: {fileID: 516674120343262243, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 516674120343262243, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.765
+      objectReference: {fileID: 0}
+    - target: {fileID: 516674120343262243, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0.118
+      objectReference: {fileID: 0}
+    - target: {fileID: 516674120343262243, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 8.748
       objectReference: {fileID: 0}
     - target: {fileID: 677868629913111308, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
       propertyPath: m_SortingOrder

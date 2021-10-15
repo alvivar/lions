@@ -210,8 +210,8 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 418
-      width: 81
-      height: 55
+      width: 85
+      height: 54
     spriteID: 7eb82ce962b241649a57b4d9e3c24502
     internalID: 0
     spriteBone: []
@@ -222,7 +222,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -772, y: -116}
+    uvTransform: {x: -767, y: -116}
   - name: Helmet
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -276,7 +276,7 @@ ScriptedImporter:
       serializedVersion: 2
       x: 110
       y: 259
-      width: 97
+      width: 96
       height: 152
     spriteID: 84c877e46e58bc14aac128c13790d7bc
     internalID: 0
@@ -298,7 +298,7 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 259
-      width: 101
+      width: 98
       height: 151
     spriteID: 9a91ad9c9cf15ca4b8d8a766ee9600d2
     internalID: 0
@@ -370,7 +370,7 @@ ScriptedImporter:
   textureActualWidth: 512
   textureActualHeight: 512
   spritePackingTag: 
-  resliceFromLayer: 0
+  resliceFromLayer: 1
   characterMode: 1
   mosaicPSDLayers:
   - name: Eyes

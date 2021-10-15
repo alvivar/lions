@@ -1,13 +1,20 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class Snapshot : MonoBehaviour
 {
-    public string id;
     public Transform source;
+    public string chosenFile = "";
     public int index = 0;
+
+    public string[] files;
+    public string filter = "";
+    public string lastFilter = "";
+
+    private const string PATH = "Assets/Snapshot";
 
     public List<Dictionary<Transform, Snapframe>> frames = new List<Dictionary<Transform, Snapframe>>();
 
@@ -112,14 +119,28 @@ public class Snapshot : MonoBehaviour
         return $"{txt.Trim()}";
     }
 
+    public void Search()
+    {
+        var search = Directory
+            .GetFiles(PATH)
+            .Where(x => !x.EndsWith(".meta"))
+            .Select(x => Path.GetFileName(x));
+
+        if (filter.Trim().Length > 0)
+            search = search.Where(x => x.Contains(filter));
+
+        files = search.ToArray();
+    }
+
     public void Save()
     {
-        File.WriteAllText("Snapshot.txt", ToTxt());
+        Directory.CreateDirectory(PATH);
+        File.WriteAllText($"{PATH}/{chosenFile}", ToTxt());
     }
 
     public void Load()
     {
-        var text = File.ReadAllText("Snapshot.txt");
+        var text = File.ReadAllText($"{PATH}/{chosenFile}");
 
         frames.Clear();
         foreach (var frame in text.Trim().Split(']'))

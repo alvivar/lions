@@ -8,22 +8,29 @@ public class SnapshotEditor : Editor
     {
         var snap = (Snapshot) target;
 
-        snap.id = EditorGUILayout.TextField("Name", snap.id);
         snap.source = EditorGUILayout.ObjectField("Source", snap.source, typeof(Transform), true) as Transform;
 
-        if (snap.id.Length < 1)
+        GUILayout.Label("");
+        snap.filter = EditorGUILayout.TextField("Search", snap.filter);
+        if (snap.lastFilter != snap.filter)
+            snap.Search();
+
+        if (snap.files.Length > 0)
         {
-            Transform some = snap.transform;
-            while (some != null)
+            GUILayout.BeginVertical();
+            foreach (var file in snap.files)
             {
-                snap.id = $"{some.transform.name}{snap.id}";
-                Debug.Log($"some.transform.name {some.transform.name}");
-                some = some.parent;
+                if (GUILayout.Button(file))
+                {
+                    snap.chosenFile = file;
+                    snap.Load();
+                }
             }
+            GUILayout.EndVertical();
         }
 
         GUILayout.Label("");
-
+        snap.chosenFile = EditorGUILayout.TextField("Name", snap.chosenFile);
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("New"))
             snap.NewSnapshot();
@@ -42,10 +49,9 @@ public class SnapshotEditor : Editor
 
         if (snap.frames.Count < 1)
             snap.index = 0;
-
         GUILayout.Label($"Frame {snap.index + 1} of {snap.frames.Count}");
-        GUILayout.Label("");
 
+        GUILayout.Label("");
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Load"))
             snap.Load();

@@ -2010,7 +2010,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2641940213008611172, guid: 4de54bb7c676d324eb49cb5e051c992e, type: 3}
       propertyPath: m_Name
-      value: Moonman
+      value: Moon
       objectReference: {fileID: 0}
     - target: {fileID: 6173803071633979424, guid: 4de54bb7c676d324eb49cb5e051c992e, type: 3}
       propertyPath: m_RootOrder
