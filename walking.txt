@@ -1,0 +1,108 @@
+Armor
+    position  0, 0, 0
+    rotation  0, 0, 0, 1
+    scale     1, 1, 1 >
+Helmet
+    position  0.074, 1.628, 0
+    rotation  0, 0, 0, 1
+    scale     1, 1, 1 >
+LeftLeg
+    position  -0.42, -0.758, 0
+    rotation  0, 0, 0, 1
+    scale     1, 1, 1 >
+RightLeg
+    position  0.482, -0.777, 0
+    rotation  0, 0, 0, 1
+    scale     1, 1, 1 >
+Visor
+    position  0.143, 1.696, 0
+    rotation  0, 0, 0.03509386, 0.999384
+    scale     1, 1, 1 >]
+
+
+Armor
+    position  0, 0, 0
+    rotation  0, 0, 0, 1
+    scale     1, 1, 1 >
+Helmet
+    position  0.074, 1.628, 0
+    rotation  0, 0, 0, 1
+    scale     1, 1, 1 >
+LeftLeg
+    position  -0.25, -0.63, 0
+    rotation  0, 0, 0, 1
+    scale     1, 1, 1 >
+RightLeg
+    position  0.27, -0.87, 0
+    rotation  0, 0, 0, 1
+    scale     1, 1, 1 >
+Visor
+    position  0.143, 1.696, 0
+    rotation  0, 0, 0.03509386, 0.999384
+    scale     1, 1, 1 >]
+
+
+Armor
+    position  0, 0, 0
+    rotation  0, 0, 0, 1
+    scale     1, 1, 1 >
+Helmet
+    position  0.074, 1.628, 0
+    rotation  0, 0, 0, 1
+    scale     1, 1, 1 >
+LeftLeg
+    position  0.05, -0.49, 0
+    rotation  0, 0, 0, 1
+    scale     1, 1, 1 >
+RightLeg
+    position  0.04, -0.92, 0
+    rotation  0, 0, 0, 1
+    scale     1, 1, 1 >
+Visor
+    position  0.143, 1.696, 0
+    rotation  0, 0, 0.03509386, 0.999384
+    scale     1, 1, 1 >]
+
+
+Armor
+    position  0, 0, 0
+    rotation  0, 0, 0, 1
+    scale     1, 1, 1 >
+Helmet
+    position  0.074, 1.628, 0
+    rotation  0, 0, 0, 1
+    scale     1, 1, 1 >
+LeftLeg
+    position  0.39, -0.56, 0
+    rotation  0, 0, 0, 1
+    scale     1, 1, 1 >
+RightLeg
+    position  -0.29, -0.95, 0
+    rotation  0, 0, 0, 1
+    scale     1, 1, 1 >
+Visor
+    position  0.143, 1.696, 0
+    rotation  0, 0, 0.03509386, 0.999384
+    scale     1, 1, 1 >]
+
+
+Armor
+    position  0, 0, 0
+    rotation  0, 0, 0, 1
+    scale     1, 1, 1 >
+Helmet
+    position  0.074, 1.628, 0
+    rotation  0, 0, 0, 1
+    scale     1, 1, 1 >
+LeftLeg
+    position  0.46, -0.8, 0
+    rotation  0, 0, 0, 1
+    scale     1, 1, 1 >
+RightLeg
+    position  -0.43, -0.8000003, 0
+    rotation  0, 0, 0, 1
+    scale     1, 1, 1 >
+Visor
+    position  0.143, 1.696, 0
+    rotation  0, 0, 0.03509386, 0.999384
+    scale     1, 1, 1 >]
