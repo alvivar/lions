@@ -29,8 +29,8 @@ public class MultiplayerBulletReceiver : MonoBehaviour
             bullets.Enqueue(data);
         };
 
-        this.tt("Wait/Subscribe")
-            .Wait(() => server.connected)
+        this.tt("WaitSubscribe")
+            .Wait(() => server.id > 0)
             .Add(() => server.bite.Send("#b b", r => Debug.Log($"Bullets subscription")))
             .Wait(() => !server.connected, 1)
             .Repeat();

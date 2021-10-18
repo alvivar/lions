@@ -43,11 +43,10 @@ public class MultiplayerServer : MonoBehaviour
 
         this.tt("WaitForId")
             .Wait(() => connected)
-            .If(() => id < 0)
             .Add(t => bite.Send($"+1 app.connections.id", r =>
             {
                 id = Bitf.Long(r, -1);
-                Debug.Log($"ID received");
+                Debug.Log($"User ID: {id}");
             }));
     }
 

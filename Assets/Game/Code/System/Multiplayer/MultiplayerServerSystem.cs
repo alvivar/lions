@@ -10,7 +10,7 @@ public class MultiplayerServerSystem : MonoBehaviour
     {
         foreach (var c in components)
         {
-            if (!c.connected)
+            if (c.id < 0)
                 continue;
 
             while (c.queries.Count > 0)
