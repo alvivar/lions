@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using UnityEditor;
 using UnityEngine;
 
@@ -7,15 +9,20 @@ public class SnapshotEditor : Editor
     public override void OnInspectorGUI()
     {
         var snap = (Snapshot) target;
+        if (!snap)
+            return;
 
         snap.source = EditorGUILayout.ObjectField("Source", snap.source, typeof(Transform), true) as Transform;
 
         GUILayout.Label("");
         snap.filter = EditorGUILayout.TextField("Search", snap.filter);
         if (snap.lastFilter != snap.filter)
+        {
+            snap.lastFilter = snap.filter;
             snap.Search();
+        }
 
-        if (snap.files.Length > 0)
+        if (snap.files.Length > ~0)
         {
             GUILayout.BeginVertical();
             foreach (var file in snap.files)
@@ -60,3 +67,5 @@ public class SnapshotEditor : Editor
         GUILayout.EndHorizontal();
     }
 }
+
+#endif
