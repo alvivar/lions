@@ -7,16 +7,17 @@ using UnityEngine;
 public class Snapshot : MonoBehaviour
 {
     public Transform source;
-    public string chosenFile = "";
+    public string currentFile = "";
     public int index = 0;
 
     public string[] files;
-    public string filter = "";
+    public string filter = " ";
     public string lastFilter = "";
 
-    private const string PATH = "Assets/Snapshot";
-
     public List<Dictionary<Transform, Snapframe>> frames = new List<Dictionary<Transform, Snapframe>>();
+    public List<Snapcache> fileCache = new List<Snapcache>();
+
+    private const string PATH = "Assets/Snapshot";
 
     public void NewSnapshot()
     {
@@ -61,10 +62,10 @@ public class Snapshot : MonoBehaviour
             return;
 
         frames.RemoveAt(index);
-        Show(-1);
+        Step(-1);
     }
 
-    public void Show(int ahead)
+    public void Step(int ahead)
     {
         if (frames.Count < 1)
             return;
@@ -79,6 +80,73 @@ public class Snapshot : MonoBehaviour
             kv.Key.localPosition = kv.Value.position;
             kv.Key.localRotation = kv.Value.rotation;
             kv.Key.localScale = kv.Value.scale;
+        }
+    }
+
+    public void SearchFiles()
+    {
+        var search = Directory
+            .GetFiles(PATH)
+            .Where(x => !x.EndsWith(".meta"))
+            .Select(x => Path.GetFileName(x));
+
+        if (filter.Trim().Length > 0)
+            search = search.Where(x => x.Contains(filter));
+
+        files = search.ToArray();
+    }
+
+    public void CacheAllFiles()
+    {
+        fileCache.Clear();
+        foreach (var name in files)
+        {
+            var value = File.ReadAllText($"{PATH}/{name}");
+            fileCache.Add(new Snapcache(name, value));
+        }
+    }
+
+    public void ClearFileCache()
+    {
+        fileCache.Clear();
+    }
+
+    public void Load(string file)
+    {
+        currentFile = file;
+
+        var cache = fileCache.Find(x => x.name == currentFile);
+        var text = cache != null ? cache.value : File.ReadAllText($"{PATH}/{currentFile}");
+        if (cache == null)
+            fileCache.Add(new Snapcache(currentFile, text));
+
+        frames.Clear();
+        foreach (var frame in text.Trim().Split(']'))
+        {
+            var dict = new Dictionary<Transform, Snapframe>();
+
+            foreach (var element in frame.Trim().Split('>'))
+            {
+                if (element.Trim().Length < 1)
+                    continue;
+
+                var parts = element.Trim().Split('\n');
+                var pos = Bitf.Floats(parts[1]);
+                var rot = Bitf.Floats(parts[2]);
+                var sca = Bitf.Floats(parts[3]);
+
+                var snap = new Snapframe(
+                    new Vector3(pos[0], pos[1], pos[2]),
+                    new Quaternion(rot[0], rot[1], rot[2], rot[3]),
+                    new Vector3(sca[0], sca[1], sca[2]));
+
+                var name = parts[0].Trim();
+                var t = source.Find(name);
+                dict[t] = snap;
+            }
+
+            if (dict.Count > 0)
+                frames.Add(dict);
         }
     }
 
@@ -119,58 +187,10 @@ public class Snapshot : MonoBehaviour
         return $"{txt.Trim()}";
     }
 
-    public void Search()
-    {
-        var search = Directory
-            .GetFiles(PATH)
-            .Where(x => !x.EndsWith(".meta"))
-            .Select(x => Path.GetFileName(x));
-
-        if (filter.Trim().Length > 0)
-            search = search.Where(x => x.Contains(filter));
-
-        files = search.ToArray();
-    }
-
     public void Save()
     {
         Directory.CreateDirectory(PATH);
-        File.WriteAllText($"{PATH}/{chosenFile}", ToTxt());
-    }
-
-    public void Load()
-    {
-        var text = File.ReadAllText($"{PATH}/{chosenFile}");
-
-        frames.Clear();
-        foreach (var frame in text.Trim().Split(']'))
-        {
-            var dict = new Dictionary<Transform, Snapframe>();
-
-            foreach (var element in frame.Trim().Split('>'))
-            {
-                if (element.Trim().Length < 1)
-                    continue;
-
-                var parts = element.Trim().Split('\n');
-
-                var name = parts[0].Trim();
-                var pos = Bitf.Floats(parts[1]);
-                var rot = Bitf.Floats(parts[2]);
-                var sca = Bitf.Floats(parts[3]);
-
-                var snap = new Snapframe(
-                    new Vector3(pos[0], pos[1], pos[2]),
-                    new Quaternion(rot[0], rot[1], rot[2], rot[3]),
-                    new Vector3(sca[0], sca[1], sca[2]));
-
-                var t = source.Find(name);
-                dict[t] = snap;
-            }
-
-            if (dict.Count > 0)
-                frames.Add(dict);
-        }
+        File.WriteAllText($"{PATH}/{currentFile}", ToTxt());
     }
 }
 
@@ -193,5 +213,18 @@ public class Snapframe
         this.position = position;
         this.rotation = rotation;
         this.scale = scale;
+    }
+}
+
+[Serializable]
+public class Snapcache
+{
+    public string name;
+    public string value;
+
+    public Snapcache(string name, string value)
+    {
+        this.name = name;
+        this.value = value;
     }
 }

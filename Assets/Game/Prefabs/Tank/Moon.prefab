@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1403548024363851364
 Transform:
   m_ObjectHideFlags: 0
@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 6173803071633979424}
   - component: {fileID: 5559559214735501687}
   - component: {fileID: 5439552022629372134}
+  - component: {fileID: 7907853676993714281}
   - component: {fileID: 2487276163022772973}
   - component: {fileID: 1780631875967563797}
   - component: {fileID: 2629363274582743416}
@@ -129,6 +130,7 @@ GameObject:
   - component: {fileID: 4803839963295643094}
   - component: {fileID: 9149268362644928442}
   - component: {fileID: 3621108424402441474}
+  - component: {fileID: 6517761472670243899}
   m_Layer: 6
   m_Name: Moon
   m_TagString: Untagged
@@ -194,6 +196,66 @@ MonoBehaviour:
   health: 2
   damage: 0
   punch: 1.5
+--- !u!114 &7907853676993714281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641940213008611172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbbd9318b3d674f4c83ee3a3070b75fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 7979219701499886489}
+  currentFile: player.walking
+  index: 0
+  files:
+  - player.idle
+  - player.walking
+  filter: 
+  lastFilter: 
+  fileCache:
+  - name: player.idle
+    value: "Armor\n    position  0, 0, 0\n    rotation  0, 0, 0, 1\n    scale    
+      1, 1, 1 >\nHelmet\n    position  0.074, 1.628, 0\n    rotation  0, 0, 0, 1\n   
+      scale     1, 1, 1 >\nLeftLeg\n    position  -0.42, -0.758, 0\n    rotation 
+      0, 0, 0, 1\n    scale     1, 1, 1 >\nRightLeg\n    position  0.482, -0.777,
+      0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nVisor\n    position 
+      0.143, 1.696, 0\n    rotation  0, 0, 0.03509386, 0.999384\n    scale     1,
+      1, 1 >]"
+  - name: player.walking
+    value: "Armor\n    position  0, 0, 0\n    rotation  0, 0, 0, 1\n    scale    
+      1, 1, 1 >\nHelmet\n    position  0.074, 1.628, 0\n    rotation  0, 0, 0, 1\n   
+      scale     1, 1, 1 >\nLeftLeg\n    position  -0.42, -0.758, 0\n    rotation 
+      0, 0, 0, 1\n    scale     1, 1, 1 >\nRightLeg\n    position  0.482, -0.777,
+      0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nVisor\n    position 
+      0.143, 1.696, 0\n    rotation  0, 0, 0.03509386, 0.999384\n    scale     1,
+      1, 1 >]\n\n\nArmor\n    position  0, 0, 0\n    rotation  0, 0, 0, 1\n    scale    
+      1, 1, 1 >\nHelmet\n    position  0.074, 1.628, 0\n    rotation  0, 0, 0, 1\n   
+      scale     1, 1, 1 >\nLeftLeg\n    position  -0.25, -0.63, 0\n    rotation 
+      0, 0, 0, 1\n    scale     1, 1, 1 >\nRightLeg\n    position  0.27, -0.87, 0\n   
+      rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nVisor\n    position  0.143,
+      1.696, 0\n    rotation  0, 0, 0.03509386, 0.999384\n    scale     1, 1, 1 >]\n\n\nArmor\n   
+      position  0, 0, 0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nHelmet\n   
+      position  0.074, 1.628, 0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1
+      >\nLeftLeg\n    position  0.05, -0.49, 0\n    rotation  0, 0, 0, 1\n    scale    
+      1, 1, 1 >\nRightLeg\n    position  0.04, -0.92, 0\n    rotation  0, 0, 0, 1\n   
+      scale     1, 1, 1 >\nVisor\n    position  0.143, 1.696, 0\n    rotation  0,
+      0, 0.03509386, 0.999384\n    scale     1, 1, 1 >]\n\n\nArmor\n    position 
+      0, 0, 0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nHelmet\n    position 
+      0.074, 1.628, 0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nLeftLeg\n   
+      position  0.39, -0.56, 0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nRightLeg\n   
+      position  -0.29, -0.95, 0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1
+      >\nVisor\n    position  0.143, 1.696, 0\n    rotation  0, 0, 0.03509386, 0.999384\n   
+      scale     1, 1, 1 >]\n\n\nArmor\n    position  0, 0, 0\n    rotation  0, 0,
+      0, 1\n    scale     1, 1, 1 >\nHelmet\n    position  0.074, 1.628, 0\n    rotation 
+      0, 0, 0, 1\n    scale     1, 1, 1 >\nLeftLeg\n    position  0.46, -0.8, 0\n   
+      rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nRightLeg\n    position  -0.43,
+      -0.8000003, 0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nVisor\n   
+      position  0.143, 1.696, 0\n    rotation  0, 0, 0.03509386, 0.999384\n    scale    
+      1, 1, 1 >]"
 --- !u!114 &2487276163022772973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,6 +405,21 @@ MonoBehaviour:
   punches: []
   punch: {fileID: 0}
   damage: {fileID: 0}
+--- !u!114 &6517761472670243899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641940213008611172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aece3f44386c5fa45901b74a545303dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  stats: {fileID: 0}
+  snapshot: {fileID: 0}
 --- !u!1 &4303499889592074658
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,7 +459,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7788710326497443196}
-  - component: {fileID: 831995409344067022}
   m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
@@ -405,21 +481,6 @@ Transform:
   m_Father: {fileID: 6173803071633979424}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &831995409344067022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5947631862459669488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbbd9318b3d674f4c83ee3a3070b75fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: MoonBody
-  source: {fileID: 7979219701499886489}
-  index: 0
 --- !u!1 &7135270041189953856
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +526,10 @@ PrefabInstance:
     - target: {fileID: -8410780162409849905, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
       propertyPath: m_SortingOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -8003226368634531228, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8003226368634531228, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -531,6 +596,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 516674120343262243, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 516674120343262243, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.074
       objectReference: {fileID: 0}
@@ -571,6 +640,10 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1698155328023224792, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1698155328023224792, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.143
       objectReference: {fileID: 0}
@@ -597,6 +670,10 @@ PrefabInstance:
     - target: {fileID: 1698155328023224792, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 4.022
+      objectReference: {fileID: 0}
+    - target: {fileID: 3095072914883010825, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3095072914883010825, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -639,6 +716,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5280244234343174087, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5280244234343174087, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -673,6 +754,18 @@ PrefabInstance:
     - target: {fileID: 7979219700389946609, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7979219700389946609, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7979219700389946609, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7979219700389946609, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7979219700389946609, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
       propertyPath: m_LocalPosition.x
