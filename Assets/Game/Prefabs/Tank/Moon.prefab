@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 7979219701499886489}
-  currentFile: player.walking
+  currentFile: player.idle
   index: 0
   files:
   - player.idle
