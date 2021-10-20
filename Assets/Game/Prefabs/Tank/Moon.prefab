@@ -190,7 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   speedOverride: 0
-  dampening: 5
+  dampening: 16
   direction: {x: 0, y: 0, z: 0}
   duration: 0
   health: 2
