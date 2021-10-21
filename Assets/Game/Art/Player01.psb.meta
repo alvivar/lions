@@ -208,10 +208,10 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 418
-      width: 85
-      height: 54
+      x: 214
+      y: 259
+      width: 108
+      height: 50
     spriteID: 7eb82ce962b241649a57b4d9e3c24502
     internalID: 0
     spriteBone: []
@@ -222,7 +222,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -767, y: -116}
+    uvTransform: {x: -546, y: -281}
   - name: Helmet
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -232,8 +232,8 @@ ScriptedImporter:
       serializedVersion: 2
       x: 283
       y: 4
-      width: 153
-      height: 175
+      width: 172
+      height: 193
     spriteID: 3675c45c685c13e47810ce3402436789
     internalID: 0
     spriteBone: []
@@ -244,7 +244,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -448, y: -465}
+    uvTransform: {x: -438, y: -456}
   - name: Armor
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -415,7 +415,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: 7eb82ce962b241649a57b4d9e3c24502
     layerID: 7
-    mosaicPosition: {x: 4, y: 418}
+    mosaicPosition: {x: 214, y: 259}
   - name: Helmet
     spriteName: Helmet
     isGroup: 0

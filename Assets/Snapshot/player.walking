@@ -3,7 +3,7 @@ Armor
     rotation  0, 0, -0.0523359, 0.9986295
     scale     1, 1, 1 >
 Helmet
-    position  0.074, 1.628, 0
+    position  0.151, 1.667, 0
     rotation  0, 0, 0, 1
     scale     1, 1, 1 >
 LeftLeg
@@ -15,7 +15,7 @@ RightLeg
     rotation  0, 0, 0, 1
     scale     1, 1, 1 >
 Visor
-    position  0.143, 1.696, 0
+    position  0.2199997, 1.735, 0
     rotation  0, 0, 0.03509386, 0.999384
     scale     1, 1, 1 >]
 
@@ -25,7 +25,7 @@ Armor
     rotation  0, 0, -0.0523359, 0.9986295
     scale     1, 1, 1 >
 Helmet
-    position  0.074, 1.628, 0
+    position  0.151, 1.667, 0
     rotation  0, 0, 0, 1
     scale     1, 1, 1 >
 LeftLeg
@@ -37,7 +37,7 @@ RightLeg
     rotation  0, 0, 0, 1
     scale     1, 1, 1 >
 Visor
-    position  0.143, 1.696, 0
+    position  0.2199997, 1.735, 0
     rotation  0, 0, 0.03509386, 0.999384
     scale     1, 1, 1 >]
 
@@ -47,7 +47,7 @@ Armor
     rotation  0, 0, -0.0523359, 0.9986295
     scale     1, 1, 1 >
 Helmet
-    position  0.074, 1.628, 0
+    position  0.151, 1.667, 0
     rotation  0, 0, 0, 1
     scale     1, 1, 1 >
 LeftLeg
@@ -59,7 +59,7 @@ RightLeg
     rotation  0, 0, 0, 1
     scale     1, 1, 1 >
 Visor
-    position  0.143, 1.696, 0
+    position  0.2199997, 1.735, 0
     rotation  0, 0, 0.03509386, 0.999384
     scale     1, 1, 1 >]
 
@@ -69,7 +69,7 @@ Armor
     rotation  0, 0, -0.0523359, 0.9986295
     scale     1, 1, 1 >
 Helmet
-    position  0.074, 1.628, 0
+    position  0.151, 1.667, 0
     rotation  0, 0, 0, 1
     scale     1, 1, 1 >
 LeftLeg
@@ -81,7 +81,7 @@ RightLeg
     rotation  0, 0, 0, 1
     scale     1, 1, 1 >
 Visor
-    position  0.143, 1.696, 0
+    position  0.2199997, 1.735, 0
     rotation  0, 0, 0.03509386, 0.999384
     scale     1, 1, 1 >]
 
@@ -91,7 +91,7 @@ Armor
     rotation  0, 0, -0.0523359, 0.9986295
     scale     1, 1, 1 >
 Helmet
-    position  0.074, 1.628, 0
+    position  0.151, 1.667, 0
     rotation  0, 0, 0, 1
     scale     1, 1, 1 >
 LeftLeg
@@ -103,6 +103,6 @@ RightLeg
     rotation  0, 0, 0, 1
     scale     1, 1, 1 >
 Visor
-    position  0.143, 1.696, 0
+    position  0.2199997, 1.735, 0
     rotation  0, 0, 0.03509386, 0.999384
     scale     1, 1, 1 >]
