@@ -28,7 +28,7 @@ public class HumanAnimSystem : MonoBehaviour
                     c.snapshot.Load(WALK);
 
                 c.tt(WALK)
-                    .Add(0.1f, () => c.snapshot.Step(1))
+                    .Add(0.08f, () => c.snapshot.Step(1))
                     .Immutable();
             }
             else

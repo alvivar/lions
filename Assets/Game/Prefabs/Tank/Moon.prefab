@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a507efee06324374f98c1cd053526f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 6
   speedOverride: 0
   dampening: 16
   direction: {x: 0, y: 0, z: 0}
@@ -214,8 +214,8 @@ MonoBehaviour:
   files:
   - player.idle
   - player.walking
-  filter: 
-  lastFilter: 
+  filter: player
+  lastFilter: player
   fileCache:
   - name: player.idle
     value: "Armor\n    position  0, 0, 0\n    rotation  0, 0, 0, 1\n    scale    
@@ -226,32 +226,34 @@ MonoBehaviour:
       0.143, 1.696, 0\n    rotation  0, 0, 0.03509386, 0.999384\n    scale     1,
       1, 1 >]"
   - name: player.walking
-    value: "Armor\n    position  0, 0, 0\n    rotation  0, 0, 0, 1\n    scale    
-      1, 1, 1 >\nHelmet\n    position  0.074, 1.628, 0\n    rotation  0, 0, 0, 1\n   
-      scale     1, 1, 1 >\nLeftLeg\n    position  -0.42, -0.758, 0\n    rotation 
-      0, 0, 0, 1\n    scale     1, 1, 1 >\nRightLeg\n    position  0.482, -0.777,
-      0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nVisor\n    position 
-      0.143, 1.696, 0\n    rotation  0, 0, 0.03509386, 0.999384\n    scale     1,
-      1, 1 >]\n\n\nArmor\n    position  0, 0, 0\n    rotation  0, 0, 0, 1\n    scale    
-      1, 1, 1 >\nHelmet\n    position  0.074, 1.628, 0\n    rotation  0, 0, 0, 1\n   
-      scale     1, 1, 1 >\nLeftLeg\n    position  -0.25, -0.63, 0\n    rotation 
-      0, 0, 0, 1\n    scale     1, 1, 1 >\nRightLeg\n    position  0.27, -0.87, 0\n   
-      rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nVisor\n    position  0.143,
-      1.696, 0\n    rotation  0, 0, 0.03509386, 0.999384\n    scale     1, 1, 1 >]\n\n\nArmor\n   
-      position  0, 0, 0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nHelmet\n   
+    value: "Armor\n    position  -0.056, 0.006, 0\n    rotation  0, 0, -0.0523359,
+      0.9986295\n    scale     1, 1, 1 >\nHelmet\n    position  0.074, 1.628, 0\n   
+      rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nLeftLeg\n    position  -0.42,
+      -0.758, 0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nRightLeg\n   
+      position  0.482, -0.777, 0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1
+      >\nVisor\n    position  0.143, 1.696, 0\n    rotation  0, 0, 0.03509386, 0.999384\n   
+      scale     1, 1, 1 >]\n\n\nArmor\n    position  -0.056, 0.006, 0\n    rotation 
+      0, 0, -0.0523359, 0.9986295\n    scale     1, 1, 1 >\nHelmet\n    position 
+      0.074, 1.628, 0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nLeftLeg\n   
+      position  -0.25, -0.63, 0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1
+      >\nRightLeg\n    position  0.27, -0.87, 0\n    rotation  0, 0, 0, 1\n    scale    
+      1, 1, 1 >\nVisor\n    position  0.143, 1.696, 0\n    rotation  0, 0, 0.03509386,
+      0.999384\n    scale     1, 1, 1 >]\n\n\nArmor\n    position  -0.056, 0.006,
+      0\n    rotation  0, 0, -0.0523359, 0.9986295\n    scale     1, 1, 1 >\nHelmet\n   
       position  0.074, 1.628, 0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1
       >\nLeftLeg\n    position  0.05, -0.49, 0\n    rotation  0, 0, 0, 1\n    scale    
       1, 1, 1 >\nRightLeg\n    position  0.04, -0.92, 0\n    rotation  0, 0, 0, 1\n   
       scale     1, 1, 1 >\nVisor\n    position  0.143, 1.696, 0\n    rotation  0,
       0, 0.03509386, 0.999384\n    scale     1, 1, 1 >]\n\n\nArmor\n    position 
-      0, 0, 0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nHelmet\n    position 
-      0.074, 1.628, 0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nLeftLeg\n   
-      position  0.39, -0.56, 0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nRightLeg\n   
-      position  -0.29, -0.95, 0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1
-      >\nVisor\n    position  0.143, 1.696, 0\n    rotation  0, 0, 0.03509386, 0.999384\n   
-      scale     1, 1, 1 >]\n\n\nArmor\n    position  0, 0, 0\n    rotation  0, 0,
-      0, 1\n    scale     1, 1, 1 >\nHelmet\n    position  0.074, 1.628, 0\n    rotation 
-      0, 0, 0, 1\n    scale     1, 1, 1 >\nLeftLeg\n    position  0.46, -0.8, 0\n   
+      -0.056, 0.006, 0\n    rotation  0, 0, -0.0523359, 0.9986295\n    scale    
+      1, 1, 1 >\nHelmet\n    position  0.074, 1.628, 0\n    rotation  0, 0, 0, 1\n   
+      scale     1, 1, 1 >\nLeftLeg\n    position  0.39, -0.56, 0\n    rotation  0,
+      0, 0, 1\n    scale     1, 1, 1 >\nRightLeg\n    position  -0.29, -0.95, 0\n   
+      rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nVisor\n    position  0.143,
+      1.696, 0\n    rotation  0, 0, 0.03509386, 0.999384\n    scale     1, 1, 1 >]\n\n\nArmor\n   
+      position  -0.056, 0.006, 0\n    rotation  0, 0, -0.0523359, 0.9986295\n   
+      scale     1, 1, 1 >\nHelmet\n    position  0.074, 1.628, 0\n    rotation  0,
+      0, 0, 1\n    scale     1, 1, 1 >\nLeftLeg\n    position  0.46, -0.8, 0\n   
       rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nRightLeg\n    position  -0.43,
       -0.8000003, 0\n    rotation  0, 0, 0, 1\n    scale     1, 1, 1 >\nVisor\n   
       position  0.143, 1.696, 0\n    rotation  0, 0, 0.03509386, 0.999384\n    scale    
@@ -745,7 +747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5280244234343174087, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 5942966726644417638, guid: 50e664d5d5f78484ebe63693f0204bbc, type: 3}
       propertyPath: m_SortingOrder

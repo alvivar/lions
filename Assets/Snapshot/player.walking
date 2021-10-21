@@ -1,6 +1,6 @@
 Armor
-    position  0, 0, 0
-    rotation  0, 0, 0, 1
+    position  -0.056, 0.006, 0
+    rotation  0, 0, -0.0523359, 0.9986295
     scale     1, 1, 1 >
 Helmet
     position  0.074, 1.628, 0
@@ -21,8 +21,8 @@ Visor
 
 
 Armor
-    position  0, 0, 0
-    rotation  0, 0, 0, 1
+    position  -0.056, 0.006, 0
+    rotation  0, 0, -0.0523359, 0.9986295
     scale     1, 1, 1 >
 Helmet
     position  0.074, 1.628, 0
@@ -43,8 +43,8 @@ Visor
 
 
 Armor
-    position  0, 0, 0
-    rotation  0, 0, 0, 1
+    position  -0.056, 0.006, 0
+    rotation  0, 0, -0.0523359, 0.9986295
     scale     1, 1, 1 >
 Helmet
     position  0.074, 1.628, 0
@@ -65,8 +65,8 @@ Visor
 
 
 Armor
-    position  0, 0, 0
-    rotation  0, 0, 0, 1
+    position  -0.056, 0.006, 0
+    rotation  0, 0, -0.0523359, 0.9986295
     scale     1, 1, 1 >
 Helmet
     position  0.074, 1.628, 0
@@ -87,8 +87,8 @@ Visor
 
 
 Armor
-    position  0, 0, 0
-    rotation  0, 0, 0, 1
+    position  -0.056, 0.006, 0
+    rotation  0, 0, -0.0523359, 0.9986295
     scale     1, 1, 1 >
 Helmet
     position  0.074, 1.628, 0

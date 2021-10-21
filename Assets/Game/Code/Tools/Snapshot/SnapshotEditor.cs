@@ -35,7 +35,10 @@ public class SnapshotEditor : Editor
             foreach (var file in snap.files)
             {
                 if (GUILayout.Button(file))
+                {
                     snap.Load(file);
+                    snap.Step(0);
+                }
             }
             GUILayout.EndVertical();
         }
