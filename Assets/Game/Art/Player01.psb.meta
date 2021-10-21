@@ -232,8 +232,8 @@ ScriptedImporter:
       serializedVersion: 2
       x: 283
       y: 4
-      width: 172
-      height: 193
+      width: 175
+      height: 194
     spriteID: 3675c45c685c13e47810ce3402436789
     internalID: 0
     spriteBone: []
@@ -244,7 +244,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -438, y: -456}
+    uvTransform: {x: -436, y: -456}
   - name: Armor
     originalName: 
     pivot: {x: 0.5, y: 0.5}
