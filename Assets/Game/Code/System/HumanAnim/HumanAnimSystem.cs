@@ -31,11 +31,10 @@ public class HumanAnimSystem : MonoBehaviour
                     .Add(0.08f, () => c.snapshot.Step(1))
                     .Immutable();
             }
-            else
+            else if (c.snapshot.frames.Count < 1 || c.snapshot.currentFile != IDLE)
             {
                 c.tt(WALK).Reset();
-                if (c.snapshot.frames.Count < 1 || c.snapshot.currentFile != IDLE)
-                    c.snapshot.Load(IDLE);
+                c.snapshot.Load(IDLE);
                 c.snapshot.Step(1);
             }
         }
