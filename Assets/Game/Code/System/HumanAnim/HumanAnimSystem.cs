@@ -35,7 +35,7 @@ public class HumanAnimSystem : MonoBehaviour
             {
                 c.tt(WALK).Reset();
                 c.snapshot.Load(IDLE);
-                c.snapshot.Step(1);
+                c.snapshot.Step(0);
             }
         }
     }
