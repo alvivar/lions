@@ -2,14 +2,28 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class ParallaxPositioner : MonoBehaviour
 {
+    public bool update = false;
+
+    [Header("Config")]
+    public List<Transform> targets;
     public List<Transform> parallax;
     public List<float> parallaxStep;
     public List<SpriteRenderer> sprites;
 
+    private void Update()
+    {
+        if (update)
+        {
+            FixAll();
+            update = false;
+        }
+    }
+
     [ContextMenu("Fix All")]
-    void FixAll()
+    private void FixAll()
     {
         RefreshSprites();
         FixParallaxDepth();
@@ -17,18 +31,23 @@ public class ParallaxPositioner : MonoBehaviour
     }
 
     [ContextMenu("Refresh Sprites")]
-    void RefreshSprites()
+    private void RefreshSprites()
     {
         sprites = sprites.Where(x => x).ToList();
-        foreach (var sprite in FindObjectsOfType<SpriteRenderer>())
+
+        foreach (var target in targets)
         {
-            if (!sprites.Contains(sprite))
-                sprites.Add(sprite);
+            foreach (var sprite in target.GetComponentsInChildren<SpriteRenderer>())
+            {
+                if (!sprites.Contains(sprite))
+                    sprites.Add(sprite);
+            }
         }
+
     }
 
     [ContextMenu("Adjust Parallax Depth")]
-    void FixParallaxDepth()
+    private void FixParallaxDepth()
     {
         while (parallaxStep.Count < parallax.Count)
             parallaxStep.Add(0);
@@ -44,7 +63,7 @@ public class ParallaxPositioner : MonoBehaviour
     }
 
     [ContextMenu("Fix Sprites Sorting Order")]
-    void FixSpritesSortingOrder()
+    private void FixSpritesSortingOrder()
     {
         int index = 0;
         foreach (var sprite in sprites)
