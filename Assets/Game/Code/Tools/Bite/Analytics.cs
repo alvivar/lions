@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using BiteServer;
 
 public class Analytics : MonoBehaviour
 {
@@ -32,8 +33,8 @@ public class Analytics : MonoBehaviour
         key = $"{user}.{id}";
 
         bite = new Bite(host, port);
-        bite.OnConnected += OnConnected;
-        bite.OnError += OnError;
+        // bite.OnConnected += OnConnected;
+        // bite.OnError += OnError;
     }
 
     void Update()
@@ -59,9 +60,9 @@ public class Analytics : MonoBehaviour
     {
         if (bite != null)
         {
-            bite.Stop();
-            bite.OnConnected -= OnConnected;
-            bite.OnError -= OnError;
+            // bite.Stop();
+            // bite.OnConnected -= OnConnected;
+            // bite.OnError -= OnError;
         }
     }
 
@@ -90,17 +91,17 @@ public class Analytics : MonoBehaviour
 
         bite.Send($"g {key}.timePlayed", response =>
         {
-            data.timePlayed = Bite.Int(response, 0);
+            // data.timePlayed = Bite.Int(response, 0);
         });
 
         bite.Send($"j {key}.lastPosition", response =>
         {
             var json = JsonUtility.FromJson<Pos>(response);
 
-            data.lastPosition = new Vector3(
-                Bite.Float($"{json.x}", 0),
-                Bite.Float($"{json.y}", 0),
-                Bite.Float($"{json.z}", 0));
+            // data.lastPosition = new Vector3(
+            //     Bite.Float($"{json.x}", 0),
+            //     Bite.Float($"{json.y}", 0),
+            //     Bite.Float($"{json.z}", 0));
 
             lastPositionLoaded = true;
         });
@@ -125,7 +126,7 @@ public class Analytics : MonoBehaviour
     {
         bite.Send($"g {key}.startedEpoch", response =>
         {
-            data.startedEpoch = Bite.Long(response, 0);
+            // data.startedEpoch = Bite.Long(response, 0);
 
             if (data.startedEpoch <= 0)
             {
