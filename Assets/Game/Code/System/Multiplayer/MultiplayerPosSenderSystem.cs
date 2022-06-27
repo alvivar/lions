@@ -15,6 +15,9 @@ public class MultiplayerPosSenderSystem : MonoBehaviour
                 continue;
 
             var id = c.server.id;
+            if (id < 0)
+                continue;
+
             var pos = c.target.transform.position;
             pos.x = Bitf.Round(pos.x, 4);
             pos.y = Bitf.Round(pos.y, 4);
@@ -26,7 +29,7 @@ public class MultiplayerPosSenderSystem : MonoBehaviour
 
                 var px = Bitf.Str(c.position.x, 4);
                 var py = Bitf.Str(c.position.y, 4);
-                var rz = (int) c.rotationZ;
+                var rz = (int)c.rotationZ;
 
                 c.delay = 0.1f;
                 c.server.queries.Enqueue($"! p.{id} p{px},{py},{rz}");

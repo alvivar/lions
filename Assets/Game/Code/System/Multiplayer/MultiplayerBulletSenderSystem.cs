@@ -16,6 +16,9 @@ public class MultiplayerBulletSenderSystem : MonoBehaviour
                 c.bullets.RemoveAt(0);
 
                 var id = c.server.id;
+                if (id < 0)
+                    continue;
+
                 var pos = bullet.pos;
                 var dir = bullet.dir;
 
