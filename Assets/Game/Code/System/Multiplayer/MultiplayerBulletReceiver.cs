@@ -31,7 +31,7 @@ public class MultiplayerBulletReceiver : MonoBehaviour
 
         this.tt("WaitSubscribe")
             .Wait(() => server.id > 0)
-            .Add(() => server.bite.Send("#b b", r => Debug.Log($"Bullets subscription")))
+            .Add(() => server.bite.Send("#k b", r => Debug.Log($"Bullets subscription")))
             .Wait(() => !server.connected, 1)
             .Repeat();
     }

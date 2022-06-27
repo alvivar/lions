@@ -19,9 +19,10 @@ public class MultiplayerServer : MonoBehaviour
         this.tt("TryConnection")
             .Add(() =>
             {
-                bite = new Bite("142.93.180.20", 1986);
+                bite = new Bite("167.99.58.31", 1986);
 
-                bite.Send($"Ping from {this.GetInstanceID()}", r =>
+                var uid = SystemInfo.deviceUniqueIdentifier;
+                bite.Send($"! ping from {uid}", r =>
                 {
                     connected = true;
                     Debug.Log("MultiplayerServer connected");

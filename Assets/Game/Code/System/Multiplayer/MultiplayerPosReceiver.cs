@@ -28,7 +28,7 @@ public class MultiplayerPosReceiver : MonoBehaviour
 
         this.tt("WaitSubscribe")
             .Wait(() => server.id > 0)
-            .Add(() => server.bite.Send("#b p", r => Debug.Log($"Positions subscription")))
+            .Add(() => server.bite.Send("#k p", r => Debug.Log($"Positions subscription")))
             .Wait(() => !server.connected, 1)
             .Repeat();
     }
