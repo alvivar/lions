@@ -21,10 +21,13 @@ ScriptedImporter:
     convertToNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
     isReadable: 0
     streamingMipmaps: 1
     streamingMipmapsPriority: 0
     vTOnly: 0
+    ignoreMasterTextureLimit: 0
     nPOTScale: 1
     sRGBTexture: 1
     spriteMode: 2
@@ -79,7 +82,6 @@ ScriptedImporter:
       width: 0
       height: 0
     spriteID: 
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -87,7 +89,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData:
   - name: Eyes
@@ -102,7 +103,6 @@ ScriptedImporter:
       width: 81
       height: 55
     spriteID: 5780ef1daded589449b0cf3a11e42c22
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -110,7 +110,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: -775, y: -116}
   - name: Helmet
     originalName: 
@@ -124,7 +123,6 @@ ScriptedImporter:
       width: 153
       height: 175
     spriteID: 16215b8d0acf9574a9de77ee71590360
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -132,7 +130,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: -451, y: -465}
   - name: Body
     originalName: 
@@ -146,7 +143,6 @@ ScriptedImporter:
       width: 271
       height: 247
     spriteID: 11aa218ab61ba054fb0291b85cd42ee5
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -154,7 +150,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: -663, y: -271}
   - name: LeftLeg
     originalName: 
@@ -168,7 +163,6 @@ ScriptedImporter:
       width: 97
       height: 152
     spriteID: 6fbccd90d3fb7574ab7b090b9423ddeb
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -176,7 +170,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: -592, y: 3}
   - name: RightLeg
     originalName: 
@@ -190,7 +183,6 @@ ScriptedImporter:
       width: 101
       height: 151
     spriteID: 9e235aab9c6682244a482aef82be2cc2
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -198,7 +190,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: -799, y: 0}
   rigSpriteImportData:
   - name: Visor
@@ -213,7 +204,6 @@ ScriptedImporter:
       width: 108
       height: 50
     spriteID: 7eb82ce962b241649a57b4d9e3c24502
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -221,7 +211,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: -546, y: -281}
   - name: Helmet
     originalName: 
@@ -235,7 +224,6 @@ ScriptedImporter:
       width: 175
       height: 194
     spriteID: 3675c45c685c13e47810ce3402436789
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -243,7 +231,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: -436, y: -456}
   - name: Armor
     originalName: 
@@ -257,7 +244,6 @@ ScriptedImporter:
       width: 271
       height: 247
     spriteID: 0ff297039bdb09343a099447a426094e
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -265,7 +251,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: -660, y: -271}
   - name: LeftLeg
     originalName: 
@@ -279,7 +264,6 @@ ScriptedImporter:
       width: 96
       height: 152
     spriteID: 84c877e46e58bc14aac128c13790d7bc
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -287,7 +271,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: -592, y: 3}
   - name: RightLeg
     originalName: 
@@ -301,7 +284,6 @@ ScriptedImporter:
       width: 98
       height: 151
     spriteID: 9a91ad9c9cf15ca4b8d8a766ee9600d2
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -309,8 +291,22 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: -799, y: 0}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  sharedRigSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
   platformSettings:
   - name: DefaultTexturePlatform
     overridden: 0
@@ -357,21 +353,20 @@ ScriptedImporter:
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
   mosaicLayers: 1
+  characterMode: 1
   documentPivot: {x: 0, y: 0}
   documentAlignment: 0
   importHiddenLayers: 0
-  importedTextureWidth: 512
-  importedTextureHeight: 512
-  documentSize: {x: 1600, y: 900}
+  layerMappingOption: 2
+  generatePhysicsShape: 0
   paperDollMode: 0
   keepDupilcateSpriteName: 0
+  skeletonAssetReferenceID: 
+  padding: 4
   spriteCategoryList:
     categories: []
-  textureActualWidth: 512
-  textureActualHeight: 512
   spritePackingTag: 
   resliceFromLayer: 1
-  characterMode: 1
   mosaicPSDLayers:
   - name: Eyes
     spriteName: Eyes
@@ -380,6 +375,9 @@ ScriptedImporter:
     spriteID: 5780ef1daded589449b0cf3a11e42c22
     layerID: 7
     mosaicPosition: {x: 4, y: 418}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
   - name: Helmet
     spriteName: Helmet
     isGroup: 0
@@ -387,6 +385,9 @@ ScriptedImporter:
     spriteID: 16215b8d0acf9574a9de77ee71590360
     layerID: 6
     mosaicPosition: {x: 283, y: 4}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
   - name: Body
     spriteName: Body
     isGroup: 0
@@ -394,6 +395,9 @@ ScriptedImporter:
     spriteID: 11aa218ab61ba054fb0291b85cd42ee5
     layerID: 5
     mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
   - name: LeftLeg
     spriteName: LeftLeg
     isGroup: 0
@@ -401,6 +405,9 @@ ScriptedImporter:
     spriteID: 6fbccd90d3fb7574ab7b090b9423ddeb
     layerID: 4
     mosaicPosition: {x: 113, y: 259}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
   - name: RightLeg
     spriteName: RightLeg
     isGroup: 0
@@ -408,6 +415,9 @@ ScriptedImporter:
     spriteID: 9e235aab9c6682244a482aef82be2cc2
     layerID: 3
     mosaicPosition: {x: 4, y: 259}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
   rigPSDLayers:
   - name: Visor
     spriteName: Visor
@@ -416,6 +426,9 @@ ScriptedImporter:
     spriteID: 7eb82ce962b241649a57b4d9e3c24502
     layerID: 7
     mosaicPosition: {x: 214, y: 259}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Helmet
     spriteName: Helmet
     isGroup: 0
@@ -423,6 +436,9 @@ ScriptedImporter:
     spriteID: 3675c45c685c13e47810ce3402436789
     layerID: 6
     mosaicPosition: {x: 283, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Armor
     spriteName: Armor
     isGroup: 0
@@ -430,6 +446,9 @@ ScriptedImporter:
     spriteID: 0ff297039bdb09343a099447a426094e
     layerID: 5
     mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: LeftLeg
     spriteName: LeftLeg
     isGroup: 0
@@ -437,6 +456,9 @@ ScriptedImporter:
     spriteID: 84c877e46e58bc14aac128c13790d7bc
     layerID: 4
     mosaicPosition: {x: 110, y: 259}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: RightLeg
     spriteName: RightLeg
     isGroup: 0
@@ -444,13 +466,15 @@ ScriptedImporter:
     spriteID: 9a91ad9c9cf15ca4b8d8a766ee9600d2
     layerID: 3
     mosaicPosition: {x: 4, y: 259}
-  characterData:
-    bones: []
-    parts: []
-    dimension: {x: 0, y: 0}
-    characterGroups: []
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  sharedRigPSDLayers: []
+  pSDLayerImportSetting: []
+  importFileNodeState: 1
   generateGOHierarchy: 0
   textureAssetName: Player01 Texture
   prefabAssetName: Player01 Prefab
   spriteLibAssetName: Player01 Sprite Lib
+  skeletonAssetName: 
   secondarySpriteTextures: []
