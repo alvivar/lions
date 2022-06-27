@@ -26,7 +26,7 @@ public class MultiplayerPosReceiver : MonoBehaviour
             positions.Enqueue(new Data { id = parts[0], position = parts[1] });
         };
 
-        this.tt("WaitSubscribe")
+        this.tt("Wait&Subscribe")
             .Wait(() => server.id > 0)
             .Add(() => server.bite.Send("#k p", r => Debug.Log($"Positions subscription")))
             .Wait(() => !server.connected, 1)
