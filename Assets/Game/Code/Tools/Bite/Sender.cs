@@ -23,7 +23,7 @@ namespace BiteServer
 
         internal void Send(string message)
         {
-            lock(messages)
+            lock (messages)
             {
                 messages.Enqueue(message);
             }
@@ -36,7 +36,7 @@ namespace BiteServer
                 if (messages.Count < 1)
                     continue;
 
-                lock(messages)
+                lock (messages)
                 {
                     writer.WriteLine(messages.Dequeue());
                     writer.Flush();

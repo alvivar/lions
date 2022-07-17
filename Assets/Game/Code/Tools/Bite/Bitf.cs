@@ -24,10 +24,10 @@ public static class Bitf
 
     public static string Str(float f, int precision)
     {
-        precision = (int) Mathf.Pow(10, precision);
+        precision = (int)Mathf.Pow(10, precision);
 
-        var intf = (int) f;
-        var decf = (int) Mathf.Abs((f - intf) * precision);
+        var intf = (int)f;
+        var decf = (int)Mathf.Abs((f - intf) * precision);
 
         if (decf == 0)
             return $"{intf}";
@@ -37,7 +37,7 @@ public static class Bitf
 
     public static float Round(float f, int precision)
     {
-        precision = (int) Mathf.Pow(10, precision);
+        precision = (int)Mathf.Pow(10, precision);
 
         return Mathf.Round(f * precision) / precision;
     }

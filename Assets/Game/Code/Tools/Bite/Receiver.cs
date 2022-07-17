@@ -25,7 +25,7 @@ namespace BiteServer
 
         internal void React(Action<string> callback)
         {
-            lock(actions)
+            lock (actions)
             {
                 actions.Enqueue(callback);
             }
@@ -43,7 +43,7 @@ namespace BiteServer
                 if (actions.Count < 1)
                     continue;
 
-                lock(actions)
+                lock (actions)
                 {
                     var action = actions.Dequeue();
                     if (action != null)
