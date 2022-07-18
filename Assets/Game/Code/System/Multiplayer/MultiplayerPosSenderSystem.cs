@@ -6,13 +6,13 @@ public class MultiplayerPosSenderSystem : MonoBehaviour
 {
     public static List<MultiplayerPosSender> components = new List<MultiplayerPosSender>();
 
+    private string buffer = "";
+
     private void Update()
     {
         foreach (var c in components)
         {
             c.delay -= Time.deltaTime;
-            if (c.delay > 0)
-                continue;
 
             var id = c.server.id;
             if (id < 0)
@@ -31,8 +31,18 @@ public class MultiplayerPosSenderSystem : MonoBehaviour
                 var py = Bitf.Str(c.position.y, 4);
                 var rz = (int)c.rotationZ;
 
-                c.delay = 0.1f;
-                c.server.queries.Enqueue($"! p.{id} p{px},{py},{rz}");
+                buffer += $"{px},{py},{rz}|";
+
+                if (c.delay < 0)
+                {
+                    c.delay = 0.1f;
+
+                    var query = $"! p.{id} p{buffer}";
+                    buffer = "";
+
+                    Debug.Log(query);
+                    c.server.queries.Enqueue(query);
+                }
             }
         }
     }
