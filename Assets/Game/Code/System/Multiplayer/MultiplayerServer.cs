@@ -20,6 +20,7 @@ public class MultiplayerServer : MonoBehaviour
             .Add(() =>
             {
                 bite = new Bite("167.99.58.31", 1986);
+                // bite = new Bite("127.0.0.1", 1984);
 
                 var uid = SystemInfo.deviceUniqueIdentifier;
                 bite.Send($"! ping from {uid}", r =>
