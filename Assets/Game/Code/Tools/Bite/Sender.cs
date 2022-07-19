@@ -1,6 +1,7 @@
+using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net.Sockets;
+using System.Text;
 using System.Threading;
 
 namespace BiteServer
@@ -10,13 +11,11 @@ namespace BiteServer
         internal Queue<string> messages = new Queue<string>();
 
         private NetworkStream stream;
-        private StreamWriter writer;
         private Thread thread;
 
         internal Sender(NetworkStream stream)
         {
             this.stream = stream;
-            writer = new StreamWriter(this.stream);
             thread = new Thread(Run);
             thread.Start();
         }
@@ -38,17 +37,29 @@ namespace BiteServer
 
                 lock (messages)
                 {
-                    writer.WriteLine(messages.Dequeue());
-                    writer.Flush();
+                    var message = messages.Dequeue();
+                    message = $"{message.Trim()}\n"; // Ending in newline.
+
+                    // The first 2 bytes are the length of the message.
+                    var length = message.Length;
+                    var byteLength = new byte[2];
+                    byteLength[0] = (byte)((length & 0xFF00) >> 8);
+                    byteLength[1] = (byte)((length & 0x00FF));
+
+                    var byteText = Encoding.ASCII.GetBytes(message);
+
+                    // Concat
+                    var data = new byte[byteLength.Length + byteText.Length];
+                    Array.Copy(byteLength, data, byteLength.Length);
+                    Array.Copy(byteText, 0, data, byteLength.Length, byteText.Length);
+
+                    stream.Write(data, 0, data.Length);
                 }
             }
         }
 
         internal void Close()
         {
-            if (writer != null)
-                writer.Close();
-
             if (thread != null)
                 thread.Abort();
         }
