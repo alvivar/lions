@@ -40,7 +40,6 @@ public class MultiplayerPosSenderSystem : MonoBehaviour
                     var query = $"! p.{id} p{buffer}";
                     buffer = "";
 
-                    Debug.Log(query);
                     c.server.queries.Enqueue(query);
                 }
             }
