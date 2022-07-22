@@ -24,12 +24,17 @@ public class MultiplayerPosReceiverSystem : MonoBehaviour
 
                 foreach (var pos in data.positions)
                 {
+                    if (pos.Length < 1)
+                        continue;
+
+                    Debug.Log($"MultiplayerPosReceiverSystem: {pos} / {pos.Length}");
+
                     var parts = pos.Split(',');
                     var x = Bitf.Float(parts[0], -1); // pos.x
                     var y = Bitf.Float(parts[1], -1); // pos.y
                     var z = Bitf.Float(parts[2], -1); // euler.z
 
-                    PuppetPosSystem.SetPos(id, new Vector3(x, y), z);
+                    PuppetPosSystem.PushPos(id, new Vector3(x, y), z);
                 }
             }
         }

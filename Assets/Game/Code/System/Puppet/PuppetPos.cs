@@ -1,9 +1,12 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 // #jam
 public class PuppetPos : MonoBehaviour
 {
     public int id = -1;
+
+    public Queue<Vector3> positionsByFrame = new Queue<Vector3>();
 
     public Vector3 currentPos = Vector3.one * -9999;
     public Vector3 lastPosition = Vector3.one * -9999;

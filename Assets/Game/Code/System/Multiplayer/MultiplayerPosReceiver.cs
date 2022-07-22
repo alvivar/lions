@@ -23,7 +23,8 @@ public class MultiplayerPosReceiver : MonoBehaviour
             if (parts[1].Substring(0, 1) != "p")
                 return;
 
-            Debug.Log($"MultiplayerPosReceiver: {parts[1].Substring(1)}");
+            if (server.id == long.Parse(parts[0]))
+                return;
 
             var poses = new List<string>(parts[1].Substring(1).Split('|'));
             positions.Enqueue(new Data { id = parts[0], positions = poses });
