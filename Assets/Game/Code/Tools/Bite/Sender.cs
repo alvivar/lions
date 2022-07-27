@@ -40,7 +40,8 @@ namespace BiteServer
                     var message = messages.Dequeue();
                     message = $"{message.Trim()}\n"; // Ending in newline.
 
-                    // The first 2 bytes are the length of the message.
+                    // The first 2 bytes should be the length of the message,
+                    // according to our protocol.
                     var length = message.Length + 2;
                     var byteLength = new byte[2];
                     byteLength[0] = (byte)((length & 0xFF00) >> 8);
