@@ -5,7 +5,7 @@ namespace BiteServer
 {
     public sealed class Bite
     {
-        internal event Action<string> DataReceived;
+        internal event Action<byte[]> DataReceived;
 
         private TcpClient client;
         private NetworkStream stream;
@@ -22,7 +22,7 @@ namespace BiteServer
             receiver.DataReceived += OnDataReceived;
         }
 
-        internal void Send(string data, Action<string> action = null)
+        internal void Send(string data, Action<byte[]> action = null)
         {
             sender.Send(data);
 
@@ -30,7 +30,7 @@ namespace BiteServer
                 receiver.React(action);
         }
 
-        private void OnDataReceived(string data)
+        private void OnDataReceived(byte[] data)
         {
             if (DataReceived != null)
                 DataReceived(data);
