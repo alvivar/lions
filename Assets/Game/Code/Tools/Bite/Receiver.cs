@@ -8,22 +8,20 @@ namespace BiteServer
 {
     internal sealed class Receiver
     {
-        internal event Action<string> DataReceived;
+        internal event Action<byte[]> DataReceived;
 
-        private Queue<Action<string>> actions = new Queue<Action<string>>();
+        private Queue<Action<byte[]>> actions = new Queue<Action<byte[]>>();
         private NetworkStream stream;
-        private StreamReader reader;
         private Thread thread;
 
         internal Receiver(NetworkStream stream)
         {
             this.stream = stream;
-            reader = new StreamReader(this.stream);
             thread = new Thread(Run);
             thread.Start();
         }
 
-        internal void React(Action<string> callback)
+        internal void React(Action<byte[]> callback)
         {
             lock (actions)
             {
@@ -35,10 +33,27 @@ namespace BiteServer
         {
             while (true)
             {
-                var response = reader.ReadLine();
+                if (!stream.CanRead)
+                    return;
+
+                // Incoming message may be larger than the buffer size.
+                byte[] buffer = new byte[4096];
+                int numberOfBytesRead = 0;
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    do
+                    {
+                        numberOfBytesRead = stream.Read(buffer, 0, buffer.Length);
+                        ms.Write(buffer, 0, numberOfBytesRead);
+                    }
+                    while (stream.DataAvailable);
+
+                    buffer = ms.ToArray();
+                }
 
                 if (DataReceived != null)
-                    DataReceived(response);
+                    DataReceived(buffer);
 
                 if (actions.Count < 1)
                     continue;
@@ -47,16 +62,13 @@ namespace BiteServer
                 {
                     var action = actions.Dequeue();
                     if (action != null)
-                        action(response);
+                        action(buffer);
                 }
             }
         }
 
         internal void Close()
         {
-            if (reader != null)
-                reader.Close();
-
             if (thread != null)
                 thread.Abort();
         }
