@@ -1,14 +1,26 @@
 using System;
 using UnityEngine;
-using BiteServer;
+using BiteClient;
+
+[System.Serializable]
+public struct AnalyticsData
+{
+    public string name;
+    public int timePlayed;
+    public Vector3 lastPosition;
+    public long lastEpoch;
+    public long startedEpoch;
+}
+
+internal struct Pos { public float x; public float y; public float z; }
 
 public class Analytics : MonoBehaviour
 {
-    public string user = "team.game.user";
+    public string keyName = "team.game.user";
 
     [Header("Server")]
-    public string host = "142.93.180.20";
-    public int port = 1984;
+    public string host = "167.99.58.31";
+    public int port = 1986;
 
     [Header("Info")]
     public string id; // SystemInfo.deviceUniqueIdentifier
@@ -27,17 +39,16 @@ public class Analytics : MonoBehaviour
 
     private Bite bite;
 
-    void Start()
+    private void Start()
     {
         id = SystemInfo.deviceUniqueIdentifier;
-        key = $"{user}.{id}";
+        key = $"{keyName}.{id}";
 
         bite = new Bite(host, port);
-        // bite.OnConnected += OnConnected;
-        // bite.OnError += OnError;
+        bite.DataReceived += OnDataReceived;
     }
 
-    void Update()
+    private void Update()
     {
         // Wait for connection.
         if (!connected)
@@ -50,25 +61,24 @@ public class Analytics : MonoBehaviour
 
         // Statistics
         SaveTimePlayed(tick);
-
         SaveLastEpoch();
-
         SaveLastPosition();
     }
 
     void OnDestroy()
     {
         if (bite != null)
-        {
-            // bite.Stop();
-            // bite.OnConnected -= OnConnected;
-            // bite.OnError -= OnError;
-        }
+            bite.Close();
     }
 
     void OnError(string error)
     {
         Debug.Log($"Analytics error: {error}");
+    }
+
+    private void OnDataReceived(byte[] response)
+    {
+        OnConnected();
     }
 
     void OnConnected()
@@ -83,25 +93,27 @@ public class Analytics : MonoBehaviour
     {
         bite.Send($"g {key}.name", response =>
         {
-            if (response.Trim().Length < 1)
-                response = "?";
+            var message = Bitf.Str(response);
+            if (message.Trim().Length < 1)
+                message = "?";
 
-            data.name = response;
+            data.name = message;
         });
 
         bite.Send($"g {key}.timePlayed", response =>
         {
-            // data.timePlayed = Bite.Int(response, 0);
+            data.timePlayed = Bitf.Int(response);
         });
 
         bite.Send($"j {key}.lastPosition", response =>
         {
-            var json = JsonUtility.FromJson<Pos>(response);
+            var message = Bitf.Str(response);
+            var json = JsonUtility.FromJson<Pos>(message);
 
-            // data.lastPosition = new Vector3(
-            //     Bite.Float($"{json.x}", 0),
-            //     Bite.Float($"{json.y}", 0),
-            //     Bite.Float($"{json.z}", 0));
+            data.lastPosition = new Vector3(
+                Bitf.Float($"{json.x}", 0),
+                Bitf.Float($"{json.y}", 0),
+                Bitf.Float($"{json.z}", 0));
 
             lastPositionLoaded = true;
         });
@@ -126,7 +138,7 @@ public class Analytics : MonoBehaviour
     {
         bite.Send($"g {key}.startedEpoch", response =>
         {
-            // data.startedEpoch = Bite.Long(response, 0);
+            data.startedEpoch = Bitf.Long(response);
 
             if (data.startedEpoch <= 0)
             {
@@ -158,16 +170,4 @@ public class Analytics : MonoBehaviour
         data.name = name;
         bite.Send($"s {key}.name {data.name}");
     }
-}
-
-internal class Pos { public float x; public float y; public float z; }
-
-[System.Serializable]
-public class AnalyticsData
-{
-    public string name;
-    public int timePlayed = -1;
-    public Vector3 lastPosition;
-    public long lastEpoch;
-    public long startedEpoch;
 }
