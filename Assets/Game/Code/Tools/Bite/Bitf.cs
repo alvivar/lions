@@ -11,6 +11,16 @@ public static class Bitf
         return int.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out n) ? n : or;
     }
 
+    public static int Int(byte[] bigEndian)
+    {
+        bigEndian = SubArray(bigEndian, 0, 4);
+
+        if (BitConverter.IsLittleEndian)
+            Array.Reverse(bigEndian);
+
+        return BitConverter.ToInt32(bigEndian, 0);
+    }
+
     public static float Float(string str, float or)
     {
         float n;
