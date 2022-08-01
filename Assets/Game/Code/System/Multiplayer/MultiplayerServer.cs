@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using BiteServer;
+using BiteClient;
 using UnityEngine;
 
 // #jam
