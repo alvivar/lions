@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
@@ -22,6 +23,16 @@ public static class Bitf
         return long.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out n) ? n : or;
     }
 
+    public static long Long(byte[] bigEndian)
+    {
+        bigEndian = SubArray(bigEndian, 0, 8);
+
+        if (BitConverter.IsLittleEndian)
+            Array.Reverse(bigEndian);
+
+        return BitConverter.ToInt64(bigEndian, 0);
+    }
+
     public static string Str(float f, int precision)
     {
         precision = (int)Mathf.Pow(10, precision);
@@ -33,6 +44,11 @@ public static class Bitf
             return $"{intf}";
 
         return $"{intf}.{decf}";
+    }
+
+    public static string Str(byte[] f)
+    {
+        return System.Text.Encoding.UTF8.GetString(f, 0, f.Length);
     }
 
     public static float Round(float f, int precision)
@@ -54,5 +70,13 @@ public static class Bitf
         }
 
         return numbers.ToArray();
+    }
+
+    private static T[] SubArray<T>(this T[] data, int index, int length)
+    {
+        T[] result = new T[length];
+        Array.Copy(data, index, result, 0, length);
+
+        return result;
     }
 }
