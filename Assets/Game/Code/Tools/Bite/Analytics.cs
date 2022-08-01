@@ -45,7 +45,13 @@ public class Analytics : MonoBehaviour
         key = $"{keyName}.{id}";
 
         bite = new Bite(host, port);
-        bite.DataReceived += OnDataReceived;
+        bite.Send($"! ping {id}", r => FirstConnection());
+    }
+
+    private void OnDestroy()
+    {
+        if (bite != null)
+            bite.Close();
     }
 
     private void Update()
@@ -54,7 +60,7 @@ public class Analytics : MonoBehaviour
         if (!connected)
             return;
 
-        // Tick
+        // Server tick
         if (clock > Time.time)
             return;
         clock = Time.time + tick;
@@ -65,23 +71,13 @@ public class Analytics : MonoBehaviour
         SaveLastPosition();
     }
 
-    void OnDestroy()
+    public void SetName(string name)
     {
-        if (bite != null)
-            bite.Close();
+        data.name = name;
+        bite.Send($"s {key}.name {data.name}");
     }
 
-    void OnError(string error)
-    {
-        Debug.Log($"Analytics error: {error}");
-    }
-
-    private void OnDataReceived(byte[] response)
-    {
-        OnConnected();
-    }
-
-    void OnConnected()
+    private void FirstConnection()
     {
         connected = true;
         LoadDataFromServer();
@@ -89,7 +85,7 @@ public class Analytics : MonoBehaviour
         Debug.Log($"Analytics connected");
     }
 
-    void LoadDataFromServer()
+    private void LoadDataFromServer()
     {
         bite.Send($"g {key}.name", response =>
         {
@@ -102,7 +98,7 @@ public class Analytics : MonoBehaviour
 
         bite.Send($"g {key}.timePlayed", response =>
         {
-            data.timePlayed = Bitf.Int(response);
+            data.timePlayed = Bitf.Int(Bitf.Str(response));
         });
 
         bite.Send($"j {key}.lastPosition", response =>
@@ -119,26 +115,11 @@ public class Analytics : MonoBehaviour
         });
     }
 
-    void SaveTimePlayed(int time)
-    {
-        if (data.timePlayed < 0) // Wait to be loaded for the first time.
-            return;
-
-        data.timePlayed += time;
-        bite.Send($"s {key}.timePlayed {data.timePlayed}");
-    }
-
-    void SaveLastEpoch()
-    {
-        data.lastEpoch = DateTimeOffset.Now.ToUnixTimeSeconds();
-        bite.Send($"s {key}.lastEpoch {data.lastEpoch}");
-    }
-
-    void LoadOrSetStartedEpoch()
+    private void LoadOrSetStartedEpoch()
     {
         bite.Send($"g {key}.startedEpoch", response =>
         {
-            data.startedEpoch = Bitf.Long(response);
+            data.startedEpoch = Bitf.Long(Bitf.Str(response));
 
             if (data.startedEpoch <= 0)
             {
@@ -148,7 +129,22 @@ public class Analytics : MonoBehaviour
         });
     }
 
-    void SaveLastPosition()
+    private void SaveTimePlayed(int time)
+    {
+        if (data.timePlayed < 0) // Wait to be loaded for the first time.
+            return;
+
+        data.timePlayed += time;
+        bite.Send($"s {key}.timePlayed {data.timePlayed}");
+    }
+
+    private void SaveLastEpoch()
+    {
+        data.lastEpoch = DateTimeOffset.Now.ToUnixTimeSeconds();
+        bite.Send($"s {key}.lastEpoch {data.lastEpoch}");
+    }
+
+    private void SaveLastPosition()
     {
         if (!position || !lastPositionLoaded)
             return;
@@ -163,11 +159,5 @@ public class Analytics : MonoBehaviour
         var y = $"s {key}.lastPosition.y {data.lastPosition.y}\n";
         var z = $"s {key}.lastPosition.z {data.lastPosition.z}";
         bite.Send($"{x}{y}{z}");
-    }
-
-    public void SetName(string name)
-    {
-        data.name = name;
-        bite.Send($"s {key}.name {data.name}");
     }
 }
