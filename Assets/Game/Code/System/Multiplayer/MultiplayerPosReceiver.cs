@@ -15,6 +15,8 @@ public class MultiplayerPosReceiver : MonoBehaviour
         server = GetComponent<MultiplayerServer>();
         server.OnResponse += data =>
         {
+            Debug.Log($"PosReceiver: {data.Length} / {data}");
+
             var parts = data.Split(' ');
 
             if (parts.Length < 2)
