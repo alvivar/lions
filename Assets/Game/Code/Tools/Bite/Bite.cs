@@ -1,7 +1,7 @@
 using System;
 using System.Net.Sockets;
 
-namespace BiteServer
+namespace BiteClient
 {
     public sealed class Bite
     {
