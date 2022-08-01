@@ -29,6 +29,12 @@ namespace BiteClient
             }
         }
 
+        internal void Close()
+        {
+            if (thread != null)
+                thread.Abort();
+        }
+
         private void Run()
         {
             while (true)
@@ -65,12 +71,6 @@ namespace BiteClient
                         action(buffer);
                 }
             }
-        }
-
-        internal void Close()
-        {
-            if (thread != null)
-                thread.Abort();
         }
     }
 }

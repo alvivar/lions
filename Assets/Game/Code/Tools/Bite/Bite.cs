@@ -30,18 +30,18 @@ namespace BiteClient
                 receiver.React(action);
         }
 
-        private void OnDataReceived(byte[] data)
-        {
-            if (DataReceived != null)
-                DataReceived(data);
-        }
-
         internal void Close()
         {
             client.Close();
             stream.Close();
             sender.Close();
             receiver.Close();
+        }
+
+        private void OnDataReceived(byte[] data)
+        {
+            if (DataReceived != null)
+                DataReceived(data);
         }
     }
 }

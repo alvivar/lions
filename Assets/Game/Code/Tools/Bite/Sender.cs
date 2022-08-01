@@ -28,6 +28,12 @@ namespace BiteClient
             }
         }
 
+        internal void Close()
+        {
+            if (thread != null)
+                thread.Abort();
+        }
+
         private void Run()
         {
             while (true)
@@ -57,12 +63,6 @@ namespace BiteClient
                     stream.Write(data, 0, data.Length);
                 }
             }
-        }
-
-        internal void Close()
-        {
-            if (thread != null)
-                thread.Abort();
         }
     }
 }
