@@ -13,6 +13,9 @@ public static class Bitf
 
     public static int Int(byte[] bigEndian)
     {
+        if (bigEndian.Length < 4)
+            return 0;
+
         bigEndian = SubArray(bigEndian, 0, 4);
 
         if (BitConverter.IsLittleEndian)
@@ -35,6 +38,9 @@ public static class Bitf
 
     public static long Long(byte[] bigEndian)
     {
+        if (bigEndian.Length < 8)
+            return 0;
+
         bigEndian = SubArray(bigEndian, 0, 8);
 
         if (BitConverter.IsLittleEndian)
