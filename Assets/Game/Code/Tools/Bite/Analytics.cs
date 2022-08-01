@@ -89,7 +89,10 @@ public class Analytics : MonoBehaviour
     {
         bite.Send($"g {key}.name", response =>
         {
+            Debug.Log($"Analytics name: {string.Join(" ", response)}");
             var message = Bitf.Str(response);
+            Debug.Log($"Analytics name: {message}");
+
             if (message.Trim().Length < 1)
                 message = "?";
 
@@ -104,12 +107,12 @@ public class Analytics : MonoBehaviour
         bite.Send($"j {key}.lastPosition", response =>
         {
             var message = Bitf.Str(response);
-            var json = JsonUtility.FromJson<Pos>(message);
+            // var json = JsonUtility.FromJson<Pos>(message);
 
-            data.lastPosition = new Vector3(
-                Bitf.Float($"{json.x}", 0),
-                Bitf.Float($"{json.y}", 0),
-                Bitf.Float($"{json.z}", 0));
+            // data.lastPosition = new Vector3(
+            //     Bitf.Float($"{json.x}"),
+            //     Bitf.Float($"{json.y}"),
+            //     Bitf.Float($"{json.z}"));
 
             lastPositionLoaded = true;
         });
@@ -119,7 +122,10 @@ public class Analytics : MonoBehaviour
     {
         bite.Send($"g {key}.startedEpoch", response =>
         {
-            data.startedEpoch = Bitf.Long(Bitf.Str(response));
+            var str = Bitf.Str(response);
+            Debug.Log($"Started Epoch: {str}");
+            data.startedEpoch = Bitf.Long(str);
+            Debug.Log($"Started Epoch: {data.startedEpoch}");
 
             if (data.startedEpoch <= 0)
             {
@@ -131,7 +137,7 @@ public class Analytics : MonoBehaviour
 
     private void SaveTimePlayed(int time)
     {
-        if (data.timePlayed < 0) // Wait to be loaded for the first time.
+        if (data.timePlayed <= 0) // Wait to be loaded for the first time.
             return;
 
         data.timePlayed += time;
