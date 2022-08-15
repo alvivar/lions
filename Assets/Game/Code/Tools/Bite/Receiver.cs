@@ -8,9 +8,9 @@ namespace BiteClient
 {
     internal sealed class Receiver
     {
-        internal event Action<byte[]> DataReceived;
+        internal event Action<Frame> FrameReceived;
 
-        private Queue<Action<byte[]>> actions = new Queue<Action<byte[]>>();
+        private Queue<Action<Frame>> actions = new Queue<Action<Frame>>();
         private NetworkStream stream;
         private Thread thread;
         private Frames frames = new Frames();
@@ -22,7 +22,7 @@ namespace BiteClient
             thread.Start();
         }
 
-        internal void React(Action<byte[]> callback)
+        internal void React(Action<Frame> callback)
         {
             lock (actions)
                 actions.Enqueue(callback);
@@ -62,8 +62,10 @@ namespace BiteClient
 
                 if (frames.HasCompleteFrame)
                 {
-                    if (DataReceived != null)
-                        DataReceived(frames.Pop().Data);
+                    var frame = frames.Dequeue();
+
+                    if (FrameReceived != null)
+                        FrameReceived(frame);
 
                     if (actions.Count < 1)
                         continue;
@@ -72,7 +74,7 @@ namespace BiteClient
                     {
                         var action = actions.Dequeue();
                         if (action != null)
-                            action(buffer);
+                            action(frame);
                     }
                 }
             }

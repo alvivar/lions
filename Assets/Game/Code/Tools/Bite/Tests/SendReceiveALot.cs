@@ -22,11 +22,11 @@ public class SendReceiveALot : MonoBehaviour
             Debug.Log("SendReceiveALot connected");
         });
 
-        bite.DataReceived += data =>
+        bite.FrameReceived += frame =>
         {
-            var message = Bitf.Str(data).Trim();
+            var message = frame.Text.Trim();
 
-            Debug.Log($"Byte received ({data.Length}): {string.Join(" ", data)}");
+            Debug.Log($"Byte received ({frame.Size}): {string.Join(" ", frame.Data)}");
             Debug.Log($"String received ({message.Length}): {message}");
         };
     }
@@ -34,13 +34,13 @@ public class SendReceiveALot : MonoBehaviour
     [ContextMenu("Send the maximum ammount of bytes")]
     public void SendLotsOfBytes()
     {
-        bite.Send($"#g test", result =>
+        bite.Send($"#g test", frame =>
         {
             Debug.Log("#g test received");
 
-            var message = Bitf.Str(result).Trim();
+            var message = frame.Text.Trim();
 
-            Debug.Log($"Test1 # Byte received ({result.Length}): {string.Join(" ", result)}");
+            Debug.Log($"Test1 # Byte received ({frame.Size}): {string.Join(" ", frame.Data)}");
             Debug.Log($"Test1 # String received ({message.Length}): {message}");
         });
 
@@ -57,11 +57,11 @@ public class SendReceiveALot : MonoBehaviour
         string content = builder.ToString();
         Debug.Log($"Test1 content ({content.Length}): {content}");
 
-        bite.Send($"{command}{content}", result =>
+        bite.Send($"{command}{content}", frame =>
         {
-            var message = Bitf.Str(result).Trim();
+            var message = frame.Text.Trim();
 
-            Debug.Log($"Test1 # Byte received ({result.Length}): {string.Join(" ", result)}");
+            Debug.Log($"Test1 # Byte received ({frame.Size}): {string.Join(" ", frame.Data)}");
             Debug.Log($"Test1 # String received ({message.Length}): {message}");
         });
     }

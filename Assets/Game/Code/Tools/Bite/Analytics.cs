@@ -87,10 +87,10 @@ public class Analytics : MonoBehaviour
 
     private void LoadDataFromServer()
     {
-        bite.Send($"g {key}.name", response =>
+        bite.Send($"g {key}.name", frame =>
         {
-            Debug.Log($"Analytics name: {string.Join(" ", response)}");
-            var message = Bitf.Str(response);
+            Debug.Log($"Analytics name: {string.Join(" ", frame.Data)}");
+            var message = Bitf.Str(frame.Content);
             Debug.Log($"Analytics name: {message}");
 
             if (message.Trim().Length < 1)
@@ -99,17 +99,17 @@ public class Analytics : MonoBehaviour
             data.name = message;
         });
 
-        bite.Send($"g {key}.timePlayed", response =>
+        bite.Send($"g {key}.timePlayed", frame =>
         {
-            Debug.Log($"Analytics timePlayed: {string.Join(" ", response)}");
-            data.timePlayed = Bitf.Int(Bitf.Str(response));
+            Debug.Log($"Analytics timePlayed: {string.Join(" ", frame.Data)}");
+            data.timePlayed = Bitf.Int(frame.Text);
             Debug.Log($"Analytics timePlayed: {data.timePlayed}");
         });
 
-        bite.Send($"j {key}.lastPosition", response =>
+        bite.Send($"j {key}.lastPosition", frame =>
         {
-            Debug.Log($"Analytics lastPosition: {string.Join(" ", response)}");
-            var message = Bitf.Str(response);
+            Debug.Log($"Analytics lastPosition: {string.Join(" ", frame.Data)}");
+            var message = frame.Text;
             Debug.Log($"Analytics lastPosition: {message}");
 
             try
@@ -131,9 +131,9 @@ public class Analytics : MonoBehaviour
 
     private void LoadOrSetStartedEpoch()
     {
-        bite.Send($"g {key}.startedEpoch", response =>
+        bite.Send($"g {key}.startedEpoch", frame =>
         {
-            var str = Bitf.Str(response);
+            var str = frame.Text;
             Debug.Log($"Started Epoch: {str}");
             data.startedEpoch = Bitf.Long(str);
             Debug.Log($"Started Epoch: {data.startedEpoch}");

@@ -6,7 +6,7 @@ namespace BiteClient
     public sealed class Bite
     {
         internal bool Connected { get { return client.Connected; } }
-        internal event Action<byte[]> DataReceived;
+        internal event Action<Frame> FrameReceived;
 
         private TcpClient client;
         private NetworkStream stream;
@@ -22,7 +22,7 @@ namespace BiteClient
             {
                 sender = new Sender(stream);
                 receiver = new Receiver(stream);
-                receiver.DataReceived += OnDataReceived;
+                receiver.FrameReceived += OnFrameReceived;
             }
             catch (SocketException e)
             {
@@ -31,7 +31,7 @@ namespace BiteClient
             }
         }
 
-        internal void Send(string data, Action<byte[]> action = null)
+        internal void Send(string data, Action<Frame> action = null)
         {
             if (!Connected)
                 throw new SocketException((int)SocketError.NotConnected);
@@ -51,10 +51,10 @@ namespace BiteClient
             receiver.Abort();
         }
 
-        private void OnDataReceived(byte[] data)
+        private void OnFrameReceived(Frame frame)
         {
-            if (DataReceived != null)
-                DataReceived(data);
+            if (FrameReceived != null)
+                FrameReceived(frame);
         }
     }
 }

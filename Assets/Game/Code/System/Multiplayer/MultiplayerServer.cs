@@ -29,15 +29,15 @@ public class MultiplayerServer : MonoBehaviour
                     Debug.Log("MultiplayerServer connected");
                 });
 
-                bite.DataReceived += data =>
+                bite.FrameReceived += frame =>
                 {
-                    if (data.Length <= 5) // Let's ignore responses like OK or KEY? from queries.
+                    if (frame.Data.Length <= 5) // Let's ignore responses like OK or KEY? from queries.
                         return;
 
-                    var message = Bitf.Str(data).Trim();
+                    var message = frame.Text.Trim();
                     var lines = message.Split('\n');
 
-                    Debug.Log($"Byte DataReceived ({data.Length}): {string.Join(" ", data)}");
+                    Debug.Log($"Byte DataReceived ({frame.Size}): {string.Join(" ", frame.Data)}");
                     Debug.Log($"String DataReceived ({message.Length}): {message}");
 
                     // There is always a new line at the end of the message, and
@@ -56,9 +56,9 @@ public class MultiplayerServer : MonoBehaviour
 
         this.tt("WaitForId")
             .Wait(() => connected)
-            .Add(t => bite.Send($"+1 app.connections.id", r =>
+            .Add(t => bite.Send($"+1 app.connections.id", frame =>
             {
-                id = Bitf.Long(r);
+                id = Bitf.Long(frame.Content);
                 Debug.Log($"User ID: {id}");
             }));
     }
