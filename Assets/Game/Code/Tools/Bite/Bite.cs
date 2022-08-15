@@ -33,7 +33,7 @@ namespace BiteClient
 
         internal void Send(string data, Action<byte[]> action = null)
         {
-            if (!client.Connected)
+            if (!Connected)
                 throw new SocketException((int)SocketError.NotConnected);
 
             sender.Send(data);
