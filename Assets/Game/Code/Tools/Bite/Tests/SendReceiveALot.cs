@@ -4,6 +4,8 @@ using System.Text;
 
 public class SendReceiveALot : MonoBehaviour
 {
+    public int amount = 65525; // The missing 10 bytes are the query.
+
     private Bite bite;
     private bool connected = false;
 
@@ -28,14 +30,15 @@ public class SendReceiveALot : MonoBehaviour
         };
     }
 
-    [ContextMenu("Test1")]
-    public void Test1()
+    [ContextMenu("Send the maximum ammount of Bytes")]
+    public void SendLotsOfBytes()
     {
         bite.Send($"#g test", result =>
         {
             Debug.Log("#g test received");
 
             var message = Bitf.Str(result).Trim();
+
             Debug.Log($"Test1 # Byte received ({result.Length}): {string.Join(" ", result)}");
             Debug.Log($"Test1 # String received ({message.Length}): {message}");
         });
@@ -44,7 +47,8 @@ public class SendReceiveALot : MonoBehaviour
         var builder = new StringBuilder();
         var index = 65;
 
-        for (int i = 0; i < 8192; i++)
+        // The missing 10 bytes are the command and the key below.
+        for (int i = 0; i < amount; i++)
         {
             index = index > 90 ? 65 : index;
             builder.Append((char)index);
@@ -57,9 +61,9 @@ public class SendReceiveALot : MonoBehaviour
         bite.Send($"s test {content}", result =>
         {
             var message = Bitf.Str(result).Trim();
+
             Debug.Log($"Test1 # Byte received ({result.Length}): {string.Join(" ", result)}");
             Debug.Log($"Test1 # String received ({message.Length}): {message}");
         });
     }
 }
-
