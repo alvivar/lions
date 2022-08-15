@@ -13,6 +13,7 @@ namespace BiteClient
         private Queue<Action<byte[]>> actions = new Queue<Action<byte[]>>();
         private NetworkStream stream;
         private Thread thread;
+        private Frames frames = new Frames();
 
         internal Receiver(NetworkStream stream)
         {
@@ -24,9 +25,7 @@ namespace BiteClient
         internal void React(Action<byte[]> callback)
         {
             lock (actions)
-            {
                 actions.Enqueue(callback);
-            }
         }
 
         internal void Abort()
@@ -44,34 +43,37 @@ namespace BiteClient
 
                 // Incoming message may be larger than the buffer size.
                 byte[] buffer = new byte[4096];
-                int numberOfBytesRead = 0;
+                int bytesRead = 0;
 
-                using (MemoryStream ms = new MemoryStream())
+                using (var ms = new MemoryStream())
                 {
                     do
                     {
-                        numberOfBytesRead = stream.Read(buffer, 0, buffer.Length);
-                        ms.Write(buffer, 0, numberOfBytesRead);
+                        bytesRead = stream.Read(buffer, 0, buffer.Length);
+                        ms.Write(buffer, 0, bytesRead);
                     }
                     while (stream.DataAvailable);
 
-                    if (numberOfBytesRead <= 0)
+                    if (bytesRead <= 0)
                         throw new SocketException((int)SocketError.NetworkUnreachable);
 
-                    buffer = ms.ToArray();
+                    frames.Feed(ms.ToArray());
                 }
 
-                if (DataReceived != null)
-                    DataReceived(buffer);
-
-                if (actions.Count < 1)
-                    continue;
-
-                lock (actions)
+                if (frames.HasCompleteFrame)
                 {
-                    var action = actions.Dequeue();
-                    if (action != null)
-                        action(buffer);
+                    if (DataReceived != null)
+                        DataReceived(frames.Pop().Data);
+
+                    if (actions.Count < 1)
+                        continue;
+
+                    lock (actions)
+                    {
+                        var action = actions.Dequeue();
+                        if (action != null)
+                            action(buffer);
+                    }
                 }
             }
         }

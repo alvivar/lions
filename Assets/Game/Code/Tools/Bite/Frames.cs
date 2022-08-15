@@ -1,11 +1,15 @@
 using System;
+using System.Text;
 using System.Collections.Generic;
 
 namespace BiteClient
 {
     public class Frame
     {
-        public byte[] Data { get { return data; } }
+        public byte[] Data
+        {
+            get { return data; }
+        }
         public byte[] Message
         {
             get
@@ -13,6 +17,15 @@ namespace BiteClient
                 var message = new byte[data.Length - 2];
                 Array.Copy(data, 2, message, 0, message.Length);
                 return message;
+            }
+        }
+        public String Text
+        {
+            get
+            {
+                var message = new byte[data.Length - 2];
+                Array.Copy(data, 2, message, 0, message.Length);
+                return Encoding.UTF8.GetString(data, 0, data.Length);
             }
         }
 

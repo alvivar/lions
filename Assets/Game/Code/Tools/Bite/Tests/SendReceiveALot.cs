@@ -30,7 +30,7 @@ public class SendReceiveALot : MonoBehaviour
         };
     }
 
-    [ContextMenu("Send the maximum ammount of Bytes")]
+    [ContextMenu("Send the maximum ammount of bytes")]
     public void SendLotsOfBytes()
     {
         bite.Send($"#g test", result =>
@@ -43,11 +43,9 @@ public class SendReceiveALot : MonoBehaviour
             Debug.Log($"Test1 # String received ({message.Length}): {message}");
         });
 
-
         var builder = new StringBuilder();
         var index = 65;
 
-        // The missing 10 bytes are the command and the key below.
         for (int i = 0; i < amount; i++)
         {
             index = index > 90 ? 65 : index;

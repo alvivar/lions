@@ -44,7 +44,7 @@ namespace BiteClient
                 lock (messages)
                 {
                     var message = messages.Dequeue();
-                    message = $"{message.Trim()}\n"; // Ending in newline.
+                    message = $"{message.Trim()}"; // Ending in newline.
 
                     // The first 2 bytes should be the length of the message,
                     // according to our protocol.
