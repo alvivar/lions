@@ -28,7 +28,7 @@ namespace BiteClient
             }
         }
 
-        internal void Close()
+        internal void Abort()
         {
             if (thread != null)
                 thread.Abort();

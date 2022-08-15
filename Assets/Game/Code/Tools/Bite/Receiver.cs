@@ -29,7 +29,7 @@ namespace BiteClient
             }
         }
 
-        internal void Close()
+        internal void Abort()
         {
             if (thread != null)
                 thread.Abort();
@@ -54,6 +54,9 @@ namespace BiteClient
                         ms.Write(buffer, 0, numberOfBytesRead);
                     }
                     while (stream.DataAvailable);
+
+                    if (numberOfBytesRead <= 0)
+                        throw new SocketException((int)SocketError.NetworkUnreachable);
 
                     buffer = ms.ToArray();
                 }
