@@ -4,7 +4,8 @@ using System.Text;
 
 public class SendReceiveALot : MonoBehaviour
 {
-    public int amount = 65525; // The missing 10 bytes are the query.
+    public string command = "s test ";
+    public int amount = 65526; // The missing 10 bytes are the query.
 
     private Bite bite;
     private bool connected = false;
@@ -56,7 +57,7 @@ public class SendReceiveALot : MonoBehaviour
         string content = builder.ToString();
         Debug.Log($"Test1 content ({content.Length}): {content}");
 
-        bite.Send($"s test {content}", result =>
+        bite.Send($"{command}{content}", result =>
         {
             var message = Bitf.Str(result).Trim();
 

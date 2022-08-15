@@ -246,7 +246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf7de181c26af854a87fbcc3c67c1951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 65525
+  command: 's test '
+  amount: 65526
 --- !u!4 &989843032
 Transform:
   m_ObjectHideFlags: 0
