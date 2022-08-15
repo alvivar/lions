@@ -23,8 +23,7 @@ namespace BiteClient
         {
             get
             {
-                var message = new byte[data.Length - 2];
-                Array.Copy(data, 2, message, 0, message.Length);
+                var message = Message;
                 return Encoding.UTF8.GetString(data, 0, data.Length);
             }
         }
