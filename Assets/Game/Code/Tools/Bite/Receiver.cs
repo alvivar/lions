@@ -54,6 +54,7 @@ namespace BiteClient
                     }
                     while (stream.DataAvailable);
 
+                    // If seems that the connection was closed.
                     if (bytesRead <= 0)
                         throw new SocketException((int)SocketError.NetworkUnreachable);
 
