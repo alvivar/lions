@@ -21,11 +21,7 @@ namespace BiteClient
         }
         public String Text
         {
-            get
-            {
-                var message = Message;
-                return Encoding.UTF8.GetString(data, 0, data.Length);
-            }
+            get { return Encoding.UTF8.GetString(Message, 0, Message.Length); }
         }
 
         private int size;
