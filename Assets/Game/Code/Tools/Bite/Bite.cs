@@ -17,13 +17,24 @@ namespace BiteClient
             client = new TcpClient(host, port);
             stream = client.GetStream();
 
-            sender = new Sender(stream);
-            receiver = new Receiver(stream);
-            receiver.DataReceived += OnDataReceived;
+            try
+            {
+                sender = new Sender(stream);
+                receiver = new Receiver(stream);
+                receiver.DataReceived += OnDataReceived;
+            }
+            catch (SocketException e)
+            {
+                Close();
+                Console.WriteLine(e);
+            }
         }
 
         internal void Send(string data, Action<byte[]> action = null)
         {
+            if (!client.Connected)
+                throw new SocketException((int)SocketError.NotConnected);
+
             sender.Send(data);
 
             if (action != null)
@@ -34,8 +45,9 @@ namespace BiteClient
         {
             client.Close();
             stream.Close();
-            sender.Close();
-            receiver.Close();
+
+            sender.Abort();
+            receiver.Abort();
         }
 
         private void OnDataReceived(byte[] data)
