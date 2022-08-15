@@ -75,7 +75,8 @@ namespace BiteClient
                 frames.Enqueue(frame);
             }
 
-            // Not enough data in the buffer for a complete frame, maybe next time.
+            // Not enough data in the buffer for a complete frame, maybe on the
+            // next feed.
             else if (frame.Size > frame.Data.Length)
                 return;
         }
