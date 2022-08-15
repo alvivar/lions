@@ -101,18 +101,29 @@ public class Analytics : MonoBehaviour
 
         bite.Send($"g {key}.timePlayed", response =>
         {
+            Debug.Log($"Analytics timePlayed: {string.Join(" ", response)}");
             data.timePlayed = Bitf.Int(Bitf.Str(response));
+            Debug.Log($"Analytics timePlayed: {data.timePlayed}");
         });
 
         bite.Send($"j {key}.lastPosition", response =>
         {
+            Debug.Log($"Analytics lastPosition: {string.Join(" ", response)}");
             var message = Bitf.Str(response);
-            // var json = JsonUtility.FromJson<Pos>(message);
+            Debug.Log($"Analytics lastPosition: {message}");
 
-            // data.lastPosition = new Vector3(
-            //     Bitf.Float($"{json.x}"),
-            //     Bitf.Float($"{json.y}"),
-            //     Bitf.Float($"{json.z}"));
+            try
+            {
+                var json = JsonUtility.FromJson<Pos>(message);
+                data.lastPosition = new Vector3(
+                    Bitf.Float($"{json.x}"),
+                    Bitf.Float($"{json.y}"),
+                    Bitf.Float($"{json.z}"));
+            }
+            catch (ArgumentException e)
+            {
+                Debug.Log($"Not a valid json: {e.Message}");
+            }
 
             lastPositionLoaded = true;
         });
