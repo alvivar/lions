@@ -48,16 +48,16 @@ namespace BiteClient
                     // The first 2 bytes should be the length of the message,
                     // according to our protocol.
                     var length = message.Length + 2;
-                    var byteLength = new byte[2];
-                    byteLength[0] = (byte)((length & 0xFF00) >> 8);
-                    byteLength[1] = (byte)((length & 0x00FF));
+                    var byteLen = new byte[2];
+                    byteLen[0] = (byte)((length & 0xFF00) >> 8);
+                    byteLen[1] = (byte)((length & 0x00FF));
 
-                    var byteText = Encoding.ASCII.GetBytes(message);
+                    var byteData = Encoding.ASCII.GetBytes(message);
 
                     // Concat
-                    var data = new byte[byteLength.Length + byteText.Length];
-                    Array.Copy(byteLength, data, byteLength.Length);
-                    Array.Copy(byteText, 0, data, byteLength.Length, byteText.Length);
+                    var data = new byte[byteLen.Length + byteData.Length];
+                    Array.Copy(byteLen, data, byteLen.Length);
+                    Array.Copy(byteData, 0, data, byteLen.Length, byteData.Length);
 
                     stream.Write(data, 0, data.Length);
                 }
