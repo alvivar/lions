@@ -5,6 +5,7 @@ namespace BiteClient
 {
     public sealed class Bite
     {
+        internal bool Connected { get { return client.Connected; } }
         internal event Action<byte[]> DataReceived;
 
         private TcpClient client;
