@@ -40,29 +40,29 @@ public class SendReceiveALot : MonoBehaviour
 
             var message = frame.Text.Trim();
 
-            Debug.Log($"Test1 # Byte received ({frame.Size}): {string.Join(" ", frame.Data)}");
-            Debug.Log($"Test1 # String received ({message.Length}): {message}");
+            Debug.Log($"#g test Byte received ({frame.Size}): {string.Join(" ", frame.Data)}");
+            Debug.Log($"#g test String received ({message.Length}): {message}");
         });
 
         var builder = new StringBuilder();
-        var index = 65;
+        var ascii = 65;
 
         for (int i = 0; i < amount; i++)
         {
-            index = index > 90 ? 65 : index;
-            builder.Append((char)index);
-            index += 1;
+            ascii = ascii > 90 ? 65 : ascii;
+            builder.Append((char)ascii);
+            ascii += 1;
         }
 
         string content = builder.ToString();
-        Debug.Log($"Test1 content ({content.Length}): {content}");
+        Debug.Log($"{command} content ({content.Length}): {content}");
 
         bite.Send($"{command}{content}", frame =>
         {
             var message = frame.Text.Trim();
 
-            Debug.Log($"Test1 # Byte received ({frame.Size}): {string.Join(" ", frame.Data)}");
-            Debug.Log($"Test1 # String received ({message.Length}): {message}");
+            Debug.Log($"{command} # Byte received ({frame.Size}): {string.Join(" ", frame.Data)}");
+            Debug.Log($"{command} # String received ({message.Length}): {message}");
         });
     }
 }
