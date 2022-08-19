@@ -5,6 +5,7 @@ using System.Text;
 public class BiteTest : MonoBehaviour
 {
     public string command = "s test ";
+    public string subscription = "#g test";
 
     [Header("Network")]
 
@@ -22,7 +23,7 @@ public class BiteTest : MonoBehaviour
         bite.Close();
     }
 
-    [ContextMenu("Connect")]
+    [ContextMenu("Connect()")]
     public void Connect()
     {
         bite = new Bite("127.0.0.1", 1984);
@@ -46,17 +47,17 @@ public class BiteTest : MonoBehaviour
         };
     }
 
-    [ContextMenu("Send the maximum ammount of bytes")]
+    [ContextMenu("SendMaxBytes()")]
     public void SendMaxBytes()
     {
-        bite.Send($"#g SendMaximumBytes", frame =>
+        bite.Send($"{subscription}", frame =>
         {
-            Debug.Log("#g SendMaximumBytes received");
+            Debug.Log("{subscription} received");
 
             var message = frame.Text.Trim();
 
-            Debug.Log($"#g SendMaximumBytes Bytes ({frame.Size}): {string.Join(" ", frame.Data)}");
-            Debug.Log($"#g SendMaximumBytes String ({message.Length}): {message}");
+            Debug.Log($"{subscription} Bytes ({frame.Size}): {string.Join(" ", frame.Data)}");
+            Debug.Log($"{subscription} String ({message.Length}): {message}");
         });
 
         var builder = new StringBuilder();

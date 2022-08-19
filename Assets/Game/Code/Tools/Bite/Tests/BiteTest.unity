@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4daeee603dea17140af2d9b57a789eaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  command: 's SendMaximumBytes '
+  command: 's test '
 --- !u!4 &989843032
 Transform:
   m_ObjectHideFlags: 0
