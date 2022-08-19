@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 
-/// Utilities to transform between bytes and types.
+/// Utilities to cast bytes.
 
 public static class Bitf
 {
