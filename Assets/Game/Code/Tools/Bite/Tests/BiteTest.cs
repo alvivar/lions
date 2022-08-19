@@ -60,15 +60,17 @@ public class BiteTest : MonoBehaviour
             Debug.Log($"{subscription} String ({message.Length}): {message}");
         });
 
-        var builder = new StringBuilder();
-        var ascii = 65;
+        var from = 0;
+        var to = 255;
+        var ascii = 0;
 
         var max = 65535;
         var commandSize = command.Length + 2;
 
+        var builder = new StringBuilder();
         for (int i = 0; i < max - commandSize; i++)
         {
-            ascii = ascii > 90 ? 65 : ascii;
+            ascii = ascii > to ? from : ascii;
             builder.Append((char)ascii);
             ascii += 1;
         }
