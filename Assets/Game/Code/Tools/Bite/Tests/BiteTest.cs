@@ -2,23 +2,36 @@ using UnityEngine;
 using BiteClient;
 using System.Text;
 
-public class SendMaximumBytes : MonoBehaviour
+public class BiteTest : MonoBehaviour
 {
-    public string command = "s SendMaximumBytes ";
-    public int amount = 65535; // The missing 10 bytes are the query.
+    public string command = "s MaximumBytes ";
 
     private Bite bite;
     private bool connected = false;
 
+    [ContextMenu("Test All")]
     void Start()
     {
-        // bite = new Bite("167.99.58.31", 1986);
+        Connect();
+    }
+
+    void OnDisable()
+    {
+        bite.Close();
+    }
+
+    [ContextMenu("Connect")]
+    public void Connect()
+    {
         bite = new Bite("127.0.0.1", 1984);
 
         var uid = SystemInfo.deviceUniqueIdentifier;
         bite.Send($"! ping from {uid}", r =>
         {
             connected = true;
+
+            SendMaxBytes();
+
             Debug.Log("SendMaximumBytes connected");
         });
 
@@ -29,11 +42,6 @@ public class SendMaximumBytes : MonoBehaviour
             Debug.Log($"FrameReceived Bytes ({frame.Size}): {string.Join(" ", frame.Data)}");
             Debug.Log($"FrameReceived String ({message.Length}): {message}");
         };
-    }
-
-    void OnDisable()
-    {
-        bite.Close();
     }
 
     [ContextMenu("Send the maximum ammount of bytes")]
@@ -52,7 +60,10 @@ public class SendMaximumBytes : MonoBehaviour
         var builder = new StringBuilder();
         var ascii = 65;
 
-        for (int i = 0; i < amount; i++)
+        var max = 65535;
+        var commandSize = command.Length + 2;
+
+        for (int i = 0; i < max - commandSize; i++)
         {
             ascii = ascii > 90 ? 65 : ascii;
             builder.Append((char)ascii);
