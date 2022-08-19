@@ -4,7 +4,9 @@ using System.Text;
 
 public class BiteTest : MonoBehaviour
 {
-    public string command = "s MaximumBytes ";
+    public string command = "s test ";
+
+    [Header("Network")]
 
     private Bite bite;
     private bool connected = false;
