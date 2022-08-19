@@ -2,10 +2,10 @@ using UnityEngine;
 using BiteClient;
 using System.Text;
 
-public class SendReceiveALot : MonoBehaviour
+public class SendMaximumBytes : MonoBehaviour
 {
-    public string command = "s test ";
-    public int amount = 65526; // The missing 10 bytes are the query.
+    public string command = "s SendMaximumBytes ";
+    public int amount = 65535; // The missing 10 bytes are the query.
 
     private Bite bite;
     private bool connected = false;
@@ -19,29 +19,34 @@ public class SendReceiveALot : MonoBehaviour
         bite.Send($"! ping from {uid}", r =>
         {
             connected = true;
-            Debug.Log("SendReceiveALot connected");
+            Debug.Log("SendMaximumBytes connected");
         });
 
         bite.FrameReceived += frame =>
         {
             var message = frame.Text.Trim();
 
-            Debug.Log($"Byte received ({frame.Size}): {string.Join(" ", frame.Data)}");
-            Debug.Log($"String received ({message.Length}): {message}");
+            Debug.Log($"FrameReceived Bytes ({frame.Size}): {string.Join(" ", frame.Data)}");
+            Debug.Log($"FrameReceived String ({message.Length}): {message}");
         };
     }
 
-    [ContextMenu("Send the maximum ammount of bytes")]
-    public void SendLotsOfBytes()
+    void OnDisable()
     {
-        bite.Send($"#g test", frame =>
+        bite.Close();
+    }
+
+    [ContextMenu("Send the maximum ammount of bytes")]
+    public void SendMaxBytes()
+    {
+        bite.Send($"#g SendMaximumBytes", frame =>
         {
-            Debug.Log("#g test received");
+            Debug.Log("#g SendMaximumBytes received");
 
             var message = frame.Text.Trim();
 
-            Debug.Log($"#g test Byte received ({frame.Size}): {string.Join(" ", frame.Data)}");
-            Debug.Log($"#g test String received ({message.Length}): {message}");
+            Debug.Log($"#g SendMaximumBytes Bytes ({frame.Size}): {string.Join(" ", frame.Data)}");
+            Debug.Log($"#g SendMaximumBytes String ({message.Length}): {message}");
         });
 
         var builder = new StringBuilder();
@@ -61,8 +66,8 @@ public class SendReceiveALot : MonoBehaviour
         {
             var message = frame.Text.Trim();
 
-            Debug.Log($"{command} # Byte received ({frame.Size}): {string.Join(" ", frame.Data)}");
-            Debug.Log($"{command} # String received ({message.Length}): {message}");
+            Debug.Log($"{command} Bytes ({frame.Size}): {string.Join(" ", frame.Data)}");
+            Debug.Log($"{command} String ({message.Length}): {message}");
         });
     }
 }

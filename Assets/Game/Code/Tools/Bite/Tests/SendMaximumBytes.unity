@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 989843032}
   - component: {fileID: 989843031}
   m_Layer: 0
-  m_Name: SendReceiveALot
+  m_Name: SendMaximumBytes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,11 +243,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 989843030}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf7de181c26af854a87fbcc3c67c1951, type: 3}
+  m_Script: {fileID: 11500000, guid: 4daeee603dea17140af2d9b57a789eaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  command: 's test '
-  amount: 65526
+  command: 's SendMaximumBytes '
+  amount: 65516
 --- !u!4 &989843032
 Transform:
   m_ObjectHideFlags: 0

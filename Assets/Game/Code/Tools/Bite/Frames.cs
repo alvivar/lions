@@ -7,22 +7,25 @@ namespace BiteClient
     public class Frame
     {
         public byte[] Data { get { return data; } }
+
         public int Size { get { return (data[0] << 8) | data[1]; } }
+
         public byte[] Content
         {
             get
             {
-                var message = new byte[data.Length - 2];
-                Array.Copy(data, 2, message, 0, message.Length);
-                return message;
+                var content = new byte[data.Length - 2];
+                Array.Copy(data, 2, content, 0, content.Length);
+                return content;
             }
         }
+
         public String Text
         {
             get
             {
-                var content = Content;
-                return Encoding.UTF8.GetString(content, 0, content.Length);
+                var text = Content;
+                return Encoding.UTF8.GetString(text, 0, text.Length);
             }
         }
 
