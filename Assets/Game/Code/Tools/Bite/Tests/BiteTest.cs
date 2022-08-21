@@ -8,25 +8,18 @@ public class BiteTest : MonoBehaviour
     public string subscription = "#g test";
 
     [Header("Network")]
+    public string host = "127.0.0.1";
+    public int port = 1984;
 
     private Bite bite;
     private bool connected = false;
 
-    [ContextMenu("Test All")]
-    void Start()
-    {
-        Connect();
-    }
+    void Start() { Connect(); }
+    void OnDisable() { bite.Close(); }
 
-    void OnDisable()
-    {
-        bite.Close();
-    }
-
-    [ContextMenu("Connect()")]
     public void Connect()
     {
-        bite = new Bite("127.0.0.1", 1984);
+        bite = new Bite(host, port);
 
         var uid = SystemInfo.deviceUniqueIdentifier;
         bite.Send($"! ping from {uid}", r =>
@@ -47,7 +40,6 @@ public class BiteTest : MonoBehaviour
         };
     }
 
-    [ContextMenu("SendMaxBytes()")]
     public void SendMaxBytes()
     {
         bite.Send($"{subscription}", frame =>
