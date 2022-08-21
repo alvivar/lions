@@ -51,7 +51,7 @@ public class Analytics : MonoBehaviour
     private void OnDestroy()
     {
         if (bite != null)
-            bite.Close();
+            bite.Shutdown();
     }
 
     private void Update()

@@ -15,7 +15,7 @@ public class BiteTest : MonoBehaviour
     private bool connected = false;
 
     void Start() { Connect(); }
-    void OnDisable() { bite.Close(); }
+    void OnDisable() { bite.Shutdown(); }
 
     public void Connect()
     {

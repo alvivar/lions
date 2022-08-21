@@ -26,7 +26,7 @@ namespace BiteClient
             }
             catch (SocketException e)
             {
-                Close();
+                Shutdown();
                 Console.WriteLine(e);
             }
         }
@@ -42,7 +42,7 @@ namespace BiteClient
                 receiver.React(action);
         }
 
-        internal void Close()
+        internal void Shutdown()
         {
             client.Close();
             stream.Close();

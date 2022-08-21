@@ -51,7 +51,7 @@ public class MultiplayerServer : MonoBehaviour
             })
             .Add(3)
             .Wait(() => !connected, 3)
-            .Add(() => bite.Close())
+            .Add(() => bite.Shutdown())
             .Repeat();
 
         this.tt("WaitForId")
@@ -66,7 +66,7 @@ public class MultiplayerServer : MonoBehaviour
     private void OnDestroy()
     {
         if (bite != null)
-            bite.Close();
+            bite.Shutdown();
     }
 
     private void OnEnable()
