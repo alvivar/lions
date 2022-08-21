@@ -247,6 +247,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   command: 's test '
+  subscription: '#g test'
+  host: 127.0.0.1
+  port: 1984
 --- !u!4 &989843032
 Transform:
   m_ObjectHideFlags: 0
