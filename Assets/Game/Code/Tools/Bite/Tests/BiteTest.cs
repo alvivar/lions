@@ -22,21 +22,30 @@ public class BiteTest : MonoBehaviour
         bite = new Bite(host, port);
 
         var uid = SystemInfo.deviceUniqueIdentifier;
-        bite.Send($"! ping from {uid}", r =>
+        bite.Send($"! ping from {uid}", frame =>
         {
             connected = true;
 
             SendMaxBytes();
 
-            Debug.Log("SendMaximumBytes connected");
+            var clientId = frame.ClientId;
+            var messageId = frame.MessageId;
+            var text = frame.Text.Trim();
+
+            Debug.Log($"Client {clientId} Message {messageId}");
+            Debug.Log($"Bytes ({frame.Size}): {string.Join(" ", frame.Data)}");
+            Debug.Log($"Text ({text.Length}): {text}");
         });
 
         bite.FrameReceived += frame =>
         {
-            var message = frame.Text.Trim();
+            var clientId = frame.ClientId;
+            var messageId = frame.MessageId;
+            var text = frame.Text.Trim();
 
-            Debug.Log($"FrameReceived Bytes ({frame.Size}): {string.Join(" ", frame.Data)}");
-            Debug.Log($"FrameReceived String ({message.Length}): {message}");
+            Debug.Log($"Client {clientId} Message {messageId}");
+            Debug.Log($"Bytes ({frame.Size}): {string.Join(" ", frame.Data)}");
+            Debug.Log($"Text ({text.Length}): {text}");
         };
     }
 
@@ -44,12 +53,15 @@ public class BiteTest : MonoBehaviour
     {
         bite.Send($"{subscription}", frame =>
         {
-            Debug.Log("{subscription} received");
+            Debug.Log("SendMaxBytes subscription response");
 
-            var message = frame.Text.Trim();
+            var clientId = frame.ClientId;
+            var messageId = frame.MessageId;
+            var text = frame.Text.Trim();
 
-            Debug.Log($"{subscription} Bytes ({frame.Size}): {string.Join(" ", frame.Data)}");
-            Debug.Log($"{subscription} String ({message.Length}): {message}");
+            Debug.Log($"Client {clientId} Message {messageId}");
+            Debug.Log($"Bytes ({frame.Size}): {string.Join(" ", frame.Data)}");
+            Debug.Log($"Text ({text.Length}): {text}");
         });
 
         var from = 0;
@@ -57,7 +69,7 @@ public class BiteTest : MonoBehaviour
         var ascii = 0;
 
         var max = 65535;
-        var commandSize = command.Length + 2;
+        var commandSize = command.Length + 6;
 
         var builder = new StringBuilder();
         for (int i = 0; i < max - commandSize; i++)
@@ -68,14 +80,19 @@ public class BiteTest : MonoBehaviour
         }
 
         string content = builder.ToString();
-        Debug.Log($"{command} content ({content.Length}): {content}");
+        Debug.Log($"{command}content ({content.Length}): {content}");
 
         bite.Send($"{command}{content}", frame =>
         {
-            var message = frame.Text.Trim();
+            Debug.Log("SendMaxBytes set response");
 
-            Debug.Log($"{command} Bytes ({frame.Size}): {string.Join(" ", frame.Data)}");
-            Debug.Log($"{command} String ({message.Length}): {message}");
+            var clientId = frame.ClientId;
+            var messageId = frame.MessageId;
+            var text = frame.Text.Trim();
+
+            Debug.Log($"Client {clientId} Message {messageId}");
+            Debug.Log($"Bytes ({frame.Size}): {string.Join(" ", frame.Data)}");
+            Debug.Log($"Text ({text.Length}): {text}");
         });
     }
 }
