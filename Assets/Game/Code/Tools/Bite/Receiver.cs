@@ -36,7 +36,7 @@ namespace BiteClient
 
         private void Run()
         {
-            var ms = new MemoryStream();
+            var memory = new MemoryStream();
 
             while (true)
             {
@@ -50,7 +50,7 @@ namespace BiteClient
                 do
                 {
                     bytesRead = stream.Read(buffer, 0, buffer.Length);
-                    ms.Write(buffer, 0, bytesRead);
+                    memory.Write(buffer, 0, bytesRead);
                 }
                 while (stream.DataAvailable);
 
@@ -58,8 +58,8 @@ namespace BiteClient
                 if (bytesRead <= 0)
                     throw new SocketException((int)SocketError.NetworkUnreachable);
 
-                frames.Feed(ms.ToArray());
-                ms.SetLength(0);
+                frames.Feed(memory.ToArray());
+                memory.SetLength(0);
 
                 if (frames.HasCompleteFrame)
                 {
