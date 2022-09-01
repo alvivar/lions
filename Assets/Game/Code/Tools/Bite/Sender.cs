@@ -8,7 +8,7 @@ namespace BiteClient
 {
     internal sealed class Sender
     {
-        internal Queue<string> messages = new Queue<string>();
+        internal Queue<Frame> frames = new Queue<Frame>();
 
         private NetworkStream stream;
         private Thread thread;
@@ -20,11 +20,11 @@ namespace BiteClient
             thread.Start();
         }
 
-        internal void Send(string message)
+        internal void Send(Frame frame)
         {
-            lock (messages)
+            lock (frames)
             {
-                messages.Enqueue(message);
+                frames.Enqueue(frame);
             }
         }
 
@@ -38,28 +38,13 @@ namespace BiteClient
         {
             while (true)
             {
-                if (messages.Count < 1)
+                if (frames.Count < 1)
                     continue;
 
-                lock (messages)
+                lock (frames)
                 {
-                    var message = messages.Dequeue();
-
-                    // The first 2 bytes should be the length of the message,
-                    // according to our protocol.
-                    var length = message.Length + 2;
-                    var byteLen = new byte[2];
-                    byteLen[0] = (byte)((length & 0xFF00) >> 8);
-                    byteLen[1] = (byte)((length & 0x00FF));
-
-                    var byteData = Encoding.ASCII.GetBytes(message);
-
-                    // Concat
-                    var data = new byte[byteLen.Length + byteData.Length];
-                    Array.Copy(byteLen, data, byteLen.Length);
-                    Array.Copy(byteData, 0, data, byteLen.Length, byteData.Length);
-
-                    stream.Write(data, 0, data.Length);
+                    var frame = frames.Dequeue();
+                    stream.Write(frame.Data, 0, frame.Data.Length);
                 }
             }
         }
