@@ -8,7 +8,8 @@ namespace BiteClient
     {
         internal bool Connected { get { return client.Connected; } }
         internal long ClientId { get { return clientId; } }
-        internal event Action<Frame> FrameReceived;
+        internal event Action<Frame> OnConnected;
+        internal event Action<Frame> OnFrameReceived;
 
         private TcpClient client;
         private NetworkStream stream;
@@ -27,7 +28,7 @@ namespace BiteClient
             {
                 sender = new Sender(stream);
                 receiver = new Receiver(stream);
-                receiver.FrameReceived += OnFrameReceived;
+                receiver.OnFrameReceived += FrameReceived;
             }
             catch (SocketException e)
             {
@@ -38,6 +39,9 @@ namespace BiteClient
 
         internal void Send(byte[] data, Action<Frame> action = null)
         {
+            if (clientId == 0)
+                throw new SocketException((int)SocketError.NotConnected);
+
             if (!Connected)
                 throw new SocketException((int)SocketError.NotConnected);
 
@@ -49,9 +53,9 @@ namespace BiteClient
                 receiver.React(action);
         }
 
-        internal void Send(string data, Action<Frame> action = null)
+        internal void Send(string text, Action<Frame> action = null)
         {
-            var bytes = Encoding.UTF8.GetBytes(data);
+            var bytes = Encoding.ASCII.GetBytes(text);
             Send(bytes, action);
         }
 
@@ -64,7 +68,7 @@ namespace BiteClient
             receiver.Abort();
         }
 
-        private void OnFrameReceived(Frame frame)
+        private void FrameReceived(Frame frame)
         {
             // The first frame is the client id asigned by the server.
             if (clientId < 1)
@@ -75,11 +79,14 @@ namespace BiteClient
 
                 clientId = BitConverter.ToInt64(bigEndian, 0);
 
+                if (OnConnected != null)
+                    OnConnected(frame);
+
                 return;
             }
 
-            if (FrameReceived != null)
-                FrameReceived(frame);
+            if (OnFrameReceived != null)
+                OnFrameReceived(frame);
         }
     }
 }
