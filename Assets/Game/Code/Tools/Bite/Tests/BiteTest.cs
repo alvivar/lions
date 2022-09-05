@@ -4,7 +4,7 @@ using System.Text;
 
 public class BiteTest : MonoBehaviour
 {
-    public string command = "s test ";
+    public string command = "s test";
     public string subscription = "#g test";
 
     [Header("Network")]
@@ -12,32 +12,35 @@ public class BiteTest : MonoBehaviour
     public int port = 1984;
 
     private Bite bite;
-    private bool connected = false;
 
-    void Start() { Connect(); }
+    void OnEnable() { Connect(); }
     void OnDisable() { bite.Shutdown(); }
 
+    [ContextMenu("Test")]
     public void Connect()
     {
-        bite = new Bite(host, port);
-
         var uid = SystemInfo.deviceUniqueIdentifier;
-        bite.Send($"! ping from {uid}", frame =>
+
+        bite = new Bite(host, port);
+        bite.OnConnected += frame =>
         {
-            connected = true;
+            Debug.Log($"BITE ID {frame.ClientId}");
 
-            SendMaxBytes();
+            bite.Send($"! ping from {uid}", frame =>
+            {
+                var clientId = frame.ClientId;
+                var messageId = frame.MessageId;
+                var text = frame.Text.Trim();
 
-            var clientId = frame.ClientId;
-            var messageId = frame.MessageId;
-            var text = frame.Text.Trim();
+                Debug.Log($"Client {clientId} Message {messageId}");
+                Debug.Log($"Bytes ({frame.Size}): {string.Join(" ", frame.Data)}");
+                Debug.Log($"Text ({text.Length}): {text}");
 
-            Debug.Log($"Client {clientId} Message {messageId}");
-            Debug.Log($"Bytes ({frame.Size}): {string.Join(" ", frame.Data)}");
-            Debug.Log($"Text ({text.Length}): {text}");
-        });
+                SendMaxBytes();
+            });
+        };
 
-        bite.FrameReceived += frame =>
+        bite.OnFrameReceived += frame =>
         {
             var clientId = frame.ClientId;
             var messageId = frame.MessageId;
