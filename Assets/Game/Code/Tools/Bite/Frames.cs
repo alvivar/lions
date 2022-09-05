@@ -6,7 +6,6 @@ namespace BiteClient
 {
     public class Frame
     {
-
         public int ClientId { get { return (data[0] << 8) | data[1]; } }
         public int MessageId { get { return (data[2] << 8) | data[3]; } }
         public int Size { get { return (data[4] << 8) | data[5]; } }
@@ -47,8 +46,7 @@ namespace BiteClient
 
         public Frame FromProtocol(int clientId, int messageId, byte[] data)
         {
-            var headerSize = 6;
-            var header = new byte[headerSize];
+            var header = new byte[6];
 
             header[0] = (byte)((clientId & 0xFF00) >> 8);
             header[1] = (byte)((clientId & 0x00FF));
@@ -56,7 +54,7 @@ namespace BiteClient
             header[2] = (byte)((messageId & 0xFF00) >> 8);
             header[3] = (byte)((messageId & 0x00FF));
 
-            var length = data.Length + headerSize;
+            var length = header.Length + data.Length;
             header[4] = (byte)((length & 0xFF00) >> 8);
             header[5] = (byte)((length & 0x00FF));
 
@@ -71,11 +69,12 @@ namespace BiteClient
         }
 
         /// Remove and returns the remainder data that overflows the size.
-        public Byte[] SplitRemainder()
+        public byte[] SplitRemainder()
         {
-            var remainder = new byte[data.Length - Size];
-            Array.Copy(data, data.Length, remainder, 0, remainder.Length);
-            Array.Resize(ref data, Size);
+            var size = Size;
+            var remainder = new byte[data.Length - size];
+            Array.Copy(data, size, remainder, 0, remainder.Length);
+            Array.Resize(ref data, size);
 
             return remainder;
         }
@@ -84,6 +83,16 @@ namespace BiteClient
     public class Frames
     {
         public bool HasCompleteFrame { get { return frames.Count > 0; } }
+        public bool HasPendingData
+        {
+            get
+            {
+                if (frame.Data.Length < 6)
+                    return false;
+
+                return frame.Size <= frame.Data.Length;
+            }
+        }
 
         private Queue<Frame> frames = new Queue<Frame>();
         private Frame frame = new Frame();
@@ -91,7 +100,11 @@ namespace BiteClient
         public void Feed(byte[] data)
         {
             frame.Feed(data);
+            TryCompleteFrame();
+        }
 
+        public void TryCompleteFrame()
+        {
             // A complete frame!
             if (frame.Size == frame.Data.Length)
             {
@@ -103,12 +116,13 @@ namespace BiteClient
             // buffer the rest on a new frame.
             else if (frame.Size < frame.Data.Length)
             {
-                var newFrame = new Frame().Feed(frame.SplitRemainder());
+                var remainder = new Frame().Feed(frame.SplitRemainder());
                 frames.Enqueue(frame);
+                frame = remainder;
             }
 
-            // Not enough data in the buffer for a complete frame, maybe on the
-            // next feed.
+            // Not enough data in the buffer for a complete frame, maybe after
+            // the next feed.
             else if (frame.Size > frame.Data.Length)
                 return;
         }
