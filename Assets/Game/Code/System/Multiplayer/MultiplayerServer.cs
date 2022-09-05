@@ -29,7 +29,7 @@ public class MultiplayerServer : MonoBehaviour
                     Debug.Log("MultiplayerServer connected");
                 });
 
-                bite.FrameReceived += frame =>
+                bite.OnFrameReceived += frame =>
                 {
                     if (frame.Data.Length <= 5) // Let's ignore responses like OK or KEY? from queries.
                         return;
