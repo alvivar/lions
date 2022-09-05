@@ -8,7 +8,7 @@ namespace BiteClient
 {
     internal sealed class Receiver
     {
-        internal event Action<Frame> FrameReceived;
+        internal event Action<Frame> OnFrameReceived;
 
         private Queue<Action<Frame>> actions = new Queue<Action<Frame>>();
         private NetworkStream stream;
@@ -61,12 +61,15 @@ namespace BiteClient
                 frames.Feed(memory.ToArray());
                 memory.SetLength(0);
 
-                if (frames.HasCompleteFrame)
+                while (frames.HasPendingData)
+                    frames.TryCompleteFrame();
+
+                while (frames.HasCompleteFrame)
                 {
                     var frame = frames.Dequeue();
 
-                    if (FrameReceived != null)
-                        FrameReceived(frame);
+                    if (OnFrameReceived != null)
+                        OnFrameReceived(frame);
 
                     if (actions.Count < 1)
                         continue;
