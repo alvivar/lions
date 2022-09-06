@@ -6,7 +6,7 @@ namespace BiteClient
 {
     public sealed class Bite
     {
-        internal bool Connected { get { return client.Connected; } }
+        internal bool Connected { get { return clientId > 0 || client.Connected; } }
         internal long ClientId { get { return clientId; } }
         internal event Action<Frame> OnConnected;
         internal event Action<Frame> OnFrameReceived;
@@ -16,7 +16,7 @@ namespace BiteClient
         private Sender sender;
         private Receiver receiver;
 
-        private long clientId;
+        private int clientId;
         private static int sentId;
 
         internal Bite(string host, int port)
@@ -39,9 +39,6 @@ namespace BiteClient
 
         internal void Send(byte[] data, Action<Frame> action = null)
         {
-            if (clientId == 0)
-                throw new SocketException((int)SocketError.NotConnected);
-
             if (!Connected)
                 throw new SocketException((int)SocketError.NotConnected);
 
@@ -59,6 +56,7 @@ namespace BiteClient
             Send(bytes, action);
         }
 
+        /// Naturally throws an ThreadAbortException.
         internal void Shutdown()
         {
             client.Close();
@@ -70,14 +68,10 @@ namespace BiteClient
 
         private void FrameReceived(Frame frame)
         {
-            // The first frame is the client id asigned by the server.
+            // The first frame received is the client id asigned by the server.
             if (clientId < 1)
             {
-                var bigEndian = frame.Content;
-                if (BitConverter.IsLittleEndian)
-                    Array.Reverse(bigEndian);
-
-                clientId = BitConverter.ToInt64(bigEndian, 0);
+                clientId = frame.ClientId;
 
                 if (OnConnected != null)
                     OnConnected(frame);
