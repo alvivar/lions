@@ -4,7 +4,6 @@ using System.Globalization;
 using UnityEngine;
 
 /// Utilities to cast bytes.
-
 public static class Bitf
 {
     public static int Int(string str, int or = 0)
