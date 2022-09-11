@@ -17,7 +17,7 @@ namespace BiteClient
         private Receiver receiver;
 
         private int clientId;
-        private static int sentId;
+        private static int messageId;
 
         internal Bite(string host, int port)
         {
@@ -42,8 +42,8 @@ namespace BiteClient
             if (!Connected)
                 throw new SocketException((int)SocketError.NotConnected);
 
-            sentId += 1;
-            var frame = new Frame().FromProtocol((int)clientId, sentId, data);
+            messageId += 1;
+            var frame = new Frame().FromProtocol((int)clientId, messageId, data);
             sender.Send(frame);
 
             if (action != null)
