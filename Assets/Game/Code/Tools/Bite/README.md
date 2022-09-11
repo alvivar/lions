@@ -1,7 +1,7 @@
 # C# Bite
 
-C# client library for [**Bite**](https://github.com/alvivar/bite). Unity
-compatible.
+C# client library for [**BITE**](https://github.com/alvivar/bite). Should work
+fine with Unity.
 
 To **connect**.
 
