@@ -52,8 +52,7 @@ namespace BiteClient
 
         internal void Send(string text, Action<Frame> action = null)
         {
-            var bytes = Encoding.ASCII.GetBytes(text);
-            Send(bytes, action);
+            Send(Encoding.ASCII.GetBytes(text), action);
         }
 
         /// Naturally throws an ThreadAbortException.
